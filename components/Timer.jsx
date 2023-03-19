@@ -44,22 +44,17 @@ function Contador({ initialMinutes = 25, initialSeconds = 0, onComplete }) {
     function handleStartPause() {
         setIsRunning(!isRunning);
         //reproducir o pausar el sonido
-        if (isRunning) {
-            //sound
-        }
-        else {
-            sound.play();
-        }
+
     
     }
 
-    // function handleMinutesChange(e) {
-    //     setMinutes(parseInt(e.target.value));
-    // }
+    function handleMinutesChange(e) {
+        setMinutes(parseInt(e.target.value));
+    }
 
-    // function handleSecondsChange(e) {
-    //     setSeconds(parseInt(e.target.value));
-    // }
+    function handleSecondsChange(e) {
+        setSeconds(parseInt(e.target.value));
+    }
 
     function handleModeChange(mode) {
         setMode(mode);
@@ -82,23 +77,26 @@ function Contador({ initialMinutes = 25, initialSeconds = 0, onComplete }) {
     const buttonText = isRunning ? 'Pause' : minutes === 0 && seconds === 0 ? 'Reset' : 'Start';
 
     return (
-        <div className='container'>
+        <div className=' container-md caret-red-700'>
         <h1 className='text-3xl'>{mode}</h1>
         <div>
         <button className='button' onClick={() => handleModeChange('Por defecto')}>Por defecto2</button>
-        <button onClick={() => handleModeChange('Short break')}>Short break</button>
-        <button onClick={() => handleModeChange('Long break')}>Long break</button>
-            {/* <input type="number" value={minutes} onChange={handleMinutesChange} />:{' '}
-            <input type="number" value={seconds} onChange={handleSecondsChange} /> */}
+        <button className='button' onClick={() => handleModeChange('Short break')}>Short break</button>
+        <button className='button' onClick={() => handleModeChange('Long break')}>Long break</button>
+
         </div>
-        <div>
+        <h2>
             {minutes < 10 ? '0' : ''}{minutes}:{seconds < 10 ? '0' : ''}{seconds}
-        </div>
-        <button onClick={handleStartPause}>{buttonText}</button>
-        {minutes === 0 && seconds === 0 && <audio autoPlay><source src="https://www.soundjay.com/misc/sounds/clock-ticking-2.mp3" type="audio/mpeg" /></audio>}
-        <button onClick={handleReset}>Reset</button>
+        </h2>
+        <button className='button' onClick={handleStartPause}>{buttonText}</button>
+
+        {minutes === 0 && seconds === 0 && <audio autoPlay><source src="https://www.soundjay.com/nature/campfire-1.mp3" type="audio/mpeg" /></audio>}
+        <button className='button' onClick={handleReset}>Reset</button>
         <div>
         
+        <input type="number" value={minutes} onChange={handleMinutesChange} />:{' '}
+        <input type="number" value={seconds} onChange={handleSecondsChange} />
+
         <label htmlFor="sound">Select sound:</label>
         <select id="sound" onChange={(e) => {
         setSelectedSound(e.target.value);

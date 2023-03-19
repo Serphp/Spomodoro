@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className='text-3xl font-bold underline'> Hola </h1>
+      <h1 className='text-3xl font-bold underline'> Timer </h1>
       {/* <Duration/> */}
       {/* <TaskList/> */}
       <Contador />
