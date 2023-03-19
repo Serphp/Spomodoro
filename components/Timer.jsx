@@ -4,6 +4,9 @@ function Timer({ initialMinutes = 25, initialSeconds = 0, onComplete }) {
   const [minutes, setMinutes] = useState(initialMinutes);
   const [seconds, setSeconds] = useState(initialSeconds);
 
+
+  const sound = new Audio('.'); // Ruta al archivo de sonido
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (seconds > 0) {
@@ -14,6 +17,7 @@ function Timer({ initialMinutes = 25, initialSeconds = 0, onComplete }) {
       } else {
         clearInterval(intervalId);
         onComplete();
+        sound.play(); // Reproducir sonido
       }
     }, 1000);
 
