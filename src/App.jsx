@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import TaskList from '../components/Tasklist'
-import Timer from '../components/timer'
+import Contador from '../components/Timer'
+import Settings from '../components/Setting'
+import Duration from '../components/Duration'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   function handleTimerComplete() {
     alert('Timer has completed!');
@@ -14,9 +13,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1> Hola </h1>
+      <h1 className='text-3xl font-bold underline'> Hola </h1>
+      {/* <Duration/> */}
       {/* <TaskList/> */}
-      <Timer onComplete={handleTimerComplete} />
+      <Contador />
+      {/* <Settings/> */}
     </div>
   )
 }
