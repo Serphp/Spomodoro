@@ -14,6 +14,13 @@ function Contador({ initialMinutes = 25, initialSeconds = 0, onComplete }) {
     ];
     
     const sound = new Audio('https://www.soundjay.com/nature/campfire-1.mp3'); // Ruta al archivo de sonido
+    const sound2 = new Audio('https://www.soundjay.com/buttons/button-20.mp3'); // Ruta al archivo de sonido
+    const pip = new Audio('https://www.soundjay.com/buttons/beep-07a.mp3'); // Ruta al archivo de sonido
+    const pip2 = new Audio('https://www.soundjay.com/buttons/beep-08b.mp3'); // Ruta al archivo de sonido
+
+    //diccionario de sonidos para elegir uno aleatorio
+    const sounds = [pip, pip2];
+    const reset = [sound, sound2];
 
     useEffect(() => {
         let intervalId;
@@ -39,13 +46,18 @@ function Contador({ initialMinutes = 25, initialSeconds = 0, onComplete }) {
     function handleReset() {
         setMinutes(initialMinutes);
         setSeconds(initialSeconds);
+        //play random sound reset
+        const randomSound = reset[Math.floor(Math.random() * reset.length)];
+        randomSound.play();
     }
 
     function handleStartPause() {
         setIsRunning(!isRunning);
-        //reproducir o pausar el sonido
-
-    
+        //play random sound pip and pip2
+        if (!isRunning) {
+            const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
+            randomSound.play();
+        }
     }
 
     function handleMinutesChange(e) {
@@ -77,37 +89,28 @@ function Contador({ initialMinutes = 25, initialSeconds = 0, onComplete }) {
     const buttonText = isRunning ? 'Pause' : minutes === 0 && seconds === 0 ? 'Reset' : 'Start';
 
     return (
-        <div className=' container-md caret-red-700'>
+        <div className='container'>
         <h1 className='text-3xl'>{mode}</h1>
-        <div>
-        <button className='button' onClick={() => handleModeChange('Por defecto')}>Por defecto2</button>
+        <div className='columna2' style={{ display: isRunning ? 'none' : 'block' }}>
+        <button className='button' onClick={() => handleModeChange('Por defecto')}>Por defecto</button>
         <button className='button' onClick={() => handleModeChange('Short break')}>Short break</button>
         <button className='button' onClick={() => handleModeChange('Long break')}>Long break</button>
-
         </div>
-        <h2>
+        
+        <h2 className='titulo'>
             {minutes < 10 ? '0' : ''}{minutes}:{seconds < 10 ? '0' : ''}{seconds}
         </h2>
-        <button className='button' onClick={handleStartPause}>{buttonText}</button>
 
+        <div className=' buttons'>
+        <button className='button' onClick={handleStartPause}>{buttonText}</button>
         {minutes === 0 && seconds === 0 && <audio autoPlay><source src="https://www.soundjay.com/nature/campfire-1.mp3" type="audio/mpeg" /></audio>}
         <button className='button' onClick={handleReset}>Reset</button>
+        </div> 
         <div>
         
-        <input type="number" value={minutes} onChange={handleMinutesChange} />:{' '}
-        <input type="number" value={seconds} onChange={handleSecondsChange} />
+        {/* <input type="number" value={minutes} onChange={handleMinutesChange} />:{' '}
+        <input type="number" value={seconds} onChange={handleSecondsChange} /> */}
 
-        <label htmlFor="sound">Select sound:</label>
-        <select id="sound" onChange={(e) => {
-        setSelectedSound(e.target.value);
-        onSoundChange(e.target.value);
-        }}>
-        {soundOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-            {option.label}
-            </option>
-        ))}
-        </select>
     </div>
     </div>
 

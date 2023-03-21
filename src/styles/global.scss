@@ -1,0 +1,71 @@
+@import "reloj";
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+    background-color: #fbe2e5;
+}
+
+    .button {
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 150px;
+    margin: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    }
+
+    .button:hover {
+    background-color: #000;
+    color: #fff;
+    }
+
+    h2, .titulo {
+    margin: 0;
+    font-size: 2.5rem;
+    }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0px;
+    padding: 50px;
+    text-align: center;
+    background-color: #dddddd6d;
+    border: #000 solid 1px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.columna2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    text-align: center;
+    background-color: #ffffff;
+    border: #000 solid 1px;
+}
+.columna3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    text-align: center;
+    background-color: #ffffff;
+    border: #000 solid 1px;
+}

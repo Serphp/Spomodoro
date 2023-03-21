@@ -1,9 +1,11 @@
-import { useState } from 'react'
-import './App.css'
-import TaskList from '../components/Tasklist'
+//import { useState } from 'react'
+import '../src/styles/global.scss'
+//import TaskList from '../components/Tasklist'
 import Contador from '../components/Timer'
-import Settings from '../components/Setting'
-import Duration from '../components/Duration'
+import { NavBar } from '../components/Main/Navbar';
+import { Footer } from '../components/Main/Footer';
+//import Settings from '../components/Setting'
+//import Duration from '../components/Duration'
 
 function App() {
 
@@ -13,11 +15,13 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
       <h1 className='text-3xl font-bold underline'> Timer </h1>
       {/* <Duration/> */}
       {/* <TaskList/> */}
       <Contador />
       {/* <Settings/> */}
+      <Footer/>
     </div>
   )
 }
