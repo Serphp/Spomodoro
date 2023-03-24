@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Work from './Main/Reloj/Work';
 
 function Contador({ initialMinutes = 25, initialSeconds = 0, onComplete }) {
     const [minutes, setMinutes] = useState(initialMinutes);
@@ -87,11 +88,13 @@ function Contador({ initialMinutes = 25, initialSeconds = 0, onComplete }) {
     }
 
     const buttonText = isRunning ? 'Pause' : minutes === 0 && seconds === 0 ? 'Reset' : 'Start';
-
+    // ESTRUCTURA DEBAJO
     return (
-        <div className='container'>
+
+        
+        <div className='boxcontainer box'>
         <h1 className='text-3xl'>{mode}</h1>
-        <div className='columna2' style={{ display: isRunning ? 'none' : 'block' }}>
+        <div className='' style={{ display: isRunning ? 'none' : 'block' }}>
         <button className='button' onClick={() => handleModeChange('Por defecto')}>Por defecto</button>
         <button className='button' onClick={() => handleModeChange('Short break')}>Short break</button>
         <button className='button' onClick={() => handleModeChange('Long break')}>Long break</button>

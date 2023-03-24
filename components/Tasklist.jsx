@@ -1,18 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    if (tasks) {
+      setTasks(tasks);
+    }
+    
+  }, []);
 
   function handleAddTask(event) {
     event.preventDefault();
     const taskTitle = event.target.elements.taskTitle.value;
     const newTask = { id: Date.now(), title: taskTitle };
-    setTasks([...tasks, newTask]);
+    setTasks(prevTasks => [...prevTasks, newTask]);
     event.target.reset();
+    localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]));
   }
+
 
   function handleDeleteTask(taskId) {
     setTasks(tasks.filter(task => task.id !== taskId));
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    const updatedTasks = storedTasks.filter(task => task.id !== taskId);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   }
 
   return (
