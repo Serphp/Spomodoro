@@ -7,6 +7,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { TimerProvider } from './Context/TimerContex';
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,8 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/* <App /> */}
+    <TimerProvider>
     <RouterProvider router={router} />
+    </TimerProvider>
   </React.StrictMode>,
 )

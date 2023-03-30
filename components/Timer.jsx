@@ -1,73 +1,20 @@
-import { useState, useEffect } from 'react';
-import Work from './Main/Reloj/Work';
+import { useState, useEffect, useContext } from 'react';
+import { TimerContext } from '../src/Context/TimerContex';
 
 function Contador({ initialMinutes = 25, initialSeconds = 0, onComplete }) {
+    const { timer, toggleTimer, StartPause, resetTimer, handleTimerChange, handlePersonalizable } = useContext(TimerContext);
     const [minutes, setMinutes] = useState(initialMinutes);
     const [seconds, setSeconds] = useState(initialSeconds);
     const [isRunning, setIsRunning] = useState(false);
     const [mode, setMode] = useState('Por defecto');
-    const [selectedSound, setSelectedSound] = useState(null);
 
-    const soundOptions = [
-        { label: "Sound 1", value: "https://www.soundjay.com/nature/campfire-1.mp3" },
-        { label: "Sound 2", value: "sound2.mp3" },
-        { label: "Sound 3", value: "sound3.mp3" }
-    ];
-    
     const sound = new Audio('https://www.soundjay.com/nature/campfire-1.mp3'); // Ruta al archivo de sonido
     const sound2 = new Audio('https://www.soundjay.com/buttons/button-20.mp3'); // Ruta al archivo de sonido
-    const pip = new Audio('https://www.soundjay.com/buttons/beep-07a.mp3'); // Ruta al archivo de sonido
-    const pip2 = new Audio('https://www.soundjay.com/buttons/beep-08b.mp3'); // Ruta al archivo de sonido
+
 
     //diccionario de sonidos para elegir uno aleatorio
-    const sounds = [pip, pip2];
+
     const reset = [sound, sound2];
-
-    useEffect(() => {
-        let intervalId;
-
-        if (isRunning) {
-        intervalId = setInterval(() => {
-            if (seconds > 0) {
-            setSeconds(seconds - 1);
-            } else if (minutes > 0) {
-            setSeconds(59);
-            setMinutes(minutes - 1);
-            } else {
-            clearInterval(intervalId);
-            setIsRunning(false);
-            onComplete();
-            }
-        }, 1000);
-        }
-
-        return () => clearInterval(intervalId);
-    }, [minutes, seconds, isRunning, onComplete, sound, selectedSound]);
-
-    function handleReset() {
-        setMinutes(initialMinutes);
-        setSeconds(initialSeconds);
-        //play random sound reset
-        const randomSound = reset[Math.floor(Math.random() * reset.length)];
-        randomSound.play();
-    }
-
-    function handleStartPause() {
-        setIsRunning(!isRunning);
-        //play random sound pip and pip2
-        if (!isRunning) {
-            const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
-            randomSound.play();
-        }
-    }
-
-    function handleMinutesChange(e) {
-        setMinutes(parseInt(e.target.value));
-    }
-
-    function handleSecondsChange(e) {
-        setSeconds(parseInt(e.target.value));
-    }
 
     function handleModeChange(mode) {
         setMode(mode);
@@ -86,36 +33,58 @@ function Contador({ initialMinutes = 25, initialSeconds = 0, onComplete }) {
             break;
         }
     }
+    
 
     const buttonText = isRunning ? 'Pause' : minutes === 0 && seconds === 0 ? 'Reset' : 'Start';
     // ESTRUCTURA DEBAJO
     return (
 
         
-        <div className='boxcontainer box'>
-        <h1 className='text-3xl'>{mode}</h1>
-        <div className='' style={{ display: isRunning ? 'none' : 'block' }}>
-        <button className='button' onClick={() => handleModeChange('Por defecto')}>Por defecto</button>
-        <button className='button' onClick={() => handleModeChange('Short break')}>Short break</button>
-        <button className='button' onClick={() => handleModeChange('Long break')}>Long break</button>
+    <div className=''>
+
+
+    <section className="probootstrap-cover probootstrap-scene-0">
+    <div className="container">
+        <div className="row probootstrap-vh-75 align-items-center text-md-left text-sm-center text-center">
+        <div className="col-md-6 order-md-2 order-1">
+        <h1 className='text-3xl box2'>{mode}</h1>
+            <div className='boxcontainer'>
+                <h2 className='titulo'>
+                {timer.isRunning ? 'Active' : 'Inactive'}
+                </h2>    
+            </div>
+            <div className='box2' style={{ display: isRunning ? 'none' : 'block' }}>
+            <button className='btnselect' onClick={handleTimerChange} value="default" >Por defecto</button>
+            <button className='btnselect' onClick={handleTimerChange} value="shortBreak" >Short break</button>
+            <button className='btnselect' onClick={handleTimerChange} value="longBreak">Long break</button>
+            </div>
+
+            <form onSubmit={handlePersonalizable}>
+        <input type="number" name="minutes" placeholder="Minutes" />
+        <input type="number" name="seconds" placeholder="Seconds" />
+        <button type="submit">Personalizable</button>
+      </form>
+        </div>
+        <div className="col-md-6 order-md-1 order-2">
+            <div className="probootstrap-text">
+            <h1 className="probootstrap-heading probootstrap-stagger text-white mb-2">Timer </h1>
+            <p className="mb-5 probootstrap-stagger lead">
+            <span className="probootstrap-animate">Timer</span>
+            </p>
+                <p className="probootstrap-stagger">
+                    <button onClick={resetTimer} className="btn btn-primary mr-2 mb-2">
+                        <span className="icon-ipad"></span> Reset</button>
+                <button className='btn btn-primary btn-outline-white mb-2' onClick={() => toggleTimer()}>{StartPause}</button>
+                </p>
+            </div>
         </div>
         
-        <h2 className='titulo'>
-            {minutes < 10 ? '0' : ''}{minutes}:{seconds < 10 ? '0' : ''}{seconds}
-        </h2>
-
-        <div className=' buttons'>
-        <button className='button' onClick={handleStartPause}>{buttonText}</button>
-        {minutes === 0 && seconds === 0 && <audio autoPlay><source src="https://www.soundjay.com/nature/campfire-1.mp3" type="audio/mpeg" /></audio>}
-        <button className='button' onClick={handleReset}>Reset</button>
-        </div> 
-        <div>
-        
-        {/* <input type="number" value={minutes} onChange={handleMinutesChange} />:{' '}
-        <input type="number" value={seconds} onChange={handleSecondsChange} /> */}
+        </div>
+    </div>
+    </section>
 
     </div>
-    </div>
+
 
     );
     }

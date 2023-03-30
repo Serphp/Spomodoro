@@ -31,19 +31,38 @@ function TaskList() {
 
   return (
     <div>
-      <h2>Task List</h2>
-      <ul>
+      <section className="probootstrap-section probootstrap-bg-dark">
+      <div className="container">
+        <div className="row mb-5 justify-content-center text-center">
+          <div className="col-md-8">
+            <h2 className="probootstrap-heading">Agregar tarea</h2>
+            <form onSubmit={handleAddTask}>
+          <input type="text" name="taskTitle" placeholder="Enter task title" />
+          <button type="submit">Add Task</button>
+          </form>
+          </div>
+        </div>
+        <div className="row">
         {tasks.map(task => (
-          <li key={task.id}>
-            {task.title}
+          <div className="col-md-3">
+            <div className="media d-block mb-4">
+              <img src="images/person_1.jpg" alt="" className="img-fluid mb-3 rounded"/>
+              
+              <div className="media-body p-3" key={task.id}>
+                
+            <h5 className="mt-0"> {task.title}</h5>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
             <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-      <form onSubmit={handleAddTask}>
-        <input type="text" name="taskTitle" placeholder="Enter task title" />
-        <button type="submit">Add Task</button>
-      </form>
+
+              </div>
+              
+            </div>
+          </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
     </div>
   );
 }

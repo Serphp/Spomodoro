@@ -28,10 +28,14 @@
     }
     
     .buttons {
-        position: absolute;
+        position: fixed;
+        z-index: 2;
         bottom: 0;
-        left: 0;
-        right: 0;
+        left: 1;
+        right: 1;
+        background-color: rgba(0, 0, 0, 0.42);
+        border-radius: 10px;
+        width: 30%;
         height: 60px;
         display: flex;
         justify-content: center;
