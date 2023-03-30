@@ -7,6 +7,7 @@
     const pip2 = new Audio('https://www.soundjay.com/buttons/beep-08b.mp3'); // Ruta al archivo de sonido
     const resetaudio = new Audio('https://www.soundjay.com/nature/campfire-1.mp3');
     const sounds = [pip, pip2];
+    //const [mode, setMode] = useState('Por defecto');
     const [timer, setTimer] = useState({
         minutes: initialMinutes,
         seconds: initialSeconds,
@@ -80,8 +81,8 @@ const handlePersonalizable = (event) => {
 const handleTimerChange = (event) => {
     event.preventDefault();
     const timerType = event.target.value;
-
-    switch (timerType) {
+    //setMode(mode);
+    switch (timerType) {        
         case 'shortBreak':
         handleReset(5, 0);
         break;

@@ -1,73 +1,59 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { TimerContext } from '../src/Context/TimerContex';
 
-function Contador({ initialMinutes = 25, initialSeconds = 0, onComplete }) {
+function Contador() {
     const { timer, toggleTimer, StartPause, resetTimer, handleTimerChange, handlePersonalizable } = useContext(TimerContext);
-    const [minutes, setMinutes] = useState(initialMinutes);
-    const [seconds, setSeconds] = useState(initialSeconds);
+    const [showCode, setShowCode] = useState(false);
     const [isRunning, setIsRunning] = useState(false);
-    const [mode, setMode] = useState('Por defecto');
 
     const sound = new Audio('https://www.soundjay.com/nature/campfire-1.mp3'); // Ruta al archivo de sonido
     const sound2 = new Audio('https://www.soundjay.com/buttons/button-20.mp3'); // Ruta al archivo de sonido
 
+    const handleShowCode = () => {
+        setShowCode(!showCode);
+    };
 
-    //diccionario de sonidos para elegir uno aleatorio
-
-    const reset = [sound, sound2];
-
-    function handleModeChange(mode) {
-        setMode(mode);
-        switch (mode) {
-        case 'Por defecto':
-            setMinutes(25);
-            setSeconds(0);
-            break;
-        case 'Short break':
-            setMinutes(5);
-            setSeconds(0);
-            break;
-        case 'Long break':
-            setMinutes(15);
-            setSeconds(0);
-            break;
-        }
-    }
-    
-
-    const buttonText = isRunning ? 'Pause' : minutes === 0 && seconds === 0 ? 'Reset' : 'Start';
-    // ESTRUCTURA DEBAJO
-    return (
-
-        
+    return (  
     <div className=''>
-
-
     <section className="probootstrap-cover probootstrap-scene-0">
     <div className="container">
         <div className="row probootstrap-vh-75 align-items-center text-md-left text-sm-center text-center">
         <div className="col-md-6 order-md-2 order-1">
-        <h1 className='text-3xl box2'>{mode}</h1>
+
             <div className='boxcontainer'>
                 <h2 className='titulo'>
                 {timer.isRunning ? 'Active' : 'Inactive'}
                 </h2>    
             </div>
-            <div className='box2' style={{ display: isRunning ? 'none' : 'block' }}>
+            <div className='box2' style={{ display: timer.isRunning ? 'none' : 'block' }}>
             <button className='btnselect' onClick={handleTimerChange} value="default" >Por defecto</button>
             <button className='btnselect' onClick={handleTimerChange} value="shortBreak" >Short break</button>
             <button className='btnselect' onClick={handleTimerChange} value="longBreak">Long break</button>
+            <button className='btnselect' onClick={handleShowCode}> Personalizar </button>
             </div>
 
-            <form onSubmit={handlePersonalizable}>
-        <input type="number" name="minutes" placeholder="Minutes" />
-        <input type="number" name="seconds" placeholder="Seconds" />
-        <button type="submit">Personalizable</button>
-      </form>
-        </div>
-        <div className="col-md-6 order-md-1 order-2">
+            {showCode && (
+            <section className='pre'> 
+                <form onSubmit={handlePersonalizable}>
+                <div className='row mt-5'>
+                <div class="form-group col-md-6">
+                <label for="minutes">Minutes</label>
+                <input type="number" class="form-control" name="minutes" />
+                </div>
+                <div class="form-group col-md-6">
+                <label for="seconds">Seconds</label>
+                <input type="number" class="form-control" name="seconds"/>
+                </div>
+                <button className='btn btn-primary btn-outline-white mt-3 mb-5' type="submit">Nuevo valor</button>
+                </div>
+                </form>
+            </section>
+    )}
+            </div>
+
+        <div className="col-md-5 order-md-1 order-2">
             <div className="probootstrap-text">
-            <h1 className="probootstrap-heading probootstrap-stagger text-white mb-2">Timer </h1>
+            <h1 className="probootstrap-heading probootstrap-stagger text-white mb-3">Timer </h1>
             <p className="mb-5 probootstrap-stagger lead">
             <span className="probootstrap-animate">Timer</span>
             </p>

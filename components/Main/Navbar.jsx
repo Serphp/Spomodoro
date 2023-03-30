@@ -20,7 +20,7 @@ export const NavBar = () => {
         <div className="container">
         <a className="navbar-brand">
         <h1>{`${minutes}:${seconds}`} </h1>
-        {/* <p>{timer.isRunning ? 'Active' : 'Inactive'}</p>  */}
+        {/* <p>  */}
         {/* <button className='btnselect' onClick={() => toggleTimer()}>{StartPause}</button> */}
         </a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-nav" aria-controls="probootstrap-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,8 +29,8 @@ export const NavBar = () => {
 
         <div className="collapse navbar-collapse" id="probootstrap-nav">
             <ul className="navbar-nav ml-auto">
-            <li className="nav-item"><Link to="/" className="nav-link">Home</Link></li>
-            <li className="nav-item"><Link to="/Taskpage" className="nav-link">About</Link></li>
+            <li className="nav-item"><Link to="/" className="nav-link">Timer</Link></li>
+            <li className="nav-item"><Link to="/Taskpage" className="nav-link">List</Link></li>
             <li className="nav-item">
                 <a href="#" className="nav-link">
                     <button className='btn'>login</button>
