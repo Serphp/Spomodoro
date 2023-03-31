@@ -33,7 +33,7 @@ export const NavBar = () => {
             <li className="nav-item"><Link to="/Taskpage" className="nav-link">List</Link></li>
             <li className="nav-item">
                 <a className="nav-link">
-                    <button className='btn' onClick={toggleTimer}>{timer.isRunning ? 'ON' : 'OFF'}</button>
+                    <button className='btn' onClick={toggleTimer}>{timer.isRunning ? 'Pausar' : 'Iniciar'}</button>
                 </a>
                 </li>
             </ul>

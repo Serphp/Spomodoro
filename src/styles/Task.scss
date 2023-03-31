@@ -77,6 +77,25 @@
     }
 }
 
+.imput {
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 5px;
+    background-color: #ebebeb18;
+    border: none;
+    color: #737373;
+    outline: none;
+    border-bottom: #000000 solid 1px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    &:hover {
+        background-color: #ebebeb18;
+        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
+        color: #ffffff;
+    }
+}
 
 .buttonplus {
     position: fixed;
