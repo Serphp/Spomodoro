@@ -1,17 +1,18 @@
 .cardtask {
-    background-color: #fff;
+    background-color: #ffffffa6;
     border: 1px solid #e6e6e6;
-    border-radius: 3px;
-    box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
-    margin-bottom: 8px;
-    padding: 8px 12px;
+    border-radius: 5px;
+    //margin-bottom: 8px;
+    padding: 10px;
     position: relative;
     text-decoration: none;
-    transition: background 85ms ease-in;
+    transition: all 85ms ease-in;
     width: 100%;
-    &:hover {
-        background-color: #f4f5f7;
-    }
+        &:hover {
+            background-color: #f4f5f7;
+            box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+            border-color: #0079bf;
+        }
     .cardtask__title {
         color: #172b4d;
         font-size: 14px;
@@ -54,17 +55,24 @@
     }
     .cardtask__actions {
         position: absolute;
-        right: 12px;
-        top: 12px;
-        .cardtask__actions__button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        margin-left: 8px;
-        padding: 0;
+        right: 10px;
+        top: -40px;
+        background-color: #5e6c846c;
+        padding: 5px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
         &:hover {
-            color: #0079bf;
+            background-color: #5e6c84f1;
         }
+            .cardtask__actions__button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 8px;
+            padding: 0;
+            &:hover {
+                color: #f5f5f5be;
+            }
         }
     }
 }
@@ -89,7 +97,7 @@
         &:hover {
             width: 60px;
             height: 60px;
-            color: #00bf49;
+            color: #008cbf;
             background-color: #204c6485;
             border-color: #0079bf;
             box-shadow: 0 0 35px rgba(0, 0 , 0, 0.2);

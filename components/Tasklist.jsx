@@ -98,10 +98,27 @@ function TaskList() {
               <div className="cardtask media-body p-3" key={task.id}>
                 <h5 className="cardtask__title mt-0">{task.title}</h5>
                 <p className='cardtask__description'>{task.body}</p>
+                <p className='cardtask__status'>{task.completed ? 'Completed' : 'Pending'}</p>
+                <span className='cardtask__date'>{moment(task.id).format('MMMM Do YYYY, h:mm:ss a')}</span>
                 <div className='cardtask__actions'>
-                  <button className='cardtask__actions__button' onClick={() => handleDeleteTask(task.id)}>Delete</button>
+                  <button className='cardtask__actions__button' onClick={() => handleDeleteTask(task.id)}>
+                      <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 7h16"></path>
+                      <path d="M10 11v6"></path>
+                      <path d="M14 11v6"></path>
+                      <path d="m5 7 1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"></path>
+                      <path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"></path>
+                      </svg>
+                    </button>
                   <button className='cardtask__actions__button' onClick={() => handleCompleteTask(task.id)}>
-                    {task.completed ? 'Completado' : 'Completar'}
+                    {task.completed ? <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m7 12 5 5L22 7"></path>
+                    <path d="m12 12 5-5M2 12l5 5-5-5Z"></path>
+                    </svg>
+                    : 
+                    <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m5 12 5 5L20 7"></path>
+                    </svg>}
                   </button>
                 </div>
               </div>
@@ -139,12 +156,28 @@ function TaskList() {
           <div className="cardtask media-body p-3" key={task.id}>
             <h5 className="cardtask__title mt-0">{task.title}</h5>
             <p className='cardtask__description'>{task.body}</p>
-            <p className='cardtask__elapsed-time'>{`Completado hace ${elapsedTime}`}</p>
+            <p className='cardtask__status'>{task.completed ? 'Completed' : 'Pending'}</p>
+            <span className='cardtask__date'>{moment(task.id).format('MMMM Do YYYY, h:mm:ss a')}</span>
             <div className='cardtask__actions'>
-              <button className='cardtask__actions__button' onClick={() => handleDeleteTask(task.id)}>Delete</button>
-              <button className='cardtask__actions__button' onClick={() => handleCompleteTask(task.id)}>
-                {task.completed ? 'Completado' : 'Completar'}
-              </button>
+            <button className='cardtask__actions__button' onClick={() => handleDeleteTask(task.id)}>
+                      <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 7h16"></path>
+                      <path d="M10 11v6"></path>
+                      <path d="M14 11v6"></path>
+                      <path d="m5 7 1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"></path>
+                      <path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"></path>
+                      </svg>
+                    </button>
+                  <button className='cardtask__actions__button' onClick={() => handleCompleteTask(task.id)}>
+                    {task.completed ? <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m7 12 5 5L22 7"></path>
+                    <path d="m12 12 5-5M2 12l5 5-5-5Z"></path>
+                    </svg>
+                    : 
+                    <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m5 12 5 5L20 7"></path>
+                    </svg>}
+                  </button>
             </div>
           </div>
         </div>
