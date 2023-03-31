@@ -54,14 +54,14 @@ const toggleTimer = () => {
 
     const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seconds === 0 ? 'Reset' : 'Start';
 
-    const resetTimer = () => {
-        resetaudio.play();
-        setTimer({
-        minutes: initialMinutes,
-        seconds: initialSeconds,
-        isRunning: false,
-        });
-    };
+const resetTimer = () => {
+    resetaudio.play();
+    setTimer({
+    minutes: initialMinutes,
+    seconds: initialSeconds,
+    isRunning: false,
+    });
+};
 
 const handleReset = (newMinutes, newSeconds) => {
     setTimer({

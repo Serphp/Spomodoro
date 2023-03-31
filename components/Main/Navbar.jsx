@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import React, { useContext } from 'react';
-//import { TimerProvider } from '../../src/Context/TimerContex';
+import { useState, useContext } from 'react';
 import { TimerContext } from '../../src/Context/TimerContex';
 
 export const NavBar = () => {
-    const { timer } = useContext(TimerContext);
+    const { timer, toggleTimer } = useContext(TimerContext);
+    const [isRunning, setIsRunning] = useState(false);
 
     const formatNumber = (number) => {
         return number.toString().padStart(2, '0');
@@ -19,9 +19,9 @@ export const NavBar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark probootstrap-navabr-dark">
         <div className="container">
         <a className="navbar-brand">
-        <h1>{`${minutes}:${seconds}`} </h1>
-        {/* <p>  */}
-        {/* <button className='btnselect' onClick={() => toggleTimer()}>{StartPause}</button> */}
+            
+        {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : <h3>Timer <span className='beta'>beta</span></h3>}
+
         </a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-nav" aria-controls="probootstrap-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -32,8 +32,8 @@ export const NavBar = () => {
             <li className="nav-item"><Link to="/" className="nav-link">Timer</Link></li>
             <li className="nav-item"><Link to="/Taskpage" className="nav-link">List</Link></li>
             <li className="nav-item">
-                <a href="#" className="nav-link">
-                    <button className='btn'>login</button>
+                <a className="nav-link">
+                    <button className='btn' onClick={toggleTimer}>{timer.isRunning ? 'ON' : 'OFF'}</button>
                 </a>
                 </li>
             </ul>
