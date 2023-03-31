@@ -3,8 +3,14 @@ import moment from 'moment';
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
-
+  const [showCode, setShowCode] = useState(false);
+  const [isPlus, setIsPlus] = useState(true);
   
+  const handleShowCode = () => { 
+    setShowCode(!showCode);
+    setIsPlus((prevIsPlus) => !prevIsPlus);
+  };
+
   useEffect(() => {
     
     const tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -59,19 +65,28 @@ function TaskList() {
 
       <section className="probootstrap-section probootstrap-cover probootstrap-scene-0">
       <div className="container">
-        
         <div className="row mb-5 justify-content-center text-center">
           <div className="col-md-8">
             <h2 className="probootstrap-heading">Agregar tarea</h2>
-            <form onSubmit={handleAddTask}>
-          <input type="text" name="taskTitle" className='imput' placeholder="Enter task title" />
-          <br/>
-          <input type="text" name="TaskBody" className='imput' placeholder="Descripcion" />
-          <br/>
-          <button type="submit">Add Task</button>
-          </form>
-          </div>
-        </div>
+            <button className='buttonplus' onClick={handleShowCode}> 
+            <span className='buttonptext'>
+            {isPlus ? '+' : '-'}
+            </span>
+            </button>
+
+            {showCode && (
+            <form className='boxplus' onSubmit={handleAddTask}>
+            <input type="text" name="taskTitle" className='imput' placeholder="Enter task title" />
+            <br/>
+            <textarea type="text" name="TaskBody" className='imput' placeholder="Descripcion" />
+            <br/>
+            <button type="submit" className='btnselect'>Add Task</button>
+            </form>
+            
+          
+    )}
+</div>
+  </div>
 
         <div className="row">
         {tasks.map((task) => {

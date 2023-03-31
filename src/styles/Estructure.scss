@@ -2,10 +2,10 @@
         overflow-x: hidden; }
     
     body {
-        font-family: "Raleway", sans-serif;
+        font-family: "Raleway", sans-serif !important;
         line-height: 1.7;
         font-size: 18px;
-        background: #2A363B;
+        background: linear-gradient(to right, #2A363B, #1d2c31) !important;
         color: #859196; }
     
     a {
@@ -16,16 +16,7 @@
         a:hover {
         text-decoration: none;
         color: #CF4647; }
-    
-    h1, h2, h3, h4, h5 {
-        line-height: 1.5;
-        font-weight: normal;
-        color: #fff; 
-    }
-    
-    .text-primary {
-        color: #CF4647 !important; }
-    
+
     .probootstrap-navabr-dark {
         background: transparent !important;
         position: absolute;
@@ -122,9 +113,6 @@
         font-size: 18px; }
         .form-control:focus, .form-control:active {
         border: 2px solid #fff; }
-    
-    textarea {
-        height: inherit !important; }
     
     .probootstrap-vh-100 {
         height: 100vh;
