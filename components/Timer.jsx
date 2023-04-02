@@ -5,10 +5,10 @@ import {ResetIcon} from '../src/assets/reset.jsx';
 function Contador() {
     const { timer, resetTimer, handleTimerChange, handlePersonalizable } = useContext(TimerContext);
     const [showCode, setShowCode] = useState(false);
-    const [isRunning, setIsRunning] = useState(false);
+    //const [isRunning, setIsRunning] = useState(false);
 
-    const sound = new Audio('https://www.soundjay.com/nature/campfire-1.mp3'); // Ruta al archivo de sonido
-    const sound2 = new Audio('https://www.soundjay.com/buttons/button-20.mp3'); // Ruta al archivo de sonido
+    //const sound = new Audio('https://www.soundjay.com/nature/campfire-1.mp3'); // Ruta al archivo de sonido
+    //const sound2 = new Audio('https://www.soundjay.com/buttons/button-20.mp3'); // Ruta al archivo de sonido
 
     const handleShowCode = () => {
         setShowCode(!showCode);

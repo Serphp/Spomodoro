@@ -1,10 +1,6 @@
-//import { useState } from 'react'
 import '../src/styles/global.scss'
-//import TaskList from '../components/Tasklist'
 import Contador from '../components/Timer';
 import '../src/styles/bootstrap.min.css'
-//import Settings from '../components/Setting'
-//import Duration from '../components/Duration'
 
 function App() {
 
