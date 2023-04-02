@@ -1,0 +1,62 @@
+    .smartwatch {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        background-color: black;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+    }
+    
+    .screen {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 40px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .time {
+        font-size: 48px;
+        font-weight: bold;
+        color: black;
+    }
+    
+    .buttons {
+        position: fixed;
+        z-index: 2;
+        bottom: 0;
+        left: 1;
+        right: 1;
+        background-color: rgba(0, 0, 0, 0.42);
+        border-radius: 10px;
+        width: 30%;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .button {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin: 0 10px;
+    }
+    
+    .button1 {
+        background-color: red;
+    }
+    
+    .button2 {
+        background-color: yellow;
+    }
+    
+    .button3 {
+        background-color: green;
+    }

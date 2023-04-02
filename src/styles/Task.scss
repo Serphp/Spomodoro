@@ -1,0 +1,156 @@
+.cardtask {
+    background-color: #ffffffa6;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    //margin-bottom: 8px;
+    padding: 10px;
+    position: relative;
+    text-decoration: none;
+    transition: all 85ms ease-in;
+    width: 100%;
+        &:hover {
+            background-color: #f4f5f7;
+            box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+            border-color: #0079bf;
+        }
+    .cardtask__title {
+        color: #172b4d;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 20px;
+        margin-bottom: 4px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .cardtask__description {
+        color: #5e6c84;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        margin-bottom: 4px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .cardtask__date {
+        color: #5e6c84;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        margin-bottom: 4px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .cardtask__status {
+        color: #5e6c84;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        margin-bottom: 4px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .cardtask__actions {
+        position: absolute;
+        right: 10px;
+        top: -40px;
+        background-color: #5e6c846c;
+        padding: 5px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        &:hover {
+            background-color: #5e6c84f1;
+        }
+            .cardtask__actions__button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 8px;
+            padding: 0;
+            &:hover {
+                color: #f5f5f5be;
+            }
+        }
+    }
+}
+
+.imput {
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 5px;
+    background-color: #ebebeb18;
+    border: none;
+    color: #737373;
+    outline: none;
+    border-bottom: #000000 solid 1px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    &:hover {
+        background-color: #ebebeb18;
+        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
+        color: #ffffff;
+    }
+}
+
+.buttonplus {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(to right, #2A363B, #1d2c31);
+    border-color: #0079bf;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 0 , 0, 0.2);
+    transition: all 0.3s ease;
+        &:hover {
+            width: 60px;
+            height: 60px;
+            color: #008cbf;
+            background-color: #204c6485;
+            border-color: #0079bf;
+            box-shadow: 0 0 35px rgba(0, 0 , 0, 0.2);
+        }
+    .buttonptext {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+        font-weight: 700;
+    }
+}
+
+.boxplus {
+    text-align: center;
+    margin: 5px;
+    padding: auto;
+    .btnselect {
+        margin-left: 10px;
+        //margin-top: 20px;
+        width: 30%;
+        gap: 10px;
+        padding: 10px;
+        text-align: center;
+        color: whitesmoke;
+        background-color: #e1e1e11c;
+        border: #d7d7d70e solid 1px;
+        border-radius: 5px;
+        transition: box-shadow 0.5s ease-in-out;
+        &:hover {
+            background-color: #e1e1e1;
+            box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
+            color: #000;
+        }
+    }
+}
