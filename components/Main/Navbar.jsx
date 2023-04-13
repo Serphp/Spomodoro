@@ -1,15 +1,27 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { TimerContext } from '../../src/Context/TimerContex';
+import { AuthContext } from '../../src/Context/AuthContext';
 
 export const NavBar = () => {
+    const { currentUser, logout } = useContext(AuthContext);
     const { timer, toggleTimer } = useContext(TimerContext);
     const [isRunning, setIsRunning] = useState(false);
+    const navigate = useNavigate();
 
     const formatNumber = (number) => {
         return number.toString().padStart(2, '0');
     };
     
+    const handleSignOut = () => {
+        if (currentUser) {
+            logout();
+            navigate('/');
+        } else {
+            navigate('/login');
+        }
+    };
+
     const minutes = formatNumber(timer.minutes);
     const seconds = formatNumber(timer.seconds);
     //console.log(handleSP);
@@ -37,14 +49,23 @@ export const NavBar = () => {
             <li className="">
                 <Link to="/" className='navlink' > Home </Link>
             </li>
-            <li className="">
+            {/* <li className="">
                 <Link to="/Taskpage" className="navlink">List</Link>
-            </li>
+            </li> */}
+
+            {
+                currentUser ? 
+                <>
+                <li className="nav-item"><Link to="/dashboard" className="nav-link">Dashboard</Link></li>
+                <li className="nav-item"><Link to="/Taskpage" className="nav-link">List</Link></li>
+                </>                
+                : null
+            }
             <li className="nav-item">
                 <a className="nav-link">
                     <button className='btn' onClick={toggleTimer}>{timer.isRunning ? 'Pausar' : 'Iniciar'}</button>
-                    {/* <button className='btn' onClick={toggleTimer}>{timer.isRunning ? 'Logout' : 'Login'}</button> */}
-                    <button className='btn ml-2'><Link to="/login"> Login </Link></button>
+                    <button className='btn ml-2' onClick={handleSignOut}>{currentUser ? 'Logout' : 'Login'}</button>
+                    
                 </a>
                 </li>
             </ul>

@@ -12,6 +12,8 @@ import { TimerProvider } from './Context/TimerContex';
 import ForgotPassword from '../components/Auth/forgot-password';
 import Login from '../components/Auth/Login';
 import Signup from '../components/Auth/Signup';
+import PrivateRoute from '../components/Auth/PrivateRoute';
+import Dashboard from '../components/Auth/Dashboard';
 
 
 const router = createBrowserRouter([
@@ -37,6 +39,16 @@ const router = createBrowserRouter([
                 {
                   path: "/signup",
                   element: <Signup/>,
+                },
+                            {
+                              path: "/dashboard",
+                              //element: <PrivateRoute/>,
+                              children: [
+                                {
+                                  index: true,
+                                  element: <Dashboard />,
+                                },
+                            ],
                 }
               ]}
 
