@@ -1,7 +1,6 @@
 import '../src/styles/global.scss'
 import Contador from '../components/Timer';
 import '../src/styles/bootstrap.min.css'
-import User from '../components/Login';
 
 function App() {
 
@@ -16,8 +15,6 @@ function App() {
       <Contador handleTimerComplete/>
       {/* <Settings/> */}
 
-      <User/>
-      
       {/* <section className="probootstrap-section probootstrap-scene-1 probootstrap-bg-dark">
       <div className="container ">
         <div className="row mb-5 justify-content-center text-center">
