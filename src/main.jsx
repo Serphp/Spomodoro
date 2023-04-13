@@ -7,7 +7,9 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import AuthProvider from './Context/AuthContext';
 import { TimerProvider } from './Context/TimerContex';
+import ForgotPassword from '../components/Auth/forgot-password';
 
 
 const router = createBrowserRouter([
@@ -21,14 +23,24 @@ const router = createBrowserRouter([
                 {
                   path: "/taskpage",
                   element: <Taskpage/>,
-                },]}
+                },
+                {
+                  path: "/forgot-password",
+                  element: <ForgotPassword/>,
+                },
+              ]}
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/* <App /> */}
+    <AuthProvider>
     <TimerProvider>
+
     <RouterProvider router={router} />
+
     </TimerProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )

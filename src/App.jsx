@@ -1,6 +1,7 @@
 import '../src/styles/global.scss'
 import Contador from '../components/Timer';
 import '../src/styles/bootstrap.min.css'
+import User from '../components/Login';
 
 function App() {
 
@@ -15,16 +16,16 @@ function App() {
       <Contador handleTimerComplete/>
       {/* <Settings/> */}
 
-      <section className="probootstrap-section probootstrap-scene-1 probootstrap-bg-dark">
+      <User/>
+      
+      {/* <section className="probootstrap-section probootstrap-scene-1 probootstrap-bg-dark">
       <div className="container ">
         <div className="row mb-5 justify-content-center text-center">
           <div className="col-lg-8">
-            <h2 className="probootstrap-heading">Be Creative</h2>
+            <h2 className="probootstrap-heading">Serphp</h2>
             <p className="mb-5 lead">
-              Timer
+              Socials
             </p>
-            <p><a href="https://uicookies.com/" className="btn btn-primary mr-2 mb-2">
-              <span className="icon-ipad"></span> Hola </a></p>
           </div>  
         </div>
       </div>
@@ -40,7 +41,7 @@ function App() {
           </div>
         </div>
       </div>
-    </section>
+    </section> */}
 
     </div>
   )
