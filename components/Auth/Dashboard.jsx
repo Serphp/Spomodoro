@@ -7,7 +7,6 @@ import { Link, redirect } from "react-router-dom"
 export default function Dashboard() {
   const [error, setError] = useState("")
   const { currentUser, logout } = useContext(AuthContext);
-  //const history = redirect()
 
   async function handleLogout() {
     setError("")
@@ -22,10 +21,9 @@ export default function Dashboard() {
 
   return (
     <>
-    <h1> Welcome </h1>
       <div className="boxcontainer2">
         <Card.Body>
-            
+        <h2 className="mb-5"> Welcome </h2>
           <h2 className="text-center mb-4">Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <strong>Email:</strong> {currentUser.email}
@@ -34,11 +32,11 @@ export default function Dashboard() {
           </Link>
         </Card.Body>
       </div>
-      <div className="w-100 text-center mt-2">
+      {/* <div className="w-100 text-center mt-2">
         <Button variant="link" onClick={handleLogout}>
           Log Out
         </Button>
-      </div>
+      </div> */}
     </>
   )
 }

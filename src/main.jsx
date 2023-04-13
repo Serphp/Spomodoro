@@ -14,6 +14,7 @@ import Login from '../components/Auth/Login';
 import Signup from '../components/Auth/Signup';
 import PrivateRoute from '../components/Auth/PrivateRoute';
 import Dashboard from '../components/Auth/Dashboard';
+import UpdateProfile from '../components/Auth/update-profile';
 
 
 const router = createBrowserRouter([
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
                                   element: <Dashboard />,
                                 },
                             ],
+                },
+                {
+                  path: "/update-profile",
+                  element: <UpdateProfile/>,
                 }
               ]}
 

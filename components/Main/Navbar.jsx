@@ -52,21 +52,20 @@ export const NavBar = () => {
             {/* <li className="">
                 <Link to="/Taskpage" className="navlink">List</Link>
             </li> */}
-
             {
                 currentUser ? 
                 <>
-                <li className="nav-item"><Link to="/dashboard" className="nav-link">Dashboard</Link></li>
-                <li className="nav-item"><Link to="/Taskpage" className="nav-link">List</Link></li>
+                <li className="nav-item"><Link to="/dashboard" className="navlink">Dashboard</Link></li>
+                <li className="nav-item"><Link to="/Taskpage" className="navlink">List</Link></li>
                 </>                
                 : null
             }
             <li className="nav-item">
-                <a className="nav-link">
+                <div className="nav-link">
                     <button className='btn' onClick={toggleTimer}>{timer.isRunning ? 'Pausar' : 'Iniciar'}</button>
                     <button className='btn ml-2' onClick={handleSignOut}>{currentUser ? 'Logout' : 'Login'}</button>
                     
-                </a>
+                </div>
                 </li>
             </ul>
         </div>
