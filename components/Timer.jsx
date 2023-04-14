@@ -18,8 +18,8 @@ function Contador() {
     <div className=''>
     <section className="probootstrap-cover probootstrap-scene-0">
     <div className="container">
-        <div className="row probootstrap-vh-75 align-items-center text-md-left text-sm-center text-center">
-        <div className="col-md-6 order-md-2 order-1">
+        <div className="row probootstrap-vh-75 align-items-center text-sm-center text-center">
+        <div className="col-md-7 order-md-2">
 
             <div for="dark-mode">
             <h2 className='titulo'>

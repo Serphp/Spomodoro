@@ -40,6 +40,9 @@ h2, .titulo {
     text-transform: uppercase;
     letter-spacing: 0.2em;
     text-align: center;
+    @media screen and (max-width: 768px) {
+        font-size: 3rem;
+    }
 }
 h1, .hora {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -53,31 +56,31 @@ h1, .hora {
     margin-left: 10px;
 }
 
-label {
-        //position: relative;
-        //width: 140px;
-        width: 100%;
-        height: 240px;
-        margin: 20px;
-        //display: block;
-        background-image: url('https://media1.giphy.com/media/aTCa0tTwPzfig/giphy.gif?cid=ecf05e47cyy8u0bsin2hzkc5ugwo8oit1q93cserwgmwh5sl&rid=giphy.gif&ct=g');
-        background-size: cover;
-        background-position: center;
-        border: 10px solid rgba(198, 247, 255, 0.5);
-        //border-radius: 5%;
-        cursor: pointer;
-        transition: 1s ease;
-        box-shadow: 0 0 25px rgba(0, 0 , 0, 0.2);
+// label {
+//         //position: relative;
+//         //width: 140px;
+//         width: 100%;
+//         height: 240px;
+//         margin: 20px;
+//         //display: block;
+//         background-image: url('https://media1.giphy.com/media/aTCa0tTwPzfig/giphy.gif?cid=ecf05e47cyy8u0bsin2hzkc5ugwo8oit1q93cserwgmwh5sl&rid=giphy.gif&ct=g');
+//         background-size: cover;
+//         background-position: center;
+//         border: 10px solid rgba(198, 247, 255, 0.5);
+//         //border-radius: 5%;
+//         cursor: pointer;
+//         transition: 1s ease;
+//         box-shadow: 0 0 25px rgba(0, 0 , 0, 0.2);
         
-    }
+//     }
 
 .beta {
     position: relative;
     top: -5px;
     background-color: white;
-    padding: 10px;
+    padding: 5px;
     text-align: center;
-    font-size: 16px;
+    font-size: 10px;
     text-decoration: solid;
     font-weight: 600;
     font-style: italic;
@@ -86,6 +89,7 @@ label {
     background-position: center;
     border: #d7d7d70e solid 1px;
     border-radius: 5px;
+    text-transform: uppercase;
     transition: all 1s ease;
     &:hover {
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
@@ -130,7 +134,6 @@ button:checked ~ label {
     //border: 10px solid rgba(90, 79, 136, 0.354);
 }
 
-
 .checkmark {
     position: absolute;
     top: 50%;
@@ -140,9 +143,48 @@ button:checked ~ label {
     height: 50px;
     border-radius: 50%;
     background-color: #fff;
-
 }
 
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.navline {
+    //muestra el texto uno alado del otro
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    li {
+        list-style: none;
+        text-align: center;
+        color: whitesmoke;
+    }
+}
+
+.navlink {
+    text-decoration: none;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+    color: whitesmoke;
+    transition: all 0.3s ease;+
+    &:hover {
+        border-bottom: #969696 solid 1px;
+        border-radius: 5px;
+        color: #217a97;
+        text-decoration: none;
+    }
+}
+
+Link {
+    text-decoration: none;
+    color: rgb(255, 0, 0);
+}
 
 .boxcontainer2 {
     display: flex;
@@ -150,18 +192,17 @@ button:checked ~ label {
     align-items: center;
     justify-content: center;
     margin: auto;
-    padding: 50px;
+    padding: 40px;
     text-align: center;
     color: whitesmoke;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    border: #d7d7d70e solid 1px;
-    border-radius: 5px;
+    //border: #d7d7d738 solid 1px;
+    border-top: #1d2c31 solid 1px;
+    border-bottom: #1d2c31 solid 1px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.101);
+    transition: all 1s ease;
+    //border-radius: 5px;
     &:hover {
-        //background-color: #e1e1e1;
-        box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
-        //color: #000;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.101);
     }
 }
 
@@ -172,8 +213,6 @@ button:checked ~ label {
         border: red solid 1px;
     }
 }
-
-
 
 .box2 {
     text-align: center;
@@ -188,6 +227,7 @@ button:checked ~ label {
         text-align: center;
         color: whitesmoke;
         background-color: #e1e1e11c;
+        list-style: none;
         border: #d7d7d70e solid 1px;
         border-radius: 5px;
         transition: box-shadow 0.5s ease-in-out;
@@ -195,6 +235,12 @@ button:checked ~ label {
             background-color: #e1e1e1;
             box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
             color: #000;
+        }
+        &:focus {
+            outline: none;
+        }
+        @media screen and (max-width: 768px) {
+            width: 90%;
         }
     }
 }
@@ -214,5 +260,39 @@ button:checked ~ label {
         background-color: #e1e1e1;
         box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
         color: #000;
+    }
+    @media screen and (max-width: 768px) {
+        width: 15%;
+    }
+}
+
+.navbarconlist {
+    position: absolute;
+    top: 0;
+    right: 50px;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.navbarlist {
+    position: absolute;
+    top: 0;
+    right: 50px;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    @media screen and (max-width: 1008px) {
+        display: none;
+    }
+}
+
+.navcenter {
+    position: absolute;
+    top: 10px;
+    right: 50%;
+    left: 50%;
+    @media screen and (min-width: 1008px) {
+        display: none;
     }
 }

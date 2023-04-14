@@ -1,4 +1,5 @@
     import React, { createContext, useState, useEffect } from 'react';
+    import { auth } from "../firebase"
 
     export const TimerContext = createContext();
 
@@ -13,6 +14,10 @@
         seconds: initialSeconds,
         isRunning: false,
     });
+
+    const login = (email, password) => {
+        return auth.signInWithEmailAndPassword(email, password)
+      }
 
 useEffect(() => {
     let intervalId;
@@ -96,7 +101,7 @@ const handleTimerChange = (event) => {
 };
     
     return (
-        <TimerContext.Provider value={{ timer, toggleTimer, resetTimer, handleReset, handleTimerChange, handlePersonalizable, StartPause }}>
+        <TimerContext.Provider value={{ timer, toggleTimer, resetTimer, handleReset, handleTimerChange, handlePersonalizable, StartPause, login }}>
         {children}
         </TimerContext.Provider>
     );
