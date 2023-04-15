@@ -2,6 +2,13 @@
 ### Pomodoro Technique 
 The Pomodoro technique is a method to improve the management of the time dedicated to an activity.
 
+<br/>
+
+| Desktop       | Mobile       |
+|----------------|----------------|
+| ![](https://cdn.discordapp.com/attachments/493832893580312579/1096723392075411546/browser_CbRsXKeX1E.png) | ![](https://cdn.discordapp.com/attachments/493832893580312579/1096723317009956934/Rainmeter_GUvHyYWTTZ.png) |
+
+
 # Instalation
 
 - npm install
