@@ -27,52 +27,59 @@ export const NavBar = () => {
     //console.log(handleSP);
     return (
         <>
+        <span className='navline2'>
+        <Link to="/" className='navlinkx'>
+            <svg width="36" height="36" fill="none" stroke="currentColor" 
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 10.182V22h18V10.182L12 2l-9 8.182Z"></path>
+            </svg>
+        </Link>
+        {currentUser ? 
+                <>
+                    <Link to="/dashboard" className="navlinkx" title='Profile'>
+                        <svg width="36" height="36" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path>
+                        <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"></path>
+                        </svg>
+                    </Link>
+                    <Link to="/Taskpage" className="navlinkx" title='List'>
+                        <svg width="36" height="36" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.5 5.5 5 7l2.5-2.5"></path>
+                        <path d="M3.5 11.5 5 13l2.5-2.5"></path>
+                        <path d="M3.5 17.5 5 19l2.5-2.5"></path>
+                        <path d="M11 6h9"></path>
+                        <path d="M11 12h9"></path>
+                        <path d="M11 18h9"></path>
+                        </svg>
+                    </Link>
+                </>                
+                : null}
+        </span>
 
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark probootstrap-navabr-dark">
-        <div className="">
-        <a className="navbar-brand">
+    <nav className="navbar">
+        
         {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : <h3>Timer <span className='beta'>beta</span></h3>}
-        </a>
-        <div className="navcenter">
-            <button className='btn' onClick={toggleTimer}>{timer.isRunning ? 'Pausar' : 'Iniciar'}</button>
-        </div>
-        <div className='navbarconlist navcenter'>
-        <ul className="navbar-nav ml-auto">
-            <li className="nav-item"><Link to="/" className="nav-link">Timer</Link></li>
-            <li className="nav-item"><Link to="/Taskpage" className="nav-link">List</Link></li>
-            <li className="nav-item">
-                </li>
-            </ul>
-            </div>
-        <div className="navbarlist" id="probootstrap-nav">
-            <ul className="navline">
-            <li className="">
-                <Link to="/" className='navlink' > Home </Link>
-            </li>
-            {/* <li className="">
-                <Link to="/Taskpage" className="navlink">List</Link>
-            </li> */}
-            {
+
+            <div className="navbarlist2">
+                <span className='navline'> 
+                v1.0.2
+                <Link to="/" className='navlink'> Home </Link>
+                {
                 currentUser ? 
                 <>
-                <li className="nav-item"><Link to="/dashboard" className="navlink">Dashboard</Link></li>
-                <li className="nav-item"><Link to="/Taskpage" className="navlink">List</Link></li>
+                    <Link to="/dashboard" className="navlink">Dashboard</Link>
+                    <Link to="/Taskpage" className="navlink">List</Link>
                 </>                
                 : null
             }
-            <li className="nav-item">
-                <div className="nav-link">
-                    <button className='btn' onClick={toggleTimer}>{timer.isRunning ? 'Pausar' : 'Iniciar'}</button>
-                    <button className='btn ml-2' onClick={handleSignOut}>{currentUser ? 'Logout' : 'Login'}</button>
-                    
+                </span>
+            
+                <button className='btn' onClick={toggleTimer}>{timer.isRunning ? 'Pausar' : 'Iniciar'}</button>
+                <button className='btn ml-2' onClick={handleSignOut}>{currentUser ? 'Logout' : 'Login'}</button>
                 </div>
-                </li>
-            </ul>
-        </div>
-        </div>
-    </nav>
-
-
+                
+            </nav>
         </>
     )
 }
