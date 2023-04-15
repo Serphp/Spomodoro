@@ -7,9 +7,6 @@ function Contador() {
     const [showCode, setShowCode] = useState(false);
     //const [isRunning, setIsRunning] = useState(false);
 
-    //const sound = new Audio('https://www.soundjay.com/nature/campfire-1.mp3'); // Ruta al archivo de sonido
-    //const sound2 = new Audio('https://www.soundjay.com/buttons/button-20.mp3'); // Ruta al archivo de sonido
-
     const handleShowCode = () => {
         setShowCode(!showCode);
     };
@@ -23,7 +20,13 @@ function Contador() {
 
             <div for="dark-mode">
             <h2 className='titulo'>
-                {timer.isRunning ? 'Active' : 'Inactive'}
+                {timer.isRunning ? <>
+                Active
+                {/* <br/>
+                <button className='btnicon' onClick={handlesound} title='sound' />
+                         */}
+                </> : 'Inactive'}
+
             </h2>   
             </div>
 
@@ -51,11 +54,11 @@ function Contador() {
                         <div className='row mt-5'>
                             <div class="form-group col-md-6">
                                     <div for="minutes">Minutes</div>
-                                    <input type="number" class="form-control" name="minutes" />
+                                    <input type="number" class="form-control" name="minutes" placeholder='0'  />
                                     </div>
                                 <div class="form-group col-md-6">
                                 <div for="seconds">Seconds</div>
-                            <input type="number" class="form-control" name="seconds"/>
+                            <input type="number" class="form-control" name="seconds" placeholder='0'  />
                             </div>
                         <button className='btn btn-primary btn-outline-white mt-3 mb-5' type="submit">Nuevo valor</button>
                         </div>

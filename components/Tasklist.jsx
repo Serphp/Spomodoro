@@ -98,8 +98,10 @@ function TaskList() {
               <div className="cardtask media-body p-3" key={task.id}>
                 <h5 className="cardtask__title mt-0">{task.title}</h5>
                 <p className='cardtask__description'>{task.body}</p>
+                <div className='cardtask__contenedor'>
                 <p className='cardtask__status'>{task.completed ? 'Completed' : 'Pending'}</p>
-                <span className='cardtask__date'>{moment(task.id).format('MMMM Do YYYY, h:mm:ss a')}</span>
+                <span className='cardtask__date'>{moment(task.id).fromNow()}</span>
+                </div>
                 <div className='cardtask__actions'>
                   <button className='cardtask__actions__button' onClick={() => handleDeleteTask(task.id)}>
                       <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

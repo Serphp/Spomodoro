@@ -3,7 +3,7 @@
 @import "Task";
 
 #root {
-    width: 100vw; 
+    //width: 100vw; 
     font-family: "Raleway", sans-serif;
     line-height: 1.7;
     font-size: 18px;
@@ -205,6 +205,24 @@ footer {
                 }
             }
         }
+}
+
+.boxcontainer3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: whitesmoke;
+    //border: #d7d7d738 solid 1px;
+    border-top: #1d2c31 solid 1px;
+    border-bottom: #1d2c31 solid 1px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.101);
+    transition: all 1s ease;
+    //border-radius: 5px;
+    &:hover {
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.101);
+    }
 }
 
 .boxcontainer2 {

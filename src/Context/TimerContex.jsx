@@ -34,6 +34,8 @@ useEffect(() => {
             };
             } else {
             clearInterval(intervalId);
+            const endSound = new Audio('https://www.soundjay.com/buttons/button-38.mp3');
+            endSound.play();
             return {
                 ...prevState,
                 isRunning: false,
@@ -55,9 +57,9 @@ const toggleTimer = () => {
     isRunning: !prevState.isRunning,
     }));
 };
-    
 
-    const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seconds === 0 ? 'Reset' : 'Start';
+const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seconds === 0 ? 'Reset' : 'Start';
+
 
 const resetTimer = () => {
     resetaudio.play();
@@ -69,6 +71,7 @@ const resetTimer = () => {
 };
 
 const handleReset = (newMinutes, newSeconds) => {
+
     setTimer({
         minutes: newMinutes,
         seconds: newSeconds,
@@ -78,8 +81,8 @@ const handleReset = (newMinutes, newSeconds) => {
 
 const handlePersonalizable = (event) => {
     event.preventDefault();
-    const newMinutes = parseInt(event.target.minutes.value);
-    const newSeconds = parseInt(event.target.seconds.value);
+    const newMinutes = event.target.minutes.value ? parseInt(event.target.minutes.value) : 0;
+    const newSeconds = event.target.seconds.value ? parseInt(event.target.seconds.value) : 0;
     handleReset(newMinutes, newSeconds);
     };
 
