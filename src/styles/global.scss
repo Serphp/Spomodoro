@@ -150,9 +150,9 @@ nav {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 20px;
+    margin: 10px;
     @media screen and (max-width: 768px) {
-        margin: 0 20px 20px 20px;
+        margin: 0 20px 0 20px;
     }
 }
 
@@ -317,7 +317,7 @@ footer {
     .navlinkx {
         text-decoration: none;
         margin-top: 5px;
-        //padding: 5px;
+        padding: 5px;
         text-align: center;
         color: whitesmoke;
         transition: all 0.3s ease;
@@ -340,8 +340,8 @@ footer {
         text-align: center;
         color: whitesmoke;
     }
-    @media screen and (max-width: 1008px) {
-        //display: none;
+    @media screen and (max-width: 808px) {
+        display: none;
         right: 5px;
     }
 }
