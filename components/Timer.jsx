@@ -19,15 +19,21 @@ function Contador() {
         <div className="col-md-7 order-md-2">
 
             <div for="dark-mode">
-            <h2 className='titulo'>
                 {timer.isRunning ? <>
-                Active
+                <h2 className='titulo'>Active</h2>
+                <h6> in Proceses... </h6>
+                <button className='btnicon' onClick={resetTimer} title='reset'>
+                <span className="icon-ipad"> 
+                        <ResetIcon/>
+                        </span>
+                </button>
                 {/* <br/>
                 <button className='btnicon' onClick={handlesound} title='sound' />
                          */}
-                </> : 'Inactive'}
-
-            </h2>   
+                </> : 
+                <>
+                <h2 className='titulo'>Inactive</h2>
+                </>}
             </div>
 
 
