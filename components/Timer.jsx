@@ -5,10 +5,42 @@ import {ResetIcon} from '../src/assets/reset.jsx';
 function Contador() {
     const { timer, resetTimer, handleTimerChange, handlePersonalizable } = useContext(TimerContext);
     const [showCode, setShowCode] = useState(false);
+    const [ShowConfig, setShowConfig] = useState(false);
+    const [TextSize, setTextSize] = useState(0);
     //const [isRunning, setIsRunning] = useState(false);
+
+    let textSize = 0;
+    const TextSizeChange = () => {
+      const hora = document.getElementsByClassName("hora")[0];
+      switch (textSize) {
+        case 0:
+          hora.style.fontSize = "75px";
+          textSize++;
+          break;
+        case 1:
+          hora.style.fontSize = "80px";
+          textSize++;
+          break;
+        case 2:
+          hora.style.fontSize = "90px";
+          textSize++;
+          break;
+        default:
+          hora.style.fontSize = "100px";
+          textSize = 0;
+          break;
+      }
+      console.log(textSize);
+    };
+
+
 
     const handleShowCode = () => {
         setShowCode(!showCode);
+    };
+
+    const handleShowConfig = () => {
+        setShowConfig(!ShowConfig);
     };
 
     return (  
@@ -73,16 +105,42 @@ function Contador() {
     )}
             </div>
             </div>
-        <div className="col-md-5 order-md-1 order-2">
-            <div className="probootstrap-text">
-            <p className="mb-5 probootstrap-stagger lead">
+        <div className="col-md-5">
+            <div className="mb-5 probootstrap-stagger ">
+
+            <div className='config'> 
+                <svg width="39" height="30" onClick={handleShowConfig} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 4.8a1.2 1.2 0 0 0-2.4 0v8.722a2.4 2.4 0 0 0 0 4.156V19.2a1.2 1.2 0 1 0 2.4 0v-1.522a2.4 2.4 0 0 0 0-4.156V4.8Zm7.2 0a1.2 1.2 0 1 0-2.4 0v1.522a2.4 2.4 0 0 0 0 4.156V19.2a1.2 1.2 0 1 0 2.4 0v-8.722a2.4 2.4 0 0 0 0-4.156V4.8Zm6-1.2a1.2 1.2 0 0 1 1.2 1.2v8.722a2.4 2.4 0 0 1 0 4.156V19.2a1.2 1.2 0 1 1-2.4 0v-1.522a2.4 2.4 0 0 1 0-4.156V4.8a1.2 1.2 0 0 1 1.2-1.2Z"></path>
+                </svg>    
+            </div>
+
                 <div className='box1' style={{ display: timer.isRunning ? 'none' : 'block' }}>
                     <h1 className='hora'>{timer.minutes}:{timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}</h1>
                 </div>
-            </p>
+
+                {
+                    ShowConfig && (
+                        <>
+                        <section className='configspace'> 
+                            <div className='config__menu'>
+                            <span>Tamaño</span>
+                                <span className='menu' onClick={TextSizeChange}> Hola</span>
+                            </div>
+                            <div className='config__menu'>
+                            <span>Sonidos</span>
+                                <span className='menu'> Hola2</span>
+                            </div>
+                            <div className='config__menu'>
+                            <span>Tareas</span>
+                                <span className='menu'> Hola2</span>
+                            </div>
+                            </section>
+                        </>
+                    )
+                }
+
             </div>
-        </div>
-        
+            </div> 
         </div>
     </div>
     </section>

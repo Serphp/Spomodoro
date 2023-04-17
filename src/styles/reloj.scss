@@ -7,7 +7,75 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         overflow: hidden;
     }
+
+    .config {
+        width: 75%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        @media screen and (max-width: 768px) {
+            width: 80%;
+        }
+    }
     
+    h1, .hora {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 100px;
+        font-weight: 200;
+        text-transform: none;
+        letter-spacing: 0;
+        margin-left: 10px;
+    }
+
+    .configspace {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .cardtitle {
+            font-size: 12px;
+        }
+        .config__menu {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+    .cardmenu {
+        width: 40%;
+        background-color: rgba(0, 0, 0, 0.42);
+        border-radius: 10px;
+        display: flex;
+        margin-left: 10px;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        @media screen and (max-width: 768px) {
+            width: 80%;
+        }
+    }
+    .menu {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgba(208, 208, 208, 0.514);
+        background-color: rgba(255, 255, 255, 0.072);
+        border-radius: 10px;
+        cursor: pointer;
+        @media screen and (max-width: 768px) {
+            width: 80%;
+        }
+    }
+    }
+
+
+
     .screen {
         position: absolute;
         top: 10px;

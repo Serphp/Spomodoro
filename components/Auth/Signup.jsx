@@ -19,7 +19,6 @@ export default function Signup() {
       if (passwordRef.current.value !== passwordConfirmRef.current.value) {
         return setError("Passwords do not match")
       }
-  
       try {
         setError("")
         setLoading(true)
@@ -30,11 +29,9 @@ export default function Signup() {
       }
       setLoading(false)
     }
-  
     return (
       <>
         <div className="boxcontainer2">
-
             <h2 className="text-center mb-4">Sign Up</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleSubmit}>
