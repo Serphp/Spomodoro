@@ -124,15 +124,19 @@ function Contador() {
                         <section className='configspace'> 
                             <div className='config__menu'>
                             <span>Tamaño</span>
-                                <span className='menu' onClick={TextSizeChange}> Hola</span>
+                                <button className='menu' onClick={TextSizeChange}> 
+                                    <svg width="25" height="25" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20.3 13.427a1 1 0 0 0-1.25.65 7.14 7.14 0 0 1-6.87 4.92 7.1 7.1 0 0 1-7.18-7 7.1 7.1 0 0 1 7.18-7 7.26 7.26 0 0 1 4.65 1.67l-2.17-.36a1 1 0 0 0-1.137 1.221 1 1 0 0 0 .817.759l4.24.7h.17a1 1 0 0 0 .34-.06.33.33 0 0 0 .1-.06.78.78 0 0 0 .2-.11l.09-.11c0-.05.09-.09.13-.15.04-.06 0-.1.05-.14.028-.059.051-.119.07-.18l.75-4a1.017 1.017 0 1 0-2-.38l-.27 1.45a9.21 9.21 0 0 0-6.03-2.25 9.1 9.1 0 0 0-9.18 9 9.1 9.1 0 0 0 9.18 9 9.12 9.12 0 0 0 8.82-6.32 1 1 0 0 0-.7-1.25Z"></path>
+                                    </svg>
+                                </button>
                             </div>
                             <div className='config__menu'>
                             <span>Sonidos</span>
-                                <span className='menu'> Hola2</span>
+                                <span className='menu'> OFF </span>
                             </div>
                             <div className='config__menu'>
                             <span>Tareas</span>
-                                <span className='menu'> Hola2</span>
+                                <span className='menu'> OFF</span>
                             </div>
                             </section>
                         </>
