@@ -9,6 +9,8 @@ function TaskList() {
   const handleShowCode = () => { 
     setShowCode(!showCode);
     setIsPlus((prevIsPlus) => !prevIsPlus);
+    const add = new Audio('https://www.soundjay.com/buttons/beep-22.mp3');
+    add.play();
   };
 
   useEffect(() => {
@@ -40,9 +42,12 @@ function TaskList() {
     const updatedTasks = tasks.map(task => {
       if (task.id === taskId) {
         task.completed = !task.completed;
+        const audio = new Audio('https://www.soundjay.com/buttons/beep-23.mp3');
+        audio.play();
       }
       return task;
     });
+    
     setTasks(updatedTasks);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   }
@@ -53,6 +58,8 @@ function TaskList() {
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
     const updatedTasks = storedTasks.filter(task => task.id !== taskId);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    const audio = new Audio('https://www.soundjay.com/buttons/beep-24.mp3');
+    audio.play();
   }
 
   //show title of completed tasks
@@ -68,6 +75,7 @@ function TaskList() {
         <div className="row mb-5 justify-content-center text-center">
           <div className="col-md-8">
             <h2 className="probootstrap-heading">Agregar tarea</h2>
+            
             <button className='buttonplus' onClick={handleShowCode}> 
             <span className='buttonptext'>
             {isPlus ? '+' : '-'}
@@ -150,7 +158,7 @@ function TaskList() {
       if (!completedAt.isValid()) {
         return "Fecha inválida";
       }
-      const elapsedTime = moment.duration(moment().diff(completedAt)).humanize();
+      //const elapsedTime = moment.duration(moment().diff(completedAt)).humanize();
     return (
       <div className="col-md-4">
         <div className="media d-block mb-4">
