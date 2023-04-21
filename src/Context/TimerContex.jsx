@@ -6,7 +6,7 @@
     export const TimerProvider = ({ children, initialMinutes = 25, initialSeconds = 0 }) => {
     const pip = new Audio('https://www.soundjay.com/buttons/beep-07a.mp3'); // Ruta al archivo de sonido
     const pip2 = new Audio('https://www.soundjay.com/buttons/beep-08b.mp3'); // Ruta al archivo de sonido
-    const resetaudio = new Audio('https://www.soundjay.com/nature/campfire-1.mp3');
+    //const resetaudio = new Audio('https://www.soundjay.com/nature/campfire-1.mp3');
     const sounds = [pip, pip2];
 
     //Music Page
@@ -15,17 +15,25 @@
     const [playing, setPlaying] = useState(true);
     const [audioOnly, setAudioOnly] = useState(false);
     const [playedSeconds, setPlayedSeconds] = useState(0);
-  
+    
 
-    const [timer, setTimer] = useState({
-        minutes: initialMinutes,
-        seconds: initialSeconds,
-        isRunning: false,
-    });
+    const [timer, setTimer] = useState(() => {
+        const timerInLocalStorage = JSON.parse(localStorage.getItem('timer'));
+        return timerInLocalStorage || {
+          minutes: initialMinutes,
+          seconds: initialSeconds,
+          isRunning: false,
+        }
+      });
 
     const login = (email, password) => {
         return auth.signInWithEmailAndPassword(email, password)
       }
+
+useEffect(() => {
+    const timerString = JSON.stringify(timer);
+    localStorage.setItem('timer', timerString);
+}, [timer]);
 
 useEffect(() => {
     let intervalId;
@@ -42,7 +50,7 @@ useEffect(() => {
             };
             } else {
             clearInterval(intervalId);
-            const endSound = new Audio('https://www.soundjay.com/buttons/button-38.mp3');
+            const endSound = new Audio('https://www.soundjay.com/phone/telephone-ring-03a.mp3');
             endSound.play();
             return {
                 ...prevState,
@@ -70,7 +78,7 @@ const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seco
 
 
     const resetTimer = () => {
-        resetaudio.play();
+        //resetaudio.play();
         setTimer({
         minutes: initialMinutes,
         seconds: initialSeconds,

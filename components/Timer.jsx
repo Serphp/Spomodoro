@@ -90,7 +90,7 @@ function Contador() {
             <section className='pre'> 
                     <form onSubmit={handlePersonalizable}>
                         <div className='row mt-5'>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-6 flex">
                                     <div for="minutes">Minutes</div>
                                     <input type="number" class="form-control" name="minutes" placeholder='0'  />
                                     </div>
@@ -98,7 +98,9 @@ function Contador() {
                                 <div for="seconds">Seconds</div>
                             <input type="number" class="form-control" name="seconds" placeholder='0'  />
                             </div>
-                        <button className='btn btn-primary btn-outline-white mt-3 mb-5' type="submit">Nuevo valor</button>
+                            <div class="center">
+                            <button className='btn btn-primary btn-outline-white' type="submit"> New valor </button>
+                            </div>
                         </div>
                     </form>
             </section>
