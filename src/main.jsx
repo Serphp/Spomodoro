@@ -16,6 +16,9 @@ import Signup from '../components/Auth/Signup';
 import Dashboard from '../components/Auth/Dashboard';
 import UpdateProfile from '../components/Auth/update-profile';
 import { Music } from './Music';
+import { PlayerProvider } from './Context/PlayerContext';
+  import Db from '../components/db';
+import DatabaseProvider from './Context/DbContext';
 
 
 const router = createBrowserRouter([
@@ -59,20 +62,29 @@ const router = createBrowserRouter([
                 {
                   path: "/Music",
                   element: <Music/>,
-                } 
+                },
+                {
+                  path: "/db",
+                  element: <Db/>,
+                }
               ]}
 
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+    <>
     {/* <App /> */}
+
+    <DatabaseProvider>
     <AuthProvider>
+    <PlayerProvider>
     <TimerProvider>
-
+   
     <RouterProvider router={router} />
-
     </TimerProvider>
+    </PlayerProvider>
     </AuthProvider>
-  </React.StrictMode>,
+    </DatabaseProvider>
+
+    </>
 )

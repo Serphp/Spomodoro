@@ -1,0 +1,108 @@
+.buttonpip {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+}
+
+.contenedorplayer{ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    //border-color: red solid 1px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-align: center;
+    
+    opacity: 0.1;
+    //background-color: aqua;
+    //box-shadow: inset 100px 100px 0px 120px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease-in-out;
+    &:hover {
+            border: rgba(0, 0, 0, 0.259) solid 5px;
+            padding: 5px;
+            //box-shadow: inset 100px 100px 0px 120px rgba(126, 126, 126, 0.186);
+            opacity: 0.8;
+            visibility: visible;
+    }
+}
+
+.buttonpip-content {
+    width: 90%;
+    //height: 50px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.buttonpip-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.buttonpip-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.player {
+    //position: flex;
+    display: flex;
+    opacity: 0.5;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-color: red solid 1px; 
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-align: center;
+    .playerpop-up {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease;
+        .playerpop-up-content {
+            width: 80%;
+            height: 80%;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            .playerpop-up-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 2rem;
+                cursor: pointer;
+            }
+            .playerpop-up-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}

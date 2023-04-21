@@ -8,7 +8,15 @@
     const pip2 = new Audio('https://www.soundjay.com/buttons/beep-08b.mp3'); // Ruta al archivo de sonido
     const resetaudio = new Audio('https://www.soundjay.com/nature/campfire-1.mp3');
     const sounds = [pip, pip2];
-    //const [mode, setMode] = useState('Por defecto');
+
+    //Music Page
+    const [videoUrl, setVideoUrl] = useState('');
+    const [showPlayer, setShowPlayer] = useState(false);
+    const [playing, setPlaying] = useState(true);
+    const [audioOnly, setAudioOnly] = useState(false);
+    const [playedSeconds, setPlayedSeconds] = useState(0);
+  
+
     const [timer, setTimer] = useState({
         minutes: initialMinutes,
         seconds: initialSeconds,
@@ -61,17 +69,16 @@ const toggleTimer = () => {
 const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seconds === 0 ? 'Reset' : 'Start';
 
 
-const resetTimer = () => {
-    resetaudio.play();
-    setTimer({
-    minutes: initialMinutes,
-    seconds: initialSeconds,
-    isRunning: false,
-    });
-};
+    const resetTimer = () => {
+        resetaudio.play();
+        setTimer({
+        minutes: initialMinutes,
+        seconds: initialSeconds,
+        isRunning: false,
+        });
+    };
 
-const handleReset = (newMinutes, newSeconds) => {
-
+    const handleReset = (newMinutes, newSeconds) => {
     setTimer({
         minutes: newMinutes,
         seconds: newSeconds,
@@ -79,32 +86,41 @@ const handleReset = (newMinutes, newSeconds) => {
     });
     };
 
-const handlePersonalizable = (event) => {
-    event.preventDefault();
-    const newMinutes = event.target.minutes.value ? parseInt(event.target.minutes.value) : 0;
-    const newSeconds = event.target.seconds.value ? parseInt(event.target.seconds.value) : 0;
-    handleReset(newMinutes, newSeconds);
-    };
+    const handlePersonalizable = (event) => {
+        event.preventDefault();
+        const newMinutes = event.target.minutes.value ? parseInt(event.target.minutes.value) : 0;
+        const newSeconds = event.target.seconds.value ? parseInt(event.target.seconds.value) : 0;
+        handleReset(newMinutes, newSeconds);
+        };
 
-const handleTimerChange = (event) => {
-    event.preventDefault();
-    const timerType = event.target.value;
-    //setMode(mode);
-    switch (timerType) {        
-        case 'shortBreak':
-        handleReset(5, 0);
-        break;
-        case 'longBreak':
-        handleReset(15, 0);
-        break;
-        default:
-        handleReset(25, 0);
-        break;
-    }
-};
+    const handleTimerChange = (event) => {
+        event.preventDefault();
+        const timerType = event.target.value;
+        //setMode(mode);
+        switch (timerType) {        
+            case 'shortBreak':
+            handleReset(5, 0);
+            break;
+            case 'longBreak':
+            handleReset(15, 0);
+            break;
+            default:
+            handleReset(25, 0);
+            break;
+        }
+    };
     
     return (
-        <TimerContext.Provider value={{ timer, toggleTimer, resetTimer, handleReset, handleTimerChange, handlePersonalizable, StartPause, login }}>
+        <TimerContext.Provider value={{ 
+        timer, toggleTimer, resetTimer, handleReset, handleTimerChange, handlePersonalizable, StartPause, 
+        login, 
+        videoUrl, setVideoUrl, 
+        showPlayer, setShowPlayer,
+        playing, setPlaying,
+        audioOnly, setAudioOnly,
+        playedSeconds, setPlayedSeconds
+
+         }}>
         {children}
         </TimerContext.Provider>
     );

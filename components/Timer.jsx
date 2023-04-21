@@ -79,7 +79,7 @@ function Contador() {
                         </span>
                         </button>
             <button className='btnicon' onClick={handleShowCode} title='edit time'> 
-            <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg width="30" height="30" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-3"></path>
             <path d="M9 14.996h3l8.5-8.5a2.121 2.121 0 0 0-3-3l-8.5 8.5v3Z"></path>
             <path d="m16 5 3 3"></path>
@@ -108,17 +108,18 @@ function Contador() {
         <div className="col-md-5">
             <div className="mb-5 probootstrap-stagger ">
 
-            <div className='config'> 
-                <svg width="39" height="30" onClick={handleShowConfig} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 4.8a1.2 1.2 0 0 0-2.4 0v8.722a2.4 2.4 0 0 0 0 4.156V19.2a1.2 1.2 0 1 0 2.4 0v-1.522a2.4 2.4 0 0 0 0-4.156V4.8Zm7.2 0a1.2 1.2 0 1 0-2.4 0v1.522a2.4 2.4 0 0 0 0 4.156V19.2a1.2 1.2 0 1 0 2.4 0v-8.722a2.4 2.4 0 0 0 0-4.156V4.8Zm6-1.2a1.2 1.2 0 0 1 1.2 1.2v8.722a2.4 2.4 0 0 1 0 4.156V19.2a1.2 1.2 0 1 1-2.4 0v-1.522a2.4 2.4 0 0 1 0-4.156V4.8a1.2 1.2 0 0 1 1.2-1.2Z"></path>
-                </svg>    
-            </div>
-
                 <div className='box1' style={{ display: timer.isRunning ? 'none' : 'block' }}>
-                    <h1 className='hora'>{timer.minutes}:{timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}</h1>
-                </div>
+                    {/* Hidden */}
 
-                {
+                    <div className='config'> 
+                        <svg width="39" height="30" onClick={handleShowConfig} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 4.8a1.2 1.2 0 0 0-2.4 0v8.722a2.4 2.4 0 0 0 0 4.156V19.2a1.2 1.2 0 1 0 2.4 0v-1.522a2.4 2.4 0 0 0 0-4.156V4.8Zm7.2 0a1.2 1.2 0 1 0-2.4 0v1.522a2.4 2.4 0 0 0 0 4.156V19.2a1.2 1.2 0 1 0 2.4 0v-8.722a2.4 2.4 0 0 0 0-4.156V4.8Zm6-1.2a1.2 1.2 0 0 1 1.2 1.2v8.722a2.4 2.4 0 0 1 0 4.156V19.2a1.2 1.2 0 1 1-2.4 0v-1.522a2.4 2.4 0 0 1 0-4.156V4.8a1.2 1.2 0 0 1 1.2-1.2Z"></path>
+                        </svg>    
+                    </div>
+
+                    <h1 className='hora'>{timer.minutes}:{timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}</h1>
+
+                    {
                     ShowConfig && (
                         <>
                         <section className='configspace'> 
@@ -142,6 +143,9 @@ function Contador() {
                         </>
                     )
                 }
+                </div>
+
+
 
             </div>
             </div> 
