@@ -5,7 +5,7 @@ import { AuthContext } from '../../src/Context/AuthContext';
 
 export const NavBar = () => {
     const { currentUser, logout } = useContext(AuthContext);
-    const { timer, toggleTimer } = useContext(TimerContext);
+    const { timer, toggleTimer, TextSize } = useContext(TimerContext);
     const [isRunning, setIsRunning] = useState(false);
     const navigate = useNavigate();
 
@@ -58,12 +58,15 @@ export const NavBar = () => {
         </span>
 
     <nav className="navbar">
-        
-        {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : <h3>Timer <span className='beta'>beta</span></h3>}
+    {/* <span className='beta'>beta</span> */}
+        <div className='hora' style={{ fontSize: "200px" }}>
+            {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : <h3>Timer</h3>}
+            </div>
+
 
             <div className="navbarlist2">
                 <span className='navline'> 
-                v1.0.2
+                v1.0.5
                 <Link to="/" className='navlink'> Home </Link>
                 {
                 currentUser ? 

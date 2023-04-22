@@ -68,8 +68,6 @@ function TaskList() {
   return (
     <div>
 
-
-
       <section className="probootstrap-section probootstrap-cover probootstrap-scene-0">
       <div className="container">
         <div className="row mb-5 justify-content-center text-center">
@@ -91,7 +89,6 @@ function TaskList() {
             <button type="submit" className='btnselect'>Add Task</button>
             </form>
             
-          
     )}
 </div>
   </div>
