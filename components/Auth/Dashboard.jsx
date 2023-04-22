@@ -8,16 +8,16 @@ export default function Dashboard() {
   const [error, setError] = useState("")
   const { currentUser, logout } = useContext(AuthContext);
 
-  async function handleLogout() {
-    setError("")
+  // async function handleLogout() {
+  //   setError("")
 
-    try {
-      await logout()
-      redirect("/login")
-    } catch {
-      setError("Failed to log out")
-    }
-  }
+  //   try {
+  //     await logout()
+  //     redirect("/login")
+  //   } catch {
+  //     setError("Failed to log out")
+  //   }
+  // }
 
   return (
     <>

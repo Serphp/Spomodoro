@@ -17,7 +17,7 @@ import Dashboard from '../components/Auth/Dashboard';
 import UpdateProfile from '../components/Auth/update-profile';
 import { Music } from './Music';
 import { PlayerProvider } from './Context/PlayerContext';
-  import Db from '../components/db';
+//import Db from '../components/Db';
 import DatabaseProvider from './Context/DbContext';
 
 
@@ -62,11 +62,11 @@ const router = createBrowserRouter([
                 {
                   path: "/Music",
                   element: <Music/>,
-                },
-                {
-                  path: "/db",
-                  element: <Db/>,
                 }
+                // {
+                //   path: "/db",
+                //   element: <Db/>,
+                // }
               ]}
 
 ]);

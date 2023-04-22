@@ -32,11 +32,11 @@ function Contador() {
             <div for="dark-mode">
                 {timer.isRunning ? <>
                 <h2 className='titulo'>Active</h2>
-                <h6> in Proceses... </h6>
+                <h6> ... </h6>
                 <button className='btnicon' onClick={resetTimer} title='reset'>
-                <span className="icon-ipad"> 
+                <div className="iconop"> 
                         <ResetIcon/>
-                        </span>
+                        </div>
                 </button>
                 {/* <br/>
                 <button className='btnicon' onClick={handlesound} title='sound' />
