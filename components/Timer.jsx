@@ -54,16 +54,20 @@ function Contador() {
             <button className='btnselect' onClick={handleTimerChange} value="longBreak">Long break</button>
 
             <button onClick={resetTimer} className="btnicon" title='reset'>
-            <span className="icon-ipad"> 
+            <div className="iconop"> 
             <ResetIcon/>
-            </span>
+            </div>
             </button>
             <button className='btnicon' onClick={handleShowCode} title='edit time'> 
+            <div className="iconop">
             <EditIcon/>
+            </div>
             </button>
 
             <button className='btnicon' onClick={handleShowConfig} title='increase font size'>
+            <div className="iconop">
             <ConfigIcon/>
+            </div>
             </button>
 
             
