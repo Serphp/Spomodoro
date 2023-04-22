@@ -24,12 +24,30 @@ export default function Dashboard() {
       <div className="boxcontainer2">
         <Card.Body>
         <h2 className="mb-5"> Welcome </h2>
-          <h2 className="text-center mb-4">Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email:</strong> {currentUser.email}
-          <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
+
+          <h2 className="text-center mb-4">
+            Profile           
+          </h2>
+          <div className="w-100 text-center mt-3 mb-3">
+          <Link to="/update-profile" className="buttong">
             Update Profile
           </Link>
+          </div>
+          {error && <Alert variant="danger">{error}</Alert>}
+          <strong>Email:</strong> {currentUser.email}
+          
+          <section className="card2 mb-3 mt-5">
+          <Alert variant="danger">New Feature</Alert>
+              <Card.Header>
+              <Card.Title>Music Beta</Card.Title>
+              <Card.Text>
+              You play music while you work.
+              </Card.Text>
+              <button className='buttong'>
+              <Link to="/Music" className="">Music</Link>
+              </button>
+            </Card.Header>
+          </section>
         </Card.Body>
       </div>
       {/* <div className="w-100 text-center mt-2">

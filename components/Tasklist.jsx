@@ -9,6 +9,8 @@ function TaskList() {
   const handleShowCode = () => { 
     setShowCode(!showCode);
     setIsPlus((prevIsPlus) => !prevIsPlus);
+    const add = new Audio('https://www.soundjay.com/buttons/beep-22.mp3');
+    add.play();
   };
 
   useEffect(() => {
@@ -40,9 +42,12 @@ function TaskList() {
     const updatedTasks = tasks.map(task => {
       if (task.id === taskId) {
         task.completed = !task.completed;
+        const audio = new Audio('https://www.soundjay.com/buttons/beep-23.mp3');
+        audio.play();
       }
       return task;
     });
+    
     setTasks(updatedTasks);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   }
@@ -53,6 +58,8 @@ function TaskList() {
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
     const updatedTasks = storedTasks.filter(task => task.id !== taskId);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    const audio = new Audio('https://www.soundjay.com/buttons/beep-24.mp3');
+    audio.play();
   }
 
   //show title of completed tasks
@@ -61,13 +68,12 @@ function TaskList() {
   return (
     <div>
 
-
-
       <section className="probootstrap-section probootstrap-cover probootstrap-scene-0">
       <div className="container">
         <div className="row mb-5 justify-content-center text-center">
           <div className="col-md-8">
             <h2 className="probootstrap-heading">Agregar tarea</h2>
+            
             <button className='buttonplus' onClick={handleShowCode}> 
             <span className='buttonptext'>
             {isPlus ? '+' : '-'}
@@ -83,7 +89,6 @@ function TaskList() {
             <button type="submit" className='btnselect'>Add Task</button>
             </form>
             
-          
     )}
 </div>
   </div>
@@ -104,7 +109,7 @@ function TaskList() {
                 </div>
                 <div className='cardtask__actions'>
                   <button className='cardtask__actions__button' onClick={() => handleDeleteTask(task.id)}>
-                      <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <svg width="30" height="30" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path d="M4 7h16"></path>
                       <path d="M10 11v6"></path>
                       <path d="M14 11v6"></path>
@@ -113,12 +118,12 @@ function TaskList() {
                       </svg>
                     </button>
                   <button className='cardtask__actions__button' onClick={() => handleCompleteTask(task.id)}>
-                    {task.completed ? <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    {task.completed ? <svg width="30" height="30" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="m7 12 5 5L22 7"></path>
                     <path d="m12 12 5-5M2 12l5 5-5-5Z"></path>
                     </svg>
                     : 
-                    <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="30" height="30" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="m5 12 5 5L20 7"></path>
                     </svg>}
                   </button>
@@ -150,7 +155,7 @@ function TaskList() {
       if (!completedAt.isValid()) {
         return "Fecha inválida";
       }
-      const elapsedTime = moment.duration(moment().diff(completedAt)).humanize();
+      //const elapsedTime = moment.duration(moment().diff(completedAt)).humanize();
     return (
       <div className="col-md-4">
         <div className="media d-block mb-4">
@@ -162,7 +167,7 @@ function TaskList() {
             <span className='cardtask__date'>{moment(task.id).format('MMMM Do YYYY, h:mm:ss a')}</span>
             <div className='cardtask__actions'>
             <button className='cardtask__actions__button' onClick={() => handleDeleteTask(task.id)}>
-                      <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <svg width="30" height="30" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path d="M4 7h16"></path>
                       <path d="M10 11v6"></path>
                       <path d="M14 11v6"></path>
@@ -171,12 +176,12 @@ function TaskList() {
                       </svg>
                     </button>
                   <button className='cardtask__actions__button' onClick={() => handleCompleteTask(task.id)}>
-                    {task.completed ? <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    {task.completed ? <svg width="30" height="30" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="m7 12 5 5L22 7"></path>
                     <path d="m12 12 5-5M2 12l5 5-5-5Z"></path>
                     </svg>
                     : 
-                    <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="30" height="30" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="m5 12 5 5L20 7"></path>
                     </svg>}
                   </button>

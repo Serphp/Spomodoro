@@ -85,7 +85,7 @@
 
 .imput {
     width: 100%;
-    margin: 10px;
+    //margin: 10px;
     padding: 10px;
     text-align: center;
     margin-bottom: 5px;
@@ -135,6 +135,41 @@
         transform: translate(-50%, -50%);
         font-size: 30px;
         font-weight: 700;
+    }
+}
+
+.buttong {
+    margin-left: 10px;
+    //margin-top: 20px;
+    width: 30%;
+    gap: 10px;
+    padding: 5px;
+    text-align: center;
+    color: whitesmoke;
+    background-color: #e1e1e11c;
+    border: #d7d7d70e solid 1px;
+    border-radius: 5px;
+    transition: box-shadow 0.5s ease-in-out;
+    &:hover {
+        background-color: #e1e1e17e;
+        box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
+        color: #000;
+    }
+    a { 
+        text-decoration: none;
+        color: whitesmoke;
+    }
+    a:hover {
+        text-decoration: none;
+        color: whitesmoke;
+    }
+    link {
+        text-decoration: none;
+        color: whitesmoke;
+    }
+    link:hover {
+        text-decoration: none;
+        color: whitesmoke;
     }
 }
 
