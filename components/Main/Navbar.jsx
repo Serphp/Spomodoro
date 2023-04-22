@@ -5,7 +5,7 @@ import { AuthContext } from '../../src/Context/AuthContext';
 
 export const NavBar = () => {
     const { currentUser, logout } = useContext(AuthContext);
-    const { timer, toggleTimer, TextSize } = useContext(TimerContext);
+    const { timer, toggleTimer } = useContext(TimerContext);
     const [isRunning, setIsRunning] = useState(false);
     const navigate = useNavigate();
 
@@ -24,6 +24,14 @@ export const NavBar = () => {
 
     const minutes = formatNumber(timer.minutes);
     const seconds = formatNumber(timer.seconds);
+
+    const decreaseTextSize = () => {
+        setTimer((prevState) => ({
+          ...prevState,
+          TextSize: prevState.TextSize - 20
+        }));
+      };
+
     //console.log(handleSP);
     return (
         <>
@@ -59,10 +67,22 @@ export const NavBar = () => {
 
     <nav className="navbar">
     {/* <span className='beta'>beta</span> */}
-        <div className='hora' style={{ fontSize: "200px" }}>
+    {
+        
+        timer.ChangeHour ?
+        <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
             {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : <h3>Timer</h3>}
-            </div>
+            </h1>
+        :
+            <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
+                {timer.minutes}:{timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
+            </h1>
+    }
 
+
+        {/* <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
+            {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : <h3>Timer</h3>}
+            </h1> */}
 
             <div className="navbarlist2">
                 <span className='navline'> 

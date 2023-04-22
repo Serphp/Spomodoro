@@ -15,6 +15,7 @@
     const [playing, setPlaying] = useState(true);
     const [audioOnly, setAudioOnly] = useState(false);
     const [playedSeconds, setPlayedSeconds] = useState(0);
+    const [error, setError] = useState(null);
 
 const [timer, setTimer] = useState(() => {
     const timerInLocalStorage = JSON.parse(localStorage.getItem('timer'));
@@ -23,6 +24,8 @@ const [timer, setTimer] = useState(() => {
         seconds: initialSeconds,
         isRunning: false,
         TextSize: TextSizelocal,
+        ChangeHour: false,
+        Sounds : '',
     }
     });
 
@@ -33,10 +36,10 @@ const login = (email, password) => {
     const increaseTextSize = () => {
         setTimer((prevState) => {
           const newTextSize = prevState.TextSize + 10;
-          if (newTextSize > 200) {
+          if (newTextSize > 150) {
             return {
               ...prevState,
-              TextSize: 200,
+              TextSize: 150,
             };
           } else {
             return {
@@ -51,10 +54,10 @@ const login = (email, password) => {
     const decreaseTextSize = () => {
         setTimer((prevState) => {
           const newTextSize = prevState.TextSize - 10;
-          if (newTextSize < 100) {
+          if (newTextSize < 80) {
             return {
               ...prevState,
-              TextSize: 100,
+              TextSize: 80,
             };
           } else {
             return {
@@ -102,14 +105,30 @@ useEffect(() => {
     return () => clearInterval(intervalId);
     }, [timer.isRunning]);
 
-    
-const toggleTimer = () => {
-    const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
-    randomSound.play();
-    setTimer((prevState) => ({
-    ...prevState,
-    isRunning: !prevState.isRunning,
-    }));
+    const toggleTimer = () => {
+      const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
+      randomSound.play();
+      setTimer((prevState) => {
+        // if (prevState.ChangeHour == true) {
+        //   return {
+        //     ...prevState,
+        //     isRunning: false,
+        //   };
+        // }
+        return {
+          ...prevState,
+          isRunning: !prevState.isRunning,
+        };
+      });
+    };
+
+const toggleTimerX = () => {
+  //const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
+  //randomSound.play();
+  setTimer((prevState) => ({
+  ...prevState,
+  ChangeHour: !prevState.ChangeHour,
+  }));
 };
 
 const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seconds === 0 ? 'Reset' : 'Start';
@@ -157,15 +176,15 @@ const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seco
     
     return (
         <TimerContext.Provider value={{ 
-        timer, toggleTimer, resetTimer, handleReset, handleTimerChange, handlePersonalizable, StartPause, 
+        timer, toggleTimer, resetTimer, handleReset, handleTimerChange, handlePersonalizable, StartPause, toggleTimerX,
         increaseTextSize, decreaseTextSize,
         login, 
         videoUrl, setVideoUrl, 
         showPlayer, setShowPlayer,
         playing, setPlaying,
         audioOnly, setAudioOnly,
-        playedSeconds, setPlayedSeconds
-
+        playedSeconds, setPlayedSeconds,
+        error, setError
          }}>
         {children}
         </TimerContext.Provider>

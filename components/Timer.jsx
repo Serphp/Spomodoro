@@ -5,12 +5,14 @@ import { UpIcon } from '../src/assets/up';
 import { DownIcon } from '../src/assets/down';
 import { EditIcon } from '../src/assets/edit';
 import { ConfigIcon } from '../src/assets/config';
+import { PauseIcon } from '../src/assets/pause';
 
 function Contador() {
     const { timer, resetTimer, handleTimerChange, 
-        handlePersonalizable, increaseTextSize, decreaseTextSize } = useContext(TimerContext);
+        handlePersonalizable, increaseTextSize, decreaseTextSize, toggleTimerX, toggleTimer, error } = useContext(TimerContext);
     const [showCode, setShowCode] = useState(false);
     const [ShowConfig, setShowConfig] = useState(false);
+    const [PositionHour, setPositionHour] = useState(false);
 
     //const [isRunning, setIsRunning] = useState(false);
 
@@ -35,9 +37,16 @@ function Contador() {
                 <h6> ... </h6>
                 <button className='btnicon' onClick={resetTimer} title='reset'>
                 <div className="iconop"> 
-                        <ResetIcon/>
-                        </div>
+                    <ResetIcon/>
+                </div>
                 </button>
+                <button className='btnicon' onClick={toggleTimer} title='reset'>
+                <div className="iconop"> 
+                    <PauseIcon/>
+                </div>
+                </button>
+
+
                 {/* <br/>
                 <button className='btnicon' onClick={handlesound} title='sound' />
                          */}
@@ -99,11 +108,19 @@ function Contador() {
                 <div className='box1' style={{ display: timer.isRunning ? 'none' : 'block' }}>
                     {/* Hidden */}
 
+                    {
+                        timer.ChangeHour && (
+                            <div className='box3'>
+                                <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
+                                    {timer.minutes}:{timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
+                                </h1>
+                            </div>
+                        )
+                    }
 
-
-                    <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
+                    {/* <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
                         {timer.minutes}:{timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
-                    </h1>
+                    </h1> */}
 
                     {
                     ShowConfig && (
@@ -123,11 +140,14 @@ function Contador() {
                                 </div>
                             </div>
                             <div className='config__menu'>
-                            <span>Sonidos</span>
-                                <span className='menu'> OFF </span>
+                            {error && <Alert variant="danger">{error}</Alert>}
+                            <span>Zoom</span>
+                                <span className='menu' onClick={toggleTimerX}> 
+                                {timer.ChangeHour ? 'Top' : 'Normal'}
+                                </span>
                             </div>
                             <div className='config__menu'>
-                            <span>Tareas</span>
+                            <span>Sonidos</span>
                                 <span className='menu'> OFF</span>
                             </div>
                             <div className='config__menu'>

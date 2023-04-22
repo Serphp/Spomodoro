@@ -19,6 +19,7 @@
     }
     
     h1, .hora {
+        //position: absolute;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         display: flex;
         justify-content: center;
@@ -46,10 +47,20 @@
             justify-content: space-between;
             //justify-content: space-between;
             //align-items: center;
-            margin-bottom: 5px;
+            //margin-bottom: 5px;
+            span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                font-size: 14px;
+                color: white;
+                //font-weight: bold;
+
+            }
         }
     .cardmenu {
-        width: 30%;
+        width: 50%;
         //flex: 2;
         //background-color: rgba(0, 0, 0, 0.42);
         //border-radius: 10px;
