@@ -21,23 +21,21 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="boxcontainer2">
+      <div className="container">
         <Card.Body>
-        <h2 className="mb-5"> Welcome </h2>
+        <h2 className="probootstrap-heading">DashBoard</h2>
 
-          <h2 className="text-center mb-4">
-            Profile           
-          </h2>
           <div className="w-100 text-center mt-3 mb-3">
           <Link to="/update-profile" className="buttong">
             Update Profile
           </Link>
           </div>
           {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email:</strong> {currentUser.email}
+
+          <div style={{textAlign: 'center'}}>Email: 
+          <b> {currentUser.email}</b> </div>
           
           <section className="card2 mb-3 mt-5">
-          <Alert variant="danger">New Feature</Alert>
               <Card.Header>
               <Card.Title>Music Beta</Card.Title>
               <Card.Text>

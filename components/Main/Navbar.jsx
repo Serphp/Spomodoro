@@ -2,6 +2,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { TimerContext } from '../../src/Context/TimerContex';
 import { AuthContext } from '../../src/Context/AuthContext';
+import { PauseIcon } from '../../src/assets/pause';
+import { PlayIcon } from '../../src/assets/play';
+import { LogoutIcon } from '../../src/assets/logout';
+import { SigninIcon } from '../../src/assets/signin';
+import { LogoIcon } from '../../src/assets/logo';
 
 export const NavBar = () => {
     const { currentUser, logout } = useContext(AuthContext);
@@ -71,7 +76,7 @@ export const NavBar = () => {
         
         timer.ChangeHour ?
         <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
-            {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : <h3>Timer</h3>}
+            {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : <LogoIcon/>}
             </h1>
         :
             <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
@@ -84,7 +89,7 @@ export const NavBar = () => {
             {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : <h3>Timer</h3>}
             </h1> */}
 
-            <div className="navbarlist2">
+
                 <span className='navline'> 
                 v1.0.5
                 <Link to="/" className='navlink'> Home </Link>
@@ -99,9 +104,26 @@ export const NavBar = () => {
             }
                 </span>
             
-                <button className='btn' onClick={toggleTimer}>{timer.isRunning ? 'Pausar' : 'Iniciar'}</button>
-                <button className='btn ml-2' onClick={handleSignOut}>{currentUser ? 'Logout' : 'Login'}</button>
+                <section className=''>
+                <button className='navicon' onClick={toggleTimer}>
+                <div className="nicon"> 
+                    {timer.isRunning ? 
+                    <PauseIcon/>
+                    : 
+                    <PlayIcon/>
+                    }
                 </div>
+                </button>
+                <button className='navicon ml-2' onClick={handleSignOut}>
+                <div className="nicon"> 
+                    {currentUser ? 
+                    <LogoutIcon/>
+                    :
+                     <SigninIcon/>
+                     }
+                     </div>
+                </button>
+                </section>
                 
             </nav>
         </>

@@ -212,7 +212,7 @@ export const PlayerProvider = ({ children }) => {
         /> 
         </div>
         <div className='buttonpip-close'>
-        <button onClick={handleTogglePip}>Change</button>
+        <button onClick={handleTogglePip}>X</button>
         </div>
         </section>
         

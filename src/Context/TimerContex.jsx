@@ -24,14 +24,24 @@ const [timer, setTimer] = useState(() => {
         seconds: initialSeconds,
         isRunning: false,
         TextSize: TextSizelocal,
-        ChangeHour: false,
-        Sounds : '',
+        ChangeHour: true,
+        MuteSounds : false
     }
     });
 
 const login = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password)
     }
+
+    const MuteSounds = () => {
+        setTimer((prevState) => {
+          return {
+            ...prevState,
+            MuteSounds: !prevState.MuteSounds,
+          };
+        });
+        localStorage.setItem('timer', JSON.stringify(timer));
+    };
 
     const increaseTextSize = () => {
         setTimer((prevState) => {
@@ -134,19 +144,24 @@ const toggleTimerX = () => {
 const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seconds === 0 ? 'Reset' : 'Start';
 
     const resetTimer = () => {
-        //resetaudio.play();
         setTimer({
-        minutes: initialMinutes,
-        seconds: initialSeconds,
-        isRunning: false,
+          minutes: initialMinutes,
+          seconds: initialSeconds,
+          isRunning: timer.isRunning,
+          TextSize: timer.TextSize,
+          ChangeHour: timer.ChangeHour,
+          MuteSounds : timer.MuteSounds
         });
     };
 
     const handleReset = (newMinutes, newSeconds) => {
     setTimer({
-        minutes: newMinutes,
-        seconds: newSeconds,
-        isRunning: false,
+      minutes: newMinutes,
+      seconds: newSeconds,
+      isRunning: timer.isRunning,
+      TextSize: timer.TextSize,
+      ChangeHour: timer.ChangeHour,
+      MuteSounds : timer.MuteSounds
     });
     };
 
