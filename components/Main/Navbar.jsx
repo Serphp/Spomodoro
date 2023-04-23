@@ -76,7 +76,7 @@ export const NavBar = () => {
         
         timer.ChangeHour ?
         <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
-            {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : <LogoIcon/>}
+            {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : <h2 className='title'>Timer</h2>}
             </h1>
         :
             <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
