@@ -46,10 +46,10 @@ const login = (email, password) => {
     const increaseTextSize = () => {
         setTimer((prevState) => {
           const newTextSize = prevState.TextSize + 10;
-          if (newTextSize > 150) {
+          if (newTextSize > 130) {
             return {
               ...prevState,
-              TextSize: 150,
+              TextSize: 130,
             };
           } else {
             return {

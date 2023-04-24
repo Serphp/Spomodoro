@@ -35,12 +35,12 @@ function Contador() {
                 {timer.isRunning ? <>
                 <h2 className='titulo'>Active</h2>
                 <h6> ... </h6>
-                <button className='btnicon' onClick={resetTimer} title='reset'>
+                <button className='btnicon' onClick={resetTimer} title='Reset'>
                 <div className="iconop"> 
                     <ResetIcon/>
                 </div>
                 </button>
-                <button className='btnicon' onClick={toggleTimer} title='reset'>
+                <button className='btnicon' onClick={toggleTimer} title='Pause'>
                 <div className="iconop"> 
                     <PauseIcon/>
                 </div>
@@ -146,12 +146,12 @@ function Contador() {
                                 {timer.ChangeHour ? 'Top' : 'Normal'}
                                 </span>
                             </div>
-                            <div className='config__menu'>
+                            {/* <div className='config__menu'>
                             <span>Sonidos</span>
                                 <span className='menu' onClick={MuteSounds}> 
                                 {timer.MuteSounds ? 'ON' : 'OFF'}	
                                 </span>
-                            </div>
+                            </div> */}
                             {/* <div className='config__menu'>
                             <span>Hora</span>
                                 <span className='menu'> 
