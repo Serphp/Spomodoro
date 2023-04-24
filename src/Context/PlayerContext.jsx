@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
 
-export const PlayerContext = createContext(null);
+export const PlayerContext = createContext();
 
 export const PlayerProvider = ({ children }) => {
   const [url, setUrl] = useState('');
@@ -13,16 +13,34 @@ export const PlayerProvider = ({ children }) => {
   const [Showvideo, setShowVideo] = useState(false);
   const [ShowPip, setShowPip] = useState(true);
   
-  const [videoPlayer, setVideoPlayer] = useState({
-    url: '',
-    playing: false,
-    played: 0,
-    duration: 0,
-    volume: 0.5,
-    muted: false,
-    showVideo: false,
-    showPip: true,
-  });
+
+  const [videoPlayer, setVideoPlayer] = useState(() => {
+    const savedData = JSON.parse(localStorage.getItem('videoPlayer'));
+    return savedData || {
+      url: '',
+      playing: false,
+      played: 0,
+      duration: 0,
+      volume: 0.5,
+      muted: false,
+      showVideo: false,
+      SavePip: false,
+    }
+    });
+
+  // const [videoPlayer, setVideoPlayer] = useState({
+  //   const savedData = JSON.parse(localStorage.getItem('videoPlayer'));
+  //   return savedData || {
+  //   url: '',
+  //   playing: false,
+  //   played: 0,
+  //   duration: 0,
+  //   volume: 0.5,
+  //   muted: false,
+  //   showVideo: false,
+  //   SavePip: false,
+  //   }
+  // });
 
   useEffect(() => {
     const savedData = localStorage.getItem('videoPlayer');
@@ -127,6 +145,12 @@ export const PlayerProvider = ({ children }) => {
   const handleTogglePip = () => {
     setShowPip(!ShowPip);
     setShowVideo(!Showvideo);
+    setVideoPlayer((prevPlayer) => ({
+      ...prevPlayer,
+      SavePip: !prevPlayer.SavePip,
+    }));
+    setShowPip(!ShowPip);
+    localStorage.setItem('videoPlayer', JSON.stringify(videoPlayer));
   };
 
 
@@ -160,6 +184,7 @@ export const PlayerProvider = ({ children }) => {
   return (
     <PlayerContext.Provider
       value={{
+        videoPlayer,
         ShowPip, setShowPip, Showvideo, setShowVideo,
         url,
         playing,

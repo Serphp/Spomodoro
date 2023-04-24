@@ -51,33 +51,28 @@ export function Music() {
         <h1 className="display-4 lead mb-5">Music</h1>
         <p className="">Reproduce tu musica favorita</p>
 
+        <div className='inputplayer'>
         <input type="text" value={url} onChange={handleInputChange} />
-
         <button type="submit">Reproducir</button>
-
+        <button onClick={handleMute}>Mute</button>
+        <button onClick={handleTogglePip}>
+            {ShowPip && "Desplegar" }
+        </button>
+        </div>
         </form>
         
-
-        <input type="range" min={0} max={1} step="any" value={volume} onChange={handleVolumeChange} />
-  
-
         <br/>
-          {
+          {/* {
           setShowVideo ? 
           <button className='btnselect' onClick={handlePlayPause}>Pausar</button>
           : 
           <button className='btnselect' onClick={handlePlayPause}>Reproducir</button>
-          }
+          } */}
 
-        <button onClick={handleMute}>Mute</button>
         </div>
         <div className="col-md-7">
             <div className="mb-5 probootstrap-stagger ">
             <div className="probootstrap-animate">
-
-            <button className='btnselect' onClick={handleTogglePip}>
-            {ShowPip && "Desplegar" }
-            </button>
          
             <div className='box1' style={{ display: ReactPlayer ? 'none' : 'block' }}>
 
@@ -85,7 +80,7 @@ export function Music() {
 
           {
             Showvideo && 
-            <h1> Hola </h1>
+            <h1> Hide </h1>
           }
             {ShowPip && (
                 <>
@@ -110,6 +105,9 @@ export function Music() {
                 className='contenedorplayer'
               />
                 </div>
+                
+                <input type="range" min={0} max={1} step="any" value={volume} onChange={handleVolumeChange} />
+  
                 </>
               )
               }

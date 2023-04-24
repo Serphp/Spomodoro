@@ -68,6 +68,55 @@
         }
     }
 }
+
+.inputplayer {
+    width: 100%;
+    height: 100px;
+    background-color: #ffffff41;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    border: none;
+    input {
+        width: 100%;
+        height: 30px;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.334);
+        outline: none;
+        text-align: center;
+        color: #000000b4;
+        font-size: 0.8rem;
+        //font-weight: bold;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        background-color: #ffffff41;
+        //margin-bottom: 10px;
+    }
+    button {
+        width: 100%;
+        height: 30px;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.333);
+        color: white;
+        //border-radius: 10px;
+        border-bottom: #9f9f9f2e solid 2px;
+        //border: none;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+
+        cursor: pointer;
+        transition: all 0.5s ease;
+        &:hover {
+            color: rgba(0, 174, 174, 0.516);
+            //background-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+}
+
 .buttonpip-img {
     width: 100%;
     height: 100%;

@@ -194,7 +194,7 @@ const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seco
         timer, toggleTimer, resetTimer, handleReset, handleTimerChange, handlePersonalizable, StartPause, toggleTimerX,
         increaseTextSize, decreaseTextSize,
         login, 
-        videoUrl, setVideoUrl, 
+        videoUrl, setVideoUrl, MuteSounds,
         showPlayer, setShowPlayer,
         playing, setPlaying,
         audioOnly, setAudioOnly,

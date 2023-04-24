@@ -6,11 +6,13 @@ import { PauseIcon } from '../../src/assets/pause';
 import { PlayIcon } from '../../src/assets/play';
 import { LogoutIcon } from '../../src/assets/logout';
 import { SigninIcon } from '../../src/assets/signin';
-import { LogoIcon } from '../../src/assets/logo';
+import { PlayerContext } from '../../src/Context/PlayerContext';
+//import { LogoIcon } from '../../src/assets/logo';
 
 export const NavBar = () => {
     const { currentUser, logout } = useContext(AuthContext);
     const { timer, toggleTimer } = useContext(TimerContext);
+    const { videoPlayer } = useContext(PlayerContext);
     const [isRunning, setIsRunning] = useState(false);
     const navigate = useNavigate();
 
@@ -30,12 +32,12 @@ export const NavBar = () => {
     const minutes = formatNumber(timer.minutes);
     const seconds = formatNumber(timer.seconds);
 
-    const decreaseTextSize = () => {
-        setTimer((prevState) => ({
-          ...prevState,
-          TextSize: prevState.TextSize - 20
-        }));
-      };
+    // const decreaseTextSize = () => {
+    //     setTimer((prevState) => ({
+    //       ...prevState,
+    //       TextSize: prevState.TextSize - 20
+    //     }));
+    //   };
 
     //console.log(handleSP);
     return (
@@ -75,9 +77,9 @@ export const NavBar = () => {
     {
         
         timer.ChangeHour ?
-        <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
+        <div className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
             {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : <h2 className='title'>Timer</h2>}
-            </h1>
+            </div>
         :
             <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
                 {timer.minutes}:{timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
@@ -89,9 +91,8 @@ export const NavBar = () => {
             {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : <h3>Timer</h3>}
             </h1> */}
 
-
                 <span className='navline'> 
-                v1.0.5
+                v1.1.0
                 <Link to="/" className='navlink'> Home </Link>
                 {
                 currentUser ? 
@@ -104,7 +105,32 @@ export const NavBar = () => {
             }
                 </span>
             
+
                 <section className=''>
+                {
+                    videoPlayer.SavePip === false && (
+                    <>
+                        <button className='navicon' onClick={toggleTimer}>
+                            <div className="nicon"> 
+                            {timer.isRunning ? 
+                            <PauseIcon/>
+                            : 
+                            <PlayIcon/>
+                            }
+                            </div>
+                            </button>
+                            <button className='navicon' onClick={toggleTimer}>
+                            <div className="nicon"> 
+                            {timer.isRunning ? 
+                            <PauseIcon/>
+                            : 
+                            <PlayIcon/>
+                            }
+                            </div>
+                        </button>
+                    </>
+                    )
+                }
                 <button className='navicon' onClick={toggleTimer}>
                 <div className="nicon"> 
                     {timer.isRunning ? 

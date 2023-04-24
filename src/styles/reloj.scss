@@ -18,17 +18,15 @@
         }
     }
     
-    h1, .hora {
+    .hora {
         //position: absolute;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 100px;
-        font-weight: 200;
         text-transform: none;
-        letter-spacing: 0;
-        margin-left: 10px;
+        letter-spacing: 0.1em;
+        margin-top: 10px;
     }
 
     .configspace {

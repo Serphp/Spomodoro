@@ -9,7 +9,7 @@ import { PauseIcon } from '../src/assets/pause';
 
 function Contador() {
     const { timer, resetTimer, handleTimerChange, 
-        handlePersonalizable, increaseTextSize, decreaseTextSize, toggleTimerX, toggleTimer, error } = useContext(TimerContext);
+        handlePersonalizable, increaseTextSize, decreaseTextSize, toggleTimerX, toggleTimer, error, MuteSounds } = useContext(TimerContext);
     const [showCode, setShowCode] = useState(false);
     const [ShowConfig, setShowConfig] = useState(false);
     const [PositionHour, setPositionHour] = useState(false);
@@ -148,16 +148,18 @@ function Contador() {
                             </div>
                             <div className='config__menu'>
                             <span>Sonidos</span>
-                                <span className='menu'> OFF</span>
+                                <span className='menu' onClick={MuteSounds}> 
+                                {timer.MuteSounds ? 'ON' : 'OFF'}	
+                                </span>
                             </div>
-                            <div className='config__menu'>
+                            {/* <div className='config__menu'>
                             <span>Hora</span>
                                 <span className='menu'> 
                                 {
                                     timer.minutes === 0 && timer.seconds === 0 ? 'OFF' : 'ON'
                                 }
                                 </span>
-                            </div>
+                            </div> */}
                             </section>
                         </>
                     )

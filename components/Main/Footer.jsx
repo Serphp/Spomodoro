@@ -25,7 +25,7 @@ export const Footer = () => {
         </svg>
         </a>
         </div>
-        <div className="boxcontainer2">
+        <div className="boxcontainer2 mt-2">
         <LogoIcon/>
         </div>
         </footer>

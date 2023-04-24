@@ -371,7 +371,38 @@ footer {
     text-align: center;
 }
 
+.navbarlist {
+    //position: absolute;
+    //top: 0;
+    display: flex;
+    right: 50px;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    li {
+        list-style: none;
+        text-align: center;
+        color: whitesmoke;
+    }
+    @media screen and (max-width: 808px) {
+        display: none;
+        right: 5px;
+    }
+}
+
+.navcenter {
+    position: absolute;
+    top: 10px;
+    right: 50%;
+    left: 50%;
+    @media screen and (min-width: 1008px) {
+        display: none;
+    }
+}
+
 .navline {
+    //border-bottom: #969696 solid 1px;
+    margin-top: 10px;
     @media screen and (max-width: 765px) {
         display: none;
     }
@@ -402,41 +433,13 @@ footer {
     }
 }
 
-.navbarlist {
-    //position: absolute;
-    //top: 0;
-    display: flex;
-    right: 50px;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
-    li {
-        list-style: none;
-        text-align: center;
-        color: whitesmoke;
-    }
-    @media screen and (max-width: 808px) {
-        display: none;
-        right: 5px;
-    }
-}
-
-.navcenter {
-    position: absolute;
-    top: 10px;
-    right: 50%;
-    left: 50%;
-    @media screen and (min-width: 1008px) {
-        display: none;
-    }
-}
-
 .navlink {
     text-decoration: none;
     margin: 5px;
     padding: 10px;
     text-align: center;
     color: whitesmoke;
+    //border-bottom: #969696 solid 1px;
     transition: all 0.3s ease;+
     &:hover {
         border-bottom: #969696 solid 1px;

@@ -21,33 +21,44 @@ export default function Dashboard() {
 
   return (
     <>
+      <section className="probootstrap-section probootstrap-cover probootstrap-scene-0">
       <div className="container">
-        <Card.Body>
-        <h2 className="probootstrap-heading">DashBoard</h2>
 
-          <div className="w-100 text-center mt-3 mb-3">
-          <Link to="/update-profile" className="buttong">
-            Update Profile
-          </Link>
-          </div>
+          <Card.Body>
+          <h2 className="probootstrap-heading">DashBoard</h2>
+
+          <Card.Header>
           {error && <Alert variant="danger">{error}</Alert>}
 
           <div style={{textAlign: 'center'}}>Email: 
           <b> {currentUser.email}</b> </div>
-          
-          <section className="card2 mb-3 mt-5">
+          </Card.Header>
+
+          <div className="w-100 text-center mt-3 mb-3">
+            <button className="buttong">
+            <Link to="/update-profile" >
+            Update Profile
+            </Link>
+            </button>
+          </div>
+
+
+          <section className="text-center">
+          <h2 className="probootstrap-heading">Music</h2>
               <Card.Header>
-              <Card.Title>Music Beta</Card.Title>
               <Card.Text>
               You play music while you work.
               </Card.Text>
-              <button className='buttong'>
+            </Card.Header>
+            <div className="w-100 text-center mt-3 mb-3">
+            <button className='buttong'>
               <Link to="/Music" className="">Music</Link>
               </button>
-            </Card.Header>
+              </div>
           </section>
         </Card.Body>
       </div>
+      </section>
       {/* <div className="w-100 text-center mt-2">
         <Button variant="link" onClick={handleLogout}>
           Log Out
