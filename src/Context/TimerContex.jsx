@@ -166,11 +166,13 @@ const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seco
     };
 
     const handlePersonalizable = (event) => {
-        event.preventDefault();
-        const newMinutes = event.target.minutes.value ? parseInt(event.target.minutes.value) : 0;
-        const newSeconds = event.target.seconds.value ? parseInt(event.target.seconds.value) : 0;
-        handleReset(newMinutes, newSeconds);
-        };
+      event.preventDefault();
+      const newMinutes = event.target.minutes.value ? parseInt(event.target.minutes.value.slice(0, 2)) : 0;
+      const newSeconds = event.target.seconds.value ? parseInt(event.target.seconds.value.slice(0, 2)) : 0;
+      handleReset(newMinutes, newSeconds);
+    };
+    
+    
 
     const handleTimerChange = (event) => {
         event.preventDefault();

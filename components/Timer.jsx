@@ -87,11 +87,11 @@ function Contador() {
                         <div className='row mt-5'>
                             <div class="form-group col-md-6 flex">
                                     <div for="minutes">Minutes</div>
-                                    <input type="number" class="form-control" name="minutes" placeholder='0'  />
+                                    <input type="number" class="form-control" name="minutes" placeholder='0' maxLength="2" />
                                     </div>
                                 <div class="form-group col-md-6">
                                 <div for="seconds">Seconds</div>
-                            <input type="number" class="form-control" name="seconds" placeholder='0'  />
+                            <input type="number" class="form-control" name="seconds" placeholder='0' maxLength="2" />
                             </div>
                             <div class="center">
                             <button className='btn btn-primary btn-outline-white' type="submit"> New valor </button>

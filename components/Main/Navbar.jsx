@@ -80,7 +80,13 @@ export const NavBar = () => {
         
         timer.ChangeHour ?
         <div className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
-            {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : <h2 className='title'>Timer</h2>}
+            {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : 
+            <>
+            <span className='logotitle'>
+                SP 
+                <p><br/> Technique Pomodoro </p>
+            </span>
+            </>}
             </div>
         :
             <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
@@ -94,7 +100,7 @@ export const NavBar = () => {
             </h1> */}
 
                 <span className='navline'> 
-                v1.1.0
+                v1.1.1
                 <Link to="/" className='navlink'> Home </Link>
                 {
                 currentUser ? 
@@ -108,7 +114,7 @@ export const NavBar = () => {
                 </span>
             
 
-                <section className=''>
+    <div className=''>
     {
         ShowPip === false && (
         <>
@@ -141,7 +147,7 @@ export const NavBar = () => {
         )
     }
                 
-                <button className='navicon  ml-5' onClick={toggleTimer}>
+                <button className='navicon' onClick={toggleTimer}>
                 <div className="nicon"> 
                     {timer.isRunning ? 
                     <PauseIcon/>
@@ -159,7 +165,7 @@ export const NavBar = () => {
                      }
                      </div>
                 </button>
-                </section>
+                </div>
                 
             </nav>
         </>

@@ -42,6 +42,35 @@
         letter-spacing: 0.2em;
         text-align: center;
     }
+
+    
+    .logotitle {
+        font-family: 'Lobster', cursive;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        padding: auto;
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        text-align: center;
+        @media screen and (max-width: 768px) {
+            font-size: 3rem;
+        }
+        p {
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            font-size: 10px;
+        }
+        @media screen and (max-width: 768px) {
+            p {
+                display: none;
+            }
+        }
+    }
     
 h2, .titulo {
     display: flex;

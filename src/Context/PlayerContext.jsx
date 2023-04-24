@@ -214,16 +214,16 @@ export const PlayerProvider = ({ children }) => {
         //onMute={handleMute}
         onSeek={handleSaveProgress}
         onEnded={handleSaveProgress}
-          width="100%"
-          height="350px"
-          style={{ 
-          resize: 'both', 
-          overflow: 'hidden',
+        width="100%"
+        height="350px"
+        style={{ 
+        resize: 'both', 
+        overflow: 'hidden',
 
-          minWidth: '100%',
-          maxWidth: '500px',
-          minHeight: '100px',
-          maxHeight: '400px',
+        minWidth: '100%',
+        maxWidth: '500px',
+        minHeight: '100px',
+        maxHeight: '400px',
         }}
           className="buttonpip-content contenedorplayer"
         /> 
