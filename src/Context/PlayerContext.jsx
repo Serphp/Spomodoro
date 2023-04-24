@@ -12,35 +12,20 @@ export const PlayerProvider = ({ children }) => {
   const [muted, setMuted] = useState(false);
   const [Showvideo, setShowVideo] = useState(false);
   const [ShowPip, setShowPip] = useState(true);
-  
+
 
   const [videoPlayer, setVideoPlayer] = useState(() => {
     const savedData = JSON.parse(localStorage.getItem('videoPlayer'));
     return savedData || {
       url: '',
-      playing: false,
+      playing: true,
       played: 0,
       duration: 0,
       volume: 0.5,
       muted: false,
       showVideo: false,
-      SavePip: false,
     }
-    });
-
-  // const [videoPlayer, setVideoPlayer] = useState({
-  //   const savedData = JSON.parse(localStorage.getItem('videoPlayer'));
-  //   return savedData || {
-  //   url: '',
-  //   playing: false,
-  //   played: 0,
-  //   duration: 0,
-  //   volume: 0.5,
-  //   muted: false,
-  //   showVideo: false,
-  //   SavePip: false,
-  //   }
-  // });
+  });
 
   useEffect(() => {
     const savedData = localStorage.getItem('videoPlayer');
@@ -77,13 +62,22 @@ export const PlayerProvider = ({ children }) => {
 
   //Show Video on Top o Normal
 
-  const handlePlayPause = () => {
+  const handlePause = () => {
     setVideoPlayer((prevPlayer) => ({
       ...prevPlayer,
-      playing: !prevPlayer.playing,
+      playing: false,
     }));
-    //setPlaying(!playing);
+    setPlaying(true);
   };
+
+  const handlePlay = () => {
+    setVideoPlayer((prevPlayer) => ({
+      ...prevPlayer,
+      playing: true,
+    }));
+    setPlaying(false);
+  };
+
   
   const handleProgress = (progress) => {
     setVideoPlayer((prevPlayer) => ({
@@ -111,7 +105,6 @@ export const PlayerProvider = ({ children }) => {
     setVolume(event.target.value);
   };
 
-
   const handleMute = () => {
     setVideoPlayer((prevPlayer) => ({
       ...prevPlayer,
@@ -121,8 +114,6 @@ export const PlayerProvider = ({ children }) => {
    setMuted(!muted);
   };
 
-
-  
   const handleSaveProgress = () => {
     const currentTime = localStorage.getItem('time');
   
@@ -139,7 +130,7 @@ export const PlayerProvider = ({ children }) => {
       ...prevPlayer,
       url: newUrl,
     }));
-    localStorage.setItem('url', newUrl);
+    //localStorage.setItem('url', newUrl);
   };
 
   const handleTogglePip = () => {
@@ -150,7 +141,6 @@ export const PlayerProvider = ({ children }) => {
       SavePip: !prevPlayer.SavePip,
     }));
     setShowPip(!ShowPip);
-    localStorage.setItem('videoPlayer', JSON.stringify(videoPlayer));
   };
 
 
@@ -186,6 +176,7 @@ export const PlayerProvider = ({ children }) => {
       value={{
         videoPlayer,
         ShowPip, setShowPip, Showvideo, setShowVideo,
+        handlePause, handlePlay,
         url,
         playing,
         played,
@@ -193,7 +184,6 @@ export const PlayerProvider = ({ children }) => {
         volume,
         muted,
         handleTogglePip, //Show counter
-        handlePlayPause,
         handleProgress,
         handleDuration,
         handleVolumeChange,
@@ -210,18 +200,20 @@ export const PlayerProvider = ({ children }) => {
         <section>
         <div className=''> 
         <ReactPlayer
-          url={url}
-          playing={true}
-          played={played}
-          //onPlay={handlePlayPause}
-          //onPause={handlePlayPause}
-          onProgress={handleProgress}
-          onDuration={handleDuration}
-          volume={volume}
-          muted={muted}
-          //onMute={handleMute}
-          onSeek={handleSaveProgress}
-          onEnded={handleSaveProgress}
+
+        url={videoPlayer.url}
+        playing={playing}
+        played={played}
+        playbackRate={1}
+        onPlay={true}
+        onPause={false}
+        onProgress={handleProgress}
+        onDuration={handleDuration}
+        volume={volume}
+        muted={muted}
+        //onMute={handleMute}
+        onSeek={handleSaveProgress}
+        onEnded={handleSaveProgress}
           width="100%"
           height="350px"
           style={{ 

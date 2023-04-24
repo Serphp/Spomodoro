@@ -7,12 +7,14 @@ import { PlayIcon } from '../../src/assets/play';
 import { LogoutIcon } from '../../src/assets/logout';
 import { SigninIcon } from '../../src/assets/signin';
 import { PlayerContext } from '../../src/Context/PlayerContext';
+import { MuteIcon } from '../../src/assets/mute';
+import { NomuteIcon } from '../../src/assets/nomute';
 //import { LogoIcon } from '../../src/assets/logo';
 
 export const NavBar = () => {
     const { currentUser, logout } = useContext(AuthContext);
     const { timer, toggleTimer } = useContext(TimerContext);
-    const { videoPlayer } = useContext(PlayerContext);
+    const { videoPlayer, handleMute, handlePause, handlePlay, ShowPip } = useContext(PlayerContext);
     const [isRunning, setIsRunning] = useState(false);
     const navigate = useNavigate();
 
@@ -107,31 +109,39 @@ export const NavBar = () => {
             
 
                 <section className=''>
-                {
-                    videoPlayer.SavePip === false && (
-                    <>
-                        <button className='navicon' onClick={toggleTimer}>
-                            <div className="nicon"> 
-                            {timer.isRunning ? 
-                            <PauseIcon/>
-                            : 
-                            <PlayIcon/>
-                            }
-                            </div>
-                            </button>
-                            <button className='navicon' onClick={toggleTimer}>
-                            <div className="nicon"> 
-                            {timer.isRunning ? 
-                            <PauseIcon/>
-                            : 
-                            <PlayIcon/>
-                            }
-                            </div>
-                        </button>
-                    </>
-                    )
+    {
+        ShowPip === false && (
+        <>
+            <button className='navicon' onClick={handleMute}>
+                <div className="nicon"> 
+                {videoPlayer.muted ? 
+                <MuteIcon/>
+                : 
+                <NomuteIcon/>
                 }
-                <button className='navicon' onClick={toggleTimer}>
+                </div>
+                </button>
+
+                {/* BUTTON MUTE / PLAY */}
+
+                <button className='navicon ml-2'>
+                <div className="nicon"> 
+                {videoPlayer.playing ? 
+                <span onClick={handlePause}>
+                <PauseIcon/>
+                </span>
+                : 
+                <span className='' onClick={handlePlay}>
+                <PlayIcon/>
+                </span>
+                }
+                </div>
+                </button>
+        </>
+        )
+    }
+                
+                <button className='navicon  ml-5' onClick={toggleTimer}>
                 <div className="nicon"> 
                     {timer.isRunning ? 
                     <PauseIcon/>

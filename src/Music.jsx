@@ -52,7 +52,7 @@ export function Music() {
         <p className="">Reproduce tu musica favorita</p>
 
         <div className='inputplayer'>
-        <input type="text" value={url} onChange={handleInputChange} />
+        <input type="text" value={videoPlayer.url} onChange={handleInputChange} />
         <button type="submit">Reproducir</button>
         <button onClick={handleMute}>Mute</button>
         <button onClick={handleTogglePip}>
@@ -86,7 +86,7 @@ export function Music() {
                 <>
                 <div >
                 <ReactPlayer
-                url={url}
+                url={videoPlayer.url}
                 playing={playing}
                 played={played}
                 playbackRate={1}
