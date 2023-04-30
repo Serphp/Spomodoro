@@ -166,12 +166,18 @@ function Contador() {
                                 {timer.ChangeHour ? 'Top' : 'Normal'}
                                 </span>
                             </div>
-                            <div className='config__menu'>
-                            <span>Tasks</span>
-                                <span className='menu' onClick={HandleHideTask}> 
-                                {timer.HideTask ? 'Show' : 'Hide'}	
-                                </span>
-                            </div>
+                            {
+                                currentUser && (
+                                    <>
+                                    <div className='config__menu'>
+                                    <span>Tasks</span>
+                                    <span className='menu' onClick={HandleHideTask}> 
+                                    {timer.HideTask ? 'Show' : 'Hide'}	
+                                    </span>
+                                    </div>
+                                    </>
+                                )
+                            }
                             {/* <div className='config__menu'>
                             <span>Hora</span>
                                 <span className='menu'> 
