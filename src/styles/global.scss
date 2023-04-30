@@ -51,20 +51,22 @@
         align-items: center;
         letter-spacing: 0.3em;
     }
+
+
     .hora {
-        position: absolute;
-        left: 283px;
-        top: 0;
-        right: 0;
-        z-index: 1;
-        width: 50%;
+        // position: absolute;
+        // left: 283px;
+        // top: 0;
+        // right: 0;
+        // z-index: 1;
+        //width: 50%;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
         text-transform: none;
         letter-spacing: 0.1em;
-        margin-top: 10px;
+        //margin-top: 5px;
         @media screen and (max-width: 768px) {
             position: relative;
             left: 0;

@@ -56,25 +56,7 @@ export const NavBar = () => {
                 : null}
         </span>
 
-    <nav className="navbar">
-
-    {        
-        timer.ChangeHour ?
-        <div className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
-            {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : 
-            <>
-            <span className='logotitle'>
-                SP 
-                <p><br/> Technique Pomodoro </p>
-            </span>
-            </>
-            }
-            </div>
-        :
-            <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
-                {timer.minutes}:{timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
-            </h1>
-    }
+    <nav className="navbar mt-4">
 
 
         {/* <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
@@ -96,6 +78,25 @@ export const NavBar = () => {
             }
                 </span>
             
+
+                {        
+        timer.ChangeHour ?
+        <div className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
+            {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : 
+            <>
+            <span className='logotitle'>
+                SP 
+                <p><br/> Technique Pomodoro </p>
+            </span>
+            </>
+            }
+            </div>
+        :
+            <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
+                {timer.minutes}:{timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
+            </h1>
+    }
+
 
     <div className=''>
     {
