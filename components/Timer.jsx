@@ -6,13 +6,27 @@ import { DownIcon } from '../src/assets/down';
 import { EditIcon } from '../src/assets/edit';
 import { ConfigIcon } from '../src/assets/config';
 import { PauseIcon } from '../src/assets/pause';
+import { Pending } from './Pending';
+import { AuthContext } from '../src/Context/AuthContext';
 
 function Contador() {
-    const { timer, resetTimer, handleTimerChange, 
-        handlePersonalizable, increaseTextSize, decreaseTextSize, toggleTimerX, toggleTimer, error, MuteSounds } = useContext(TimerContext);
+    const { currentUser } = useContext(AuthContext);
+    const { timer, resetTimer, 
+            handleTimerChange, 
+            handleAddpomo,
+            increaseTextSize, 
+            decreaseTextSize, 
+            toggleTimerX, 
+            toggleTimer, 
+            error,
+            HandleHideTask } = useContext(TimerContext);
     const [showCode, setShowCode] = useState(false);
     const [ShowConfig, setShowConfig] = useState(false);
-    const [PositionHour, setPositionHour] = useState(false);
+
+    const [tasks, setTasks] = useState(() => {
+        const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+        return storedTasks || [];
+      });
 
     //const [isRunning, setIsRunning] = useState(false);
 
@@ -34,7 +48,16 @@ function Contador() {
             <div for="dark-mode">
                 {timer.isRunning ? <>
                 <h2 className='titulo'>Active</h2>
-                <h6> ... </h6>
+                <h6> 
+                    {
+                    currentUser && tasks.length > 0 ? 
+                    <p>
+                    {tasks.length} Tareas pendientes <br/>
+                    {tasks.filter(task => task.completed).length} Tareas completadas
+                    </p> :
+                    <p> No hay tareas pendientes, Registrate para obtener esta función. </p>
+                    }
+                </h6>
                 <button className='btnicon' onClick={resetTimer} title='Reset'>
                 <div className="iconop"> 
                     <ResetIcon/>
@@ -45,11 +68,6 @@ function Contador() {
                     <PauseIcon/>
                 </div>
                 </button>
-
-
-                {/* <br/>
-                <button className='btnicon' onClick={handlesound} title='sound' />
-                         */}
                 </> : 
                 <>
                 <h2 className='titulo'>Inactive</h2>
@@ -58,6 +76,7 @@ function Contador() {
 
 
             <div className='box2' style={{ display: timer.isRunning ? 'none' : 'block' }}>
+            
             <button className='btnselect' onClick={handleTimerChange} value="default" >Por defecto</button>
             <button className='btnselect' onClick={handleTimerChange} value="shortBreak" >Short break</button>
             <button className='btnselect' onClick={handleTimerChange} value="longBreak">Long break</button>
@@ -83,14 +102,15 @@ function Contador() {
             
             {showCode && (
             <section className='pre'> 
-                    <form onSubmit={handlePersonalizable}>
+                    {/* <form onSubmit={handlePersonalizable}> */}
+                    <form onSubmit={handleAddpomo}>
                         <div className='row mt-5'>
-                            <div class="form-group col-md-6 flex">
-                                    <div for="minutes">Minutes</div>
-                                    <input type="number" class="form-control" name="minutes" placeholder='0' maxLength="2" />
-                                    </div>
-                                <div class="form-group col-md-6">
-                                <div for="seconds">Seconds</div>
+                            <div class="form-group col-md-6 ">
+                            <div for="minutes">Minutes</div>
+                            <input type="number" class="form-control" name="minutes" placeholder='0' maxLength="2" />
+                            </div>
+                            <div class="form-group col-md-6">
+                            <div for="seconds">Seconds</div>
                             <input type="number" class="form-control" name="seconds" placeholder='0' maxLength="2" />
                             </div>
                             <div class="center">
@@ -111,7 +131,7 @@ function Contador() {
                     {
                         timer.ChangeHour && (
                             <div className='box3'>
-                                <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
+                                <h1 className='horai' style={{ fontSize: `${timer.TextSize}px` }}>
                                     {timer.minutes}:{timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
                                 </h1>
                             </div>
@@ -146,12 +166,12 @@ function Contador() {
                                 {timer.ChangeHour ? 'Top' : 'Normal'}
                                 </span>
                             </div>
-                            {/* <div className='config__menu'>
-                            <span>Sonidos</span>
-                                <span className='menu' onClick={MuteSounds}> 
-                                {timer.MuteSounds ? 'ON' : 'OFF'}	
+                            <div className='config__menu'>
+                            <span>Tasks</span>
+                                <span className='menu' onClick={HandleHideTask}> 
+                                {timer.HideTask ? 'Show' : 'Hide'}	
                                 </span>
-                            </div> */}
+                            </div>
                             {/* <div className='config__menu'>
                             <span>Hora</span>
                                 <span className='menu'> 
@@ -169,6 +189,16 @@ function Contador() {
             </div> 
         </div>
     </div>
+
+    {
+        timer.HideTask && (
+            <>
+                <Pending/>
+            </>
+        )
+    }
+
+    
     </section>
 
     </div>

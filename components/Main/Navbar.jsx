@@ -15,6 +15,7 @@ import { NavbarMList } from '../../src/assets/Mobile/NList';
 //import { LogoIcon } from '../../src/assets/logo';
 
 export const NavBar = () => {
+    const Serphp = "1.2.0";
     const { currentUser, logout } = useContext(AuthContext);
     const { timer, toggleTimer } = useContext(TimerContext);
     const { videoPlayer, handleMute, handlePause, handlePlay, ShowPip } = useContext(PlayerContext);
@@ -34,18 +35,9 @@ export const NavBar = () => {
             navigate('/login');
         }
     };
-
     const minutes = formatNumber(timer.minutes);
     const seconds = formatNumber(timer.seconds);
 
-    // const decreaseTextSize = () => {
-    //     setTimer((prevState) => ({
-    //       ...prevState,
-    //       TextSize: prevState.TextSize - 20
-    //     }));
-    //   };
-
-    //console.log(handleSP);
     return (
         <>
         <span className='navline2'>
@@ -65,9 +57,8 @@ export const NavBar = () => {
         </span>
 
     <nav className="navbar">
-    {/* <span className='beta'>beta</span> */}
-    {
-        
+
+    {        
         timer.ChangeHour ?
         <div className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
             {timer.isRunning ? <h1>{`${minutes}:${seconds}`}</h1> : 
@@ -76,7 +67,8 @@ export const NavBar = () => {
                 SP 
                 <p><br/> Technique Pomodoro </p>
             </span>
-            </>}
+            </>
+            }
             </div>
         :
             <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
@@ -90,7 +82,7 @@ export const NavBar = () => {
             </h1> */}
 
                 <span className='navline'> 
-                v1.1.1
+                {Serphp}
                 <Link to="/" className={`navlink ${location.pathname === '/' ? 'active' : ''}`}> Home </Link>
 
                 {

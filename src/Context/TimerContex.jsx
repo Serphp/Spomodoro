@@ -25,6 +25,7 @@ const [timer, setTimer] = useState(() => {
         isRunning: false,
         TextSize: TextSizelocal,
         ChangeHour: true,
+        HideTask: true,
         MuteSounds : false
     }
     });
@@ -32,6 +33,13 @@ const [timer, setTimer] = useState(() => {
 const login = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password)
     }
+
+    const HandleHideTask = () => {
+      setTimer((prevState) => ({
+        ...prevState,
+        HideTask: !prevState.HideTask,
+        }));
+      };
 
     const MuteSounds = () => {
         setTimer((prevState) => {
@@ -133,8 +141,6 @@ useEffect(() => {
     };
 
 const toggleTimerX = () => {
-  //const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
-  //randomSound.play();
   setTimer((prevState) => ({
   ...prevState,
   ChangeHour: !prevState.ChangeHour,
@@ -150,6 +156,7 @@ const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seco
           isRunning: timer.isRunning,
           TextSize: timer.TextSize,
           ChangeHour: timer.ChangeHour,
+          HideTask: timer.HideTask,
           MuteSounds : timer.MuteSounds
         });
     };
@@ -161,6 +168,7 @@ const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seco
       isRunning: timer.isRunning,
       TextSize: timer.TextSize,
       ChangeHour: timer.ChangeHour,
+      HideTask: timer.HideTask,
       MuteSounds : timer.MuteSounds
     });
     };
@@ -171,8 +179,6 @@ const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seco
       const newSeconds = event.target.seconds.value ? parseInt(event.target.seconds.value.slice(0, 2)) : 0;
       handleReset(newMinutes, newSeconds);
     };
-    
-    
 
     const handleTimerChange = (event) => {
         event.preventDefault();
@@ -201,7 +207,8 @@ const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seco
         playing, setPlaying,
         audioOnly, setAudioOnly,
         playedSeconds, setPlayedSeconds,
-        error, setError
+        error, setError,
+        HandleHideTask
          }}>
         {children}
         </TimerContext.Provider>
