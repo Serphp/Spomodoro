@@ -89,6 +89,15 @@ function TaskList() {
     audio.play();
   }
 
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+    if (value.length <= 16) {
+      setInputValue(value);
+    } else {
+      setInputValue(value.substring(0, 16));
+    }
+  };
+
   //show title of completed tasks
   const completedTasks = tasks.filter(task => task.completed);
 
@@ -115,9 +124,9 @@ function TaskList() {
             <input type="number" class="imputime" name="seconds" placeholder='seconds' maxLength="2" />
             </div>
 
-            <input type="text" name="taskTitle" className='imput' placeholder="Enter task title" />
+            <input type="text" name="taskTitle" className='imput' placeholder="Enter task title" maxLength={24}  />
             <br/>
-            <textarea type="text" name="TaskBody" className='imput' placeholder="Descripcion" />
+            <textarea type="text" name="TaskBody" className='imput' placeholder="Descripcion" maxLength={320} />
             <br/>
             <button type="submit" className='btnselect'>Add Task</button>
             </form>
