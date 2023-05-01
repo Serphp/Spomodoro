@@ -31,8 +31,8 @@ export default function Signup() {
     }
     return (
       <>
-        <div className="boxcontainer2">
-            <h2 className="text-center mb-4">Sign Up</h2>
+        <div className="mt-5 container">
+            <h1 className="title text-center mb-4">Sign Up</h1>
             {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleSubmit}>
               <Form.Group id="email">
@@ -47,16 +47,16 @@ export default function Signup() {
                 <Form.Label>Password Confirmation</Form.Label>
                 <Form.Control type="password" ref={passwordConfirmRef} required />
               </Form.Group>
-              <Button disabled={loading} className="w-100 mt-4" type="submit">
+              <button disabled={loading} className="buttonn w-100 mt-4" type="submit">
                 Sign Up
-              </Button>
+              </button>
             </Form>
  
         </div>
-        <div className="w-100 text-center mt-2">
+        <div className="w-100 text-center mt-5">
           Already have an account? <Link to="/login">Log In</Link>
         </div>
-        <script src="https://www.google.com/recaptcha/api.js"></script>
+        {/* <script src="https://www.google.com/recaptcha/api.js"></script> */}
       </>
     )
   }

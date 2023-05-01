@@ -43,9 +43,9 @@ export default function UpdateProfile() {
   
     return (
       <>
-        <div className="boxcontainer2">
+        <div className="mt-5 container">
           <Card.Body>
-            <h2 className="text-center mb-4">Update Profile</h2>
+            <h1 className="text-center mb-4">Update Profile</h1>
             {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleSubmit}>
               <Form.Group id="email">
@@ -73,14 +73,14 @@ export default function UpdateProfile() {
                   placeholder="Leave blank to keep the same"
                 />
               </Form.Group>
-              <Button disabled={loading} className="w-100 mt-4" type="submit">
+              <button disabled={loading} className="buttonn w-100 mt-4" type="submit">
                 Update
-              </Button>
+              </button>
             </Form>
           </Card.Body>
         </div>
         <div className="w-100 text-center mt-2">
-          <Link to="/">Cancel</Link>
+          <Link to="/dashboard">Cancel</Link>
         </div>
       </>
     )

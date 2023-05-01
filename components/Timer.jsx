@@ -77,7 +77,7 @@ function Contador() {
 
             <div className='box2' style={{ display: timer.isRunning ? 'none' : 'block' }}>
             
-            <button className='btnselect' onClick={handleTimerChange} value="default" >Por defecto</button>
+            <button className='btnselect' onClick={handleTimerChange} value="default" >Normal</button>
             <button className='btnselect' onClick={handleTimerChange} value="shortBreak" >Short break</button>
             <button className='btnselect' onClick={handleTimerChange} value="longBreak">Long break</button>
 

@@ -30,8 +30,8 @@ export default function Login() {
   return (
     <>
     
-      <div className="boxcontainer2">
-          <h2 className="text-center mb-4">Log In</h2>
+      <div className="mt-5 container">
+          <h1 className="title text-center mb-4">Log In</h1>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
@@ -42,18 +42,17 @@ export default function Login() {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
-            <Button disabled={loading} className="w-100 mt-3" type="submit">
+            <button disabled={loading} className="buttonn w-100 mt-3" type="submit">
               Log In
-            </Button>
+            </button>
           </Form>
-          <div className="w-100 text-center mt-3">
-            <Link to="/forgot-password">Forgot Password?</Link>
-          </div>
-          
       </div>
-      <div className="w-100 text-center mt-2">
+      <div className="w-100 text-center mt-5">
         Need an account? <Link to="/signup">Sign Up</Link>
       </div>
+      <div className="w-100 text-center mt-3">
+            <Link to="/forgot-password">Forgot Password?</Link>
+          </div>
     </>
   )
 }

@@ -120,8 +120,8 @@ function TaskList() {
               
             <form className='boxplus' onSubmit={handleAddTask}>
             <div className='contenedorhora'>
-            <input type="number" class="imputime" name="minutes" placeholder='Minutes' maxLength="2" />
-            <input type="number" class="imputime" name="seconds" placeholder='seconds' maxLength="2" />
+            <input type="number" class="imputime" name="seconds" placeholder='Minutes' maxLength="2" />
+            <input type="number" class="imputime" name="minutes" placeholder='seconds' maxLength="2" />
             </div>
 
             <input type="text" name="taskTitle" className='imput' placeholder="Enter task title" maxLength={24}  />

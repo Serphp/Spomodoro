@@ -393,7 +393,38 @@ footer {
         box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
         color: #000;
     }
+
+    @keyframes matrixtop {
+        0% {
+            transform: translate(10px, 0);
+        }
+        50% {
+            transform: translate(0, 10px);
+        }
+        100% {
+            transform: translate(10px, 0);
+        }
+    
+        
+    }
+    @keyframes ZoomIcon {
+        0% {
+            transform: scale(1);
+            //box-shadow: 10px 17px 0px 5px rgba(255, 255, 255, 0.105);
+            color: #2e505c;
+            border: none;
+        }
+        50% {
+            transform: scale(1.2);
+        }
+        100% {
+            transform: scale(1);
+        }
+        
+    }
+
     .nicon {
+        animation: ZoomIcon 5s infinite;
         //padding: 5px;
         font-size: 10px;
         margin: 10px;
