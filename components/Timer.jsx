@@ -13,7 +13,7 @@ function Contador() {
     const { currentUser } = useContext(AuthContext);
     const { timer, resetTimer, 
             handleTimerChange, 
-            handleAddpomo,
+            handlePersonalizable,
             increaseTextSize, 
             decreaseTextSize, 
             toggleTimerX, 
@@ -103,7 +103,7 @@ function Contador() {
             {showCode && (
             <section className='pre'> 
                     {/* <form onSubmit={handlePersonalizable}> */}
-                    <form onSubmit={handleAddpomo}>
+                    <form onSubmit={handlePersonalizable}>
                         <div className='row mt-5'>
                             <div class="form-group col-md-6 ">
                             <div for="minutes">Minutes</div>
