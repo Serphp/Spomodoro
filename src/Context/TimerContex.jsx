@@ -25,7 +25,7 @@ const [timer, setTimer] = useState(() => {
         isRunning: false,
         TextSize: TextSizelocal,
         ChangeHour: true,
-        HideTask: true,
+        HideTask: false,
         MuteSounds : false
     }
     });
