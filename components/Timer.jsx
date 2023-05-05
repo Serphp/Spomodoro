@@ -55,7 +55,7 @@ function Contador() {
                     {tasks.length} Tareas pendientes <br/>
                     {tasks.filter(task => task.completed).length} Tareas completadas
                     </p> :
-                    <p> No hay tareas pendientes, Registrate para obtener esta función. </p>
+                    <p>  </p>
                     }
                 </h6>
                 <button className='btnicon' onClick={resetTimer} title='Reset'>
@@ -104,7 +104,7 @@ function Contador() {
             <section className='pre'> 
                     {/* <form onSubmit={handlePersonalizable}> */}
                     <form onSubmit={handlePersonalizable}>
-                        <div className='row mt-5'>
+                        <div className='row mt-5 order-md-2'>
                             <div class="form-group col-md-6 ">
                             <div for="minutes">Minutes</div>
                             <input type="number" class="form-control" name="minutes" placeholder='0' maxLength="2" />
@@ -191,18 +191,22 @@ function Contador() {
                     )
                 }
                 </div>
+                {
+                    timer.HideTask < 1 && (
+                        <>
+                            <Pending/>
+                        </>
+                    )
+                }
             </div>
+
             </div> 
+
         </div>
+        
+
     </div>
 
-    {
-        timer.HideTask && (
-            <>
-                <Pending/>
-            </>
-        )
-    }
 
     
     </section>

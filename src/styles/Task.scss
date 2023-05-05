@@ -108,7 +108,7 @@
     // bottom: 250px;
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     //margin: 0 10px 0 10px;
@@ -204,7 +204,7 @@
 
 }
 .task {
-    width: 30%;
+    width: 100%;
     //margin: 0 20px 0 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 800;

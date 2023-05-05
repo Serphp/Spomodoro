@@ -513,11 +513,11 @@ footer {
 
 .navlink {
     text-decoration: none;
-    margin: 5px;
-    padding: 10px;
+    margin: 10px;
+    padding: 0px 10px 10px 10px;
     text-align: center;
     color: whitesmoke;
-    //border-bottom: #969696 solid 1px;
+    border-bottom: #969696 solid 1px;
     transition: all 0.3s ease;+
     &:hover {
         border-bottom: #969696 solid 1px;

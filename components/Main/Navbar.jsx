@@ -15,7 +15,7 @@ import { NavbarMList } from '../../src/assets/Mobile/NList';
 //import { LogoIcon } from '../../src/assets/logo';
 
 export const NavBar = () => {
-    const Serphp = "1.2.0";
+    const Serphp = "1.2.1";
     const { currentUser, logout } = useContext(AuthContext);
     const { timer, toggleTimer } = useContext(TimerContext);
     const { videoPlayer, handleMute, handlePause, handlePlay, ShowPip } = useContext(PlayerContext);
@@ -66,12 +66,12 @@ export const NavBar = () => {
                 <span className='navline'> 
                 {Serphp}
                 <Link to="/" className={`navlink ${location.pathname === '/' ? 'active' : ''}`}> Home </Link>
-
+                <Link to="/Taskpage" className="navlink">List</Link>
                 {
                 currentUser ? 
                 <>
                     <Link to="/dashboard" className="navlink">Dashboard</Link>
-                    <Link to="/Taskpage" className="navlink">List</Link>
+                    {/* <Link to="/Taskpage" className="navlink">List</Link> */}
                     {/* <Link to="/Music" className="navlink">Music</Link> */}
                 </>                
                 : null

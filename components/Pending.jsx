@@ -61,15 +61,16 @@ export const Pending = () => {
     return (
         <>
         <section className='taskcontenedor'>
-        {
-        currentUser && tasks.length === 0 ?
+        {// currentUser &&
+        tasks.length === 0 ?
         <div className="notask">No tasks</div> :
         null
         }
 
-        {
-            currentUser && tasks.filter(task => !task.completed)
-            .map((task, index) => {
+        { //currentUser &&
+                 tasks.filter(task => !task.completed)
+                .slice(0, 1) // Solo se mostrará el primer elemento
+                .map((task, index) => {
                 
                 return (
                     <div className="task" key={index}>
