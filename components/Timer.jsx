@@ -46,17 +46,26 @@ function Contador() {
         <div className="col-md-7 order-md-2">
 
             <div for="dark-mode">
-                {timer.isRunning ? <>
+                {timer.minutes === 0 && timer.seconds === 0 ? 
+                <>
+                <h2 className='titulo'> Break time </h2>
+                <div className='box2'>
+                <button className='btnselect' onClick={handleTimerChange} value="shortBreak" >Short break</button>
+                </div>
+                </> :
+                timer.isRunning ? <>
                 <h2 className='titulo'>Active</h2>
                 <h6> 
-                    {
+                {
                     currentUser && tasks.length > 0 ? 
                     <p>
-                    {tasks.length} Tareas pendientes <br/>
-                    {tasks.filter(task => task.completed).length} Tareas completadas
-                    </p> :
-                    <p>  </p>
-                    }
+                        {tasks.length} Tareas pendientes 
+                        <br/>
+                        {tasks.filter(task => task.completed).length}
+                        Tareas completadas
+                    </p> 
+                : null
+                }
                 </h6>
                 <button className='btnicon' onClick={resetTimer} title='Reset'>
                 <div className="iconop"> 
@@ -71,16 +80,47 @@ function Contador() {
                 </> : 
                 <>
                 <h2 className='titulo'>Inactive</h2>
-                </>}
+                </>
+                }
             </div>
 
 
             <div className='box2' style={{ display: timer.isRunning ? 'none' : 'block' }}>
-            
-            <button className='btnselect' onClick={handleTimerChange} value="default" >Normal</button>
-            <button className='btnselect' onClick={handleTimerChange} value="shortBreak" >Short break</button>
-            <button className='btnselect' onClick={handleTimerChange} value="longBreak">Long break</button>
+            {
+                timer.seconds === 0 && timer.minutes === 0 ? 
+                ( 
+                    null
+                ) : 
 
+                <>
+                {
+                timer.seconds === 0 && timer.minutes === 25 ? null : 
+                    (
+                        <>
+                            <button className='btnselect' onClick={handleTimerChange} value="default" >Normal</button>
+                        </>
+                    )
+                }
+
+                {
+                    timer.seconds === 0 && timer.minutes === 5 ? null : 
+                    (
+                        <>
+                        <button className='btnselect' onClick={handleTimerChange} value="shortBreak" >Short break</button>
+                        </>
+                    )
+                }
+
+                {
+                timer.seconds === 0 && timer.minutes === 15 ? null : 
+                    (
+                        <>            
+                            <button className='btnselect' onClick={handleTimerChange} value="longBreak">Long break</button>
+                        </>
+                    )
+                }
+
+            <article className='box2'>
             <button onClick={resetTimer} className="btnicon" title='reset'>
             <div className="iconop"> 
             <ResetIcon/>
@@ -97,7 +137,11 @@ function Contador() {
             <ConfigIcon/>
             </div>
             </button>
+            </article>
 
+
+                </>
+            }
             
             
             {showCode && (

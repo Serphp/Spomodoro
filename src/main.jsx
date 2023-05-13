@@ -19,6 +19,7 @@ import { Music } from './Music';
 import { PlayerProvider } from './Context/PlayerContext';
 //import Db from '../components/Db';
 import DatabaseProvider from './Context/DbContext';
+import VersionPage from './version';
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
                 {
                   path: "/taskpage",
                   element: <Taskpage/>,
+                },
+                {
+                  path: "/version",
+                  element: <VersionPage/>,
                 },
                 {
                   path: "/forgot-password",
