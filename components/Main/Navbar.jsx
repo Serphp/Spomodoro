@@ -15,11 +15,13 @@ import { NavbarMList } from '../../src/assets/Mobile/NList';
 //import { LogoIcon } from '../../src/assets/logo';
 
 export const NavBar = () => {
-    const Serphp = "1.2.2";
+    const Serphp = "1.2.3";
     const { currentUser, logout } = useContext(AuthContext);
     const { timer, toggleTimer } = useContext(TimerContext);
     const { videoPlayer, handleMute, handlePause, handlePlay, ShowPip } = useContext(PlayerContext);
     const [isRunning, setIsRunning] = useState(false);
+    const [buttonMove, setButtonMove] = useState(false);
+
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -98,14 +100,17 @@ export const NavBar = () => {
     }
 
 
-    <div className=''>
+    <div className='space'>
     {
         ShowPip === false && (
         <>
             <button className='navicon' onClick={handleMute}>
                 <div className="nicon"> 
                 {videoPlayer.muted ? 
+                <>
                 <MuteIcon/>
+                <h2></h2>
+                </>
                 : 
                 <NomuteIcon/>
                 }
@@ -130,23 +135,36 @@ export const NavBar = () => {
         </>
         )
     }
-                
+                {/* Principal interface */}
                 <button className='navicon' onClick={toggleTimer}>
-                <div className="nicon"> 
+                <div class={`nicon ${buttonMove ? 'active' : ''}`}> 
+                    <div className='conticon'>
                     {timer.isRunning ? 
+                    <>
                     <PauseIcon/>
+                    <p class='dep'>PAUSE</p>
+                    </>
                     : 
+                    <>
                     <PlayIcon/>
+                    <p class='dep'>START</p>
+                    </>
                     }
+                    </div>
                 </div>
                 </button>
                 <button className='navicon ml-2' onClick={handleSignOut}>
                 <div className="nicon"> 
+                    <div className='conticon'>
                     {currentUser ? 
                     <LogoutIcon/>
                     :
-                     <SigninIcon/>
+                     <>
+                    <SigninIcon/>
+                     <p className='dep'> Login </p>
+                     </>
                      }
+                     </div>
                      </div>
                 </button>
                 </div>

@@ -54,7 +54,11 @@ const VersionPage = () => {
                     <li>
                         <b>New feature:</b> Cuando el timer llegue a 00:00, mostrara el Break time como continuación de la Technique Pomodoro.
                     </li>
+                   <br/>
+                        <b>Patch 1.2.3</b> Mejoras visuales a los botones de comenzar, pausar e iniciar sesión.
+                    
                 </ul>
+
 
                 </div>
         </div>
