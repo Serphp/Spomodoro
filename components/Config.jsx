@@ -49,12 +49,12 @@ export const Config = () => {
             </button>
 
 
-            <button className='btnfixed' onClick={resetTimer} title='Reset'>
+            {/* <button className='btnfixed' onClick={resetTimer} title='Reset'>
             <div className="iconop"> 
             <ResetIcon/>
             </div>
             </button>
-            {/* <button className='btnicon' onClick={toggleTimer} title='Pause'>
+            <button className='btnicon' onClick={toggleTimer} title='Pause'>
             <div className="iconop"> 
             <PauseIcon/>
             </div>

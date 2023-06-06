@@ -333,16 +333,16 @@ footer {
 
 .config {
     position: fixed;
-    bottom: 0;
-    top: 1;
+    bottom: 50%;
+    top: 20%;
     left: 96%;
     width: 50px;
-    height: 100%;
+    height: 50%;
     z-index: 9999;
     @media screen and (max-width: 768px) {
         position: fixed;
         left: 0;
-        top: 0;
+        top: 20%;
     }
 }
 
@@ -599,7 +599,7 @@ footer {
 .navline2 {
     @media screen and (max-width: 1008px) {
         display: flex;
-        margin: 10px 10px 10px 10px;
+        margin: 20px 10px 10px 10px;
         color: #859196;
         flex-direction: row;
         align-items: center;
