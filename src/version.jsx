@@ -56,10 +56,36 @@ const VersionPage = () => {
                     </li>
                    <br/>
                         <b>Patch 1.2.3</b> Mejoras visuales a los botones de comenzar, pausar e iniciar sesión.
-                    
+                </ul>
+
+            <br/>
+
+                <h3>Version 1.2.5</h3>
+                <ul>
+                    <li><b  style={{color: 'white'}}>New feature:</b> Ahora hay un ciclo de Pomodoro, Cada vez que termine el tiempo hay un <b>Break Time</b>
+                    y volvera al estado <b> Normal </b> de <b> 25:00 Minutos </b> cada vez que termine el ciclo.</li>
+                    <li><b  style={{color: 'white'}}>New feature:</b> Barra lateral con las configuraciones del Pomodoro.</li>
+                    <li><b>New Improvement:</b></li>
+                    <li><b  style={{color: 'white'}}>New feature:</b> Nuevo boton donde te dirige al correo para poder enviar Sugerencias del pomodoro.</li>
+                    <li><b style={{color: 'white'}}>New Improvement:</b></li>
+                    <ol>Ahora se oculta el Eliminar, Completar y Escoger hora de las tareas en Inicio.</ol> 
+                    <ol>Ahora los iconos muestran sus funciones en las lista de tarea de inicio. <b>(Al pasar el mouse)</b></ol> 
+                    <ol></ol> 
+
+                    <li><b style={{color: 'white'}}>Fixed Mobile Version:</b> </li>
+                        <ol>Se arreglo el responsive en celulares en la hora del navbar.</ol>
+                        <ol>Se arreglo que no mostraba los demas iconos en navbar.</ol>
+                        <ol>Se arreglaron pequeños errores de estilo.</ol>
                 </ul>
 
 
+            <br/>
+
+            <small>
+                Sugerencias: 
+                <a href="mailto:bryanr.initd@gmail.com" target="_blank" rel="noopener noreferrer"> Email</a>
+                
+            </small>
                 </div>
         </div>
         </>

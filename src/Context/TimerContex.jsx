@@ -3,7 +3,7 @@
 
     export const TimerContext = createContext();
 
-    export const TimerProvider = ({ children, initialMinutes = 25, initialSeconds = 0, TextSizelocal = 80 }) => {
+    export const TimerProvider = ({ children, initialMinutes = 25, initialSeconds = 0, TextSizelocal = 80}) => {
     const pip = new Audio('https://www.soundjay.com/buttons/beep-07a.mp3'); // Ruta al archivo de sonido
     const pip2 = new Audio('https://www.soundjay.com/buttons/beep-08b.mp3'); // Ruta al archivo de sonido
     //const resetaudio = new Audio('https://www.soundjay.com/nature/campfire-1.mp3');
@@ -15,24 +15,33 @@
     const [playing, setPlaying] = useState(true);
     const [audioOnly, setAudioOnly] = useState(false);
     const [playedSeconds, setPlayedSeconds] = useState(0);
+
+    //Config Component
+    const [showCode, setShowCode] = useState(false);
+    const [ShowConfig, setShowConfig] = useState(false);
+
+    //Idle
     const [error, setError] = useState(null);
 
-const [timer, setTimer] = useState(() => {
-    const timerInLocalStorage = JSON.parse(localStorage.getItem('timer'));
-    return timerInLocalStorage || {
-        minutes: initialMinutes,
-        seconds: initialSeconds,
-        isRunning: false,
-        TextSize: TextSizelocal,
-        ChangeHour: true,
-        HideTask: false,
-        MuteSounds : false
+    //LocalStorage
+    const [timer, setTimer] = useState(() => {
+      const timerInLocalStorage = JSON.parse(localStorage.getItem('timer'));
+      return timerInLocalStorage || {
+          minutes: initialMinutes,
+          seconds: initialSeconds,
+          isRunning: false,
+          TextSize: TextSizelocal,
+          ChangeHour: true,
+          HideTask: false,
+          MuteSounds : false,
+          //Update 1.2.5
+          TecStatus: false,
     }
     });
 
-const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password)
-    }
+    const login = (email, password) => {
+        return auth.signInWithEmailAndPassword(email, password)
+        }
 
     const HandleHideTask = () => {
       setTimer((prevState) => ({
@@ -86,53 +95,11 @@ const login = (email, password) => {
         });
         localStorage.setItem('timer', JSON.stringify(timer));
     };
-    
-
-
-useEffect(() => {
-    const timerString = JSON.stringify(timer);
-    localStorage.setItem('timer', timerString);
-}, [timer]);
-
-useEffect(() => {
-    let intervalId;
-
-    if (timer.isRunning) {
-        intervalId = setInterval(() => {
-        setTimer((prevState) => {
-            const totalSeconds = prevState.minutes * 60 + prevState.seconds;
-            if (totalSeconds > 0) {
-            return {
-                ...prevState,
-                minutes: Math.floor((totalSeconds - 1) / 60),
-                seconds: (totalSeconds - 1) % 60,
-            };
-            } else {
-            clearInterval(intervalId);
-            const endSound = new Audio('https://www.soundjay.com/phone/telephone-ring-03a.mp3');
-            endSound.play();
-            return {
-                ...prevState,
-                isRunning: false,
-            };
-            }
-        });
-        }, 1000);
-    }
-
-    return () => clearInterval(intervalId);
-    }, [timer.isRunning]);
 
     const toggleTimer = () => {
       const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
       randomSound.play();
       setTimer((prevState) => {
-        // if (prevState.ChangeHour == true) {
-        //   return {
-        //     ...prevState,
-        //     isRunning: false,
-        //   };
-        // }
         return {
           ...prevState,
           isRunning: !prevState.isRunning,
@@ -157,7 +124,8 @@ const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seco
           TextSize: timer.TextSize,
           ChangeHour: timer.ChangeHour,
           HideTask: timer.HideTask,
-          MuteSounds : timer.MuteSounds
+          MuteSounds : timer.MuteSounds,
+          TecStatus: timer.TecStatus
         });
     };
 
@@ -169,7 +137,8 @@ const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seco
       TextSize: timer.TextSize,
       ChangeHour: timer.ChangeHour,
       HideTask: timer.HideTask,
-      MuteSounds : timer.MuteSounds
+      MuteSounds : timer.MuteSounds,
+      TecStatus: timer.TecStatus
     });
     };
 
@@ -180,6 +149,23 @@ const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seco
       handleReset(newMinutes, newSeconds);
     };
 
+    const TecOn = () => {
+      setTimer((prevState) => ({
+        ...prevState,
+        TecStatus: true,
+        }));
+    };
+
+    const TecOff = () => {
+        // setTimer({ TecStatus: false });
+        setTimer((prevState) => ({
+          ...prevState,
+          TecStatus: false,
+          }));
+    };
+
+    console.log(timer.TecStatus);
+
     const handleTimerChange = (event) => {
         event.preventDefault();
         const timerType = event.target.value;
@@ -187,15 +173,65 @@ const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seco
         switch (timerType) {        
             case 'shortBreak':
             handleReset(5, 0);
+            //TecOff();
             break;
             case 'longBreak':
             handleReset(15, 0);
+            //TecOff();
             break;
             default:
             handleReset(25, 0);
+            //TecOff();
             break;
         }
     };
+
+    
+
+useEffect(() => {
+  const timerString = JSON.stringify(timer);
+  localStorage.setItem('timer', timerString);
+}, [timer]);
+
+useEffect(() => {
+  let intervalId;
+
+  if (timer.isRunning) {
+      intervalId = setInterval(() => {
+      setTimer((prevState) => {
+          const totalSeconds = prevState.minutes * 60 + prevState.seconds;
+          if (totalSeconds > 0) {
+          return {
+              ...prevState,
+              minutes: Math.floor((totalSeconds - 1) / 60),
+              seconds: (totalSeconds - 1) % 60,
+          }} else {
+          clearInterval(intervalId);
+          console.log('end');
+          const endSound = new Audio('https://www.soundjay.com/phone/telephone-ring-03a.mp3');
+          endSound.play();
+          TecOn();
+          if (timer.TecStatus === true) {
+            TecOff();
+            pip.play();
+            return {
+              ...prevState,
+              TecStatus: false,
+              isRunning: false,
+              minutes: 25,
+              seconds: 0,
+            };
+          }
+          return {
+              ...prevState,
+              isRunning: false,
+          };
+          }
+      });
+      }, 1000);
+  }
+  return () => clearInterval(intervalId);
+  }, [timer.isRunning]);
     
     return (
         <TimerContext.Provider value={{ 
@@ -208,7 +244,10 @@ const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seco
         audioOnly, setAudioOnly,
         playedSeconds, setPlayedSeconds,
         error, setError,
-        HandleHideTask
+        HandleHideTask,
+        TecOn, TecOff,
+        showCode, setShowCode,
+        ShowConfig, setShowConfig,
          }}>
         {children}
         </TimerContext.Provider>

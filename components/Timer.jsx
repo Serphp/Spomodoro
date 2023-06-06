@@ -17,26 +17,19 @@ function Contador() {
             increaseTextSize, 
             decreaseTextSize, 
             toggleTimerX, 
-            toggleTimer, 
+            //TecStatus,
+            //toggleTimer, 
+            showCode,
+            ShowConfig,
             error,
             HandleHideTask } = useContext(TimerContext);
-    const [showCode, setShowCode] = useState(false);
-    const [ShowConfig, setShowConfig] = useState(false);
 
     const [tasks, setTasks] = useState(() => {
         const storedTasks = JSON.parse(localStorage.getItem('tasks'));
         return storedTasks || [];
       });
 
-    //const [isRunning, setIsRunning] = useState(false);
-
-    const handleShowCode = () => {
-        setShowCode(!showCode);
-    };
-
-    const handleShowConfig = () => {
-        setShowConfig(!ShowConfig);
-    };
+    const titleStatus = timer.TecStatus ? 'Break time' : 'Inactive';
 
     return (  
     <div className=''>
@@ -46,12 +39,13 @@ function Contador() {
         <div className="col-md-7 order-md-2">
 
             <div for="dark-mode">
-                {timer.minutes === 0 && timer.seconds === 0 ? 
+                { timer.seconds === 0 && timer.minutes === 0 && timer.TecStatus === true ? 
                 <>
-                <h2 className='titulo'> Break time </h2>
-                <div className='box2'>
-                <button className='btnselect' onClick={handleTimerChange} value="shortBreak" >Short break</button>
-                </div>
+                    <h2 className='titulo'> Break time </h2>
+                    <div className='box3'>
+                    <button className='btnselect' onClick={handleTimerChange} value="shortBreak" >Short break</button>
+                    <button className='btnselect' onClick={handleTimerChange} value="longBreak">Long break</button>
+                    </div>
                 </> :
                 timer.isRunning ? <>
                 <h2 className='titulo'>Active</h2>
@@ -67,7 +61,7 @@ function Contador() {
                 : null
                 }
                 </h6>
-                <button className='btnicon' onClick={resetTimer} title='Reset'>
+                {/* <button className='btnicon' onClick={resetTimer} title='Reset'>
                 <div className="iconop"> 
                     <ResetIcon/>
                 </div>
@@ -76,88 +70,66 @@ function Contador() {
                 <div className="iconop"> 
                     <PauseIcon/>
                 </div>
-                </button>
+                </button> */}
                 </> : 
-                <>
-                <h2 className='titulo'>Inactive</h2>
-                </>
+          
+                <h2 className='titulo'>{titleStatus}</h2>
+
                 }
             </div>
 
 
-            <div className='box2' style={{ display: timer.isRunning ? 'none' : 'block' }}>
-            {
-                timer.seconds === 0 && timer.minutes === 0 ? 
-                ( 
-                    null
-                ) : 
+            <div className='box3' style={{ display: timer.isRunning ? 'none' : 'block' }}>
 
-                <>
                 {
-                timer.seconds === 0 && timer.minutes === 25 ? null : 
-                    (
-                        <>
-                            <button className='btnselect' onClick={handleTimerChange} value="default" >Normal</button>
-                        </>
-                    )
+                !timer.TecStatus && (
+                    <>
+                {
+                        timer.seconds === 0 && timer.minutes === 25 ? null : 
+                            (
+                                <>
+                                    <button className='btnselect' onClick={handleTimerChange} value="default" >Normal</button>
+                                </>
+                            )
                 }
 
                 {
-                    timer.seconds === 0 && timer.minutes === 5 ? null : 
-                    (
-                        <>
-                        <button className='btnselect' onClick={handleTimerChange} value="shortBreak" >Short break</button>
-                        </>
-                    )
+                            timer.seconds === 0 && timer.minutes === 5 ? null : 
+                            (
+                                <>
+                                <button className='btnselect' onClick={handleTimerChange} value="shortBreak" >Short break</button>
+                                </>
+                            )
                 }
 
                 {
-                timer.seconds === 0 && timer.minutes === 15 ? null : 
-                    (
-                        <>            
-                            <button className='btnselect' onClick={handleTimerChange} value="longBreak">Long break</button>
+                            timer.seconds === 0 && timer.minutes === 15 ? null : 
+                                (
+                                    <>            
+                                        <button className='btnselect' onClick={handleTimerChange} value="longBreak">Long break</button>
+                                    </>
+                                )
+                }
+
                         </>
                     )
                 }
-
-            <article className='box2'>
-            <button onClick={resetTimer} className="btnicon" title='reset'>
-            <div className="iconop"> 
-            <ResetIcon/>
-            </div>
-            </button>
-            <button className='btnicon' onClick={handleShowCode} title='edit time'> 
-            <div className="iconop">
-            <EditIcon/>
-            </div>
-            </button>
-
-            <button className='btnicon' onClick={handleShowConfig} title='increase font size'>
-            <div className="iconop">
-            <ConfigIcon/>
-            </div>
-            </button>
-            </article>
-
-
-                </>
-            }
             
             
-            {showCode && (
+            {showCode === true && (
             <section className='pre'> 
                     {/* <form onSubmit={handlePersonalizable}> */}
                     <form onSubmit={handlePersonalizable}>
                         <div className='row mt-5 order-md-2'>
-                            <div class="form-group col-md-6 ">
+                            <div className="form-group col-md-6 ">
                             <div for="minutes">Minutes</div>
-                            <input type="number" class="form-control" name="minutes" placeholder='0' maxLength="2" />
+                            <input type="number" className="form-control" name="minutes" placeholder='0' maxLength="2" />
                             </div>
-                            <div class="form-group col-md-6">
+                            <div className="form-group col-md-6">
                             <div for="seconds">Seconds</div>
-                            <input type="number" class="form-control" name="seconds" placeholder='0' maxLength="2" />
+                            <input type="number" className="form-control" name="seconds" placeholder='0' maxLength="2" />
                             </div>
-                            <div class="center">
+                            <div className="center">
                             <button className='btn btn-primary btn-outline-white' type="submit"> New valor </button>
                             </div>
                         </div>

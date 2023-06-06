@@ -12,10 +12,11 @@ import { NomuteIcon } from '../../src/assets/nomute';
 import { NavbarMIcon } from '../../src/assets/Mobile/Nhome';
 import { NavbarMProfile } from '../../src/assets/Mobile/NProfile';
 import { NavbarMList } from '../../src/assets/Mobile/NList';
+import { NavbarMVer } from '../../src/assets/Mobile/Nver';
 //import { LogoIcon } from '../../src/assets/logo';
 
 export const NavBar = () => {
-    const Serphp = "1.2.3";
+    const Serphp = "1.2.5";
     const { currentUser, logout } = useContext(AuthContext);
     const { timer, toggleTimer } = useContext(TimerContext);
     const { videoPlayer, handleMute, handlePause, handlePlay, ShowPip } = useContext(PlayerContext);
@@ -43,22 +44,28 @@ export const NavBar = () => {
     return (
         <>
         <span className='navline2'>
-        <Link to="/" className='navlinkx'>
-            <NavbarMIcon/>
-        </Link>
-        {currentUser ? 
-                <>
-                    <Link to="/dashboard" className="navlinkx" title='Profile'>
-                    <NavbarMProfile/>
-                    </Link>
-                    <Link to="/Taskpage" className="navlinkx" title='List'>
-                    <NavbarMList/>
-                    </Link>
-                </>                
-                : null}
+
+            <div>
+                <Link to="/" className='navlinkx'>
+                <NavbarMIcon/>
+                </Link>
+            </div>
+
+            <div>
+                <Link to="/dashboard" className="navlinkx" title='Profile'>
+                <NavbarMProfile/>
+                </Link>
+                <Link to="/Taskpage" className="navlinkx" title='List'>
+                <NavbarMList/>
+                </Link>
+                <Link to='/version' className='navlinkx' title='Version'>
+                <NavbarMVer/>
+                </Link>
+            </div>
+
         </span>
 
-    <nav className="navbar mt-4">
+    <nav className="navbar2 mt-4">
 
 
         {/* <h1 className='hora' style={{ fontSize: `${timer.TextSize}px` }}>
@@ -137,17 +144,17 @@ export const NavBar = () => {
     }
                 {/* Principal interface */}
                 <button className='navicon' onClick={toggleTimer}>
-                <div class={`nicon ${buttonMove ? 'active' : ''}`}> 
+                <div className={`nicon ${buttonMove ? 'active' : ''}`}> 
                     <div className='conticon'>
                     {timer.isRunning ? 
                     <>
                     <PauseIcon/>
-                    <p class='dep'>PAUSE</p>
+                    <p className='dep'>PAUSE</p>
                     </>
                     : 
                     <>
                     <PlayIcon/>
-                    <p class='dep'>START</p>
+                    <p className='dep'>START</p>
                     </>
                     }
                     </div>

@@ -1,8 +1,10 @@
 import { LogoIcon } from "../../src/assets/logo"
+import { Config } from "../Config"
 
 export const Footer = () => {
     return (<>
         <footer>
+        <Config/>
         <div className="boxcontainer2">
         <LogoIcon/>
         <div className="socials mt-3">
