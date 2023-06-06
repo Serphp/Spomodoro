@@ -272,11 +272,28 @@
     }
 }
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0.5;
+        transform: translateY(0px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(10px);
+        //transform: scale(1.1);
+    }
+    100% {
+        opacity: 0.5;
+        transform: translateY(0px);
+    }
+}
+
 .buttonplus {
     position: fixed;
     z-index: 1;
-    bottom: 20px;
-    right: 20px;
+    bottom: 40px;
+    right: 0;
+    left: 20px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -288,6 +305,7 @@
     line-height: 50px;
     cursor: pointer;
     box-shadow: 0 0 15px rgba(0, 0 , 0, 0.2);
+    animation: fadeIn 2s ease infinite;
     transition: all 0.3s ease;
         &:hover {
             width: 60px;
