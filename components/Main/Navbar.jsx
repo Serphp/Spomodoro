@@ -52,15 +52,22 @@ export const NavBar = () => {
             </div>
 
             <div>
-                <Link to="/dashboard" className="navlinkx" title='Profile'>
-                <NavbarMProfile/>
-                </Link>
                 <Link to="/Taskpage" className="navlinkx" title='List'>
                 <NavbarMList/>
                 </Link>
                 <Link to='/version' className='navlinkx' title='Version'>
                 <NavbarMVer/>
                 </Link>
+                {
+                currentUser &&
+                (
+                    <>
+                    <Link to="/dashboard" className="navlinkx" title='Profile'>
+                    <NavbarMProfile/>
+                    </Link>
+                    </>
+                )
+                }
             </div>
 
         </span>
