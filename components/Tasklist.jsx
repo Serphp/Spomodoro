@@ -108,7 +108,7 @@ function TaskList() {
       <div className="container">
         <div className="row mb-5 justify-content-center text-center">
           <div className="col-md-8">
-            <h2 className="probootstrap-heading">Agregar tarea</h2>
+            <h2 className="probootstrap-heading mt-5">Agregar tarea</h2>
             
             <button className='buttonplus' onClick={handleShowCode}> 
             <span className='buttonptext'>

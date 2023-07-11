@@ -25,7 +25,7 @@ export default function Dashboard() {
       <div className="container">
 
           <Card.Body>
-          <h2 className="probootstrap-heading">DashBoard</h2>
+          <h2 className="probootstrap-heading  mt-3">Dashboard</h2>
 
           <Card.Header>
           {error && <Alert variant="danger">{error}</Alert>}

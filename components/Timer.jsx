@@ -53,8 +53,8 @@ function Contador() {
                 {
                     currentUser && tasks.length > 0 ? 
                     <p>
-                        {tasks.length} Tareas pendientes 
-                        <br/>
+                        {/* {tasks.length} Tareas pendientes 
+                        <br/> */}
                         {tasks.filter(task => task.completed).length}
                         Tareas completadas
                     </p> 
