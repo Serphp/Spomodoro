@@ -82,7 +82,7 @@ export const NavBar = () => {
                 <span className='navline'> 
                 <Link to='/version' className='navlink' >{Serphp}</Link>
                 <Link to="/" className={`navlink ${location.pathname === '/' ? 'active' : ''}`}> Home </Link>
-                <Link to="/Taskpage" className="navlink">List</Link>
+                <Link to="/Taskpage" className="navlink">Task</Link>
                 {
                 currentUser ? 
                 <>
@@ -173,13 +173,13 @@ export const NavBar = () => {
                     {currentUser ? 
                     <LogoutIcon/>
                     :
-                     <>
+                    <>
                     <SigninIcon/>
-                     <p className='dep'> Login </p>
-                     </>
-                     }
-                     </div>
-                     </div>
+                    <p className='dep'> Login </p>
+                    </>
+                    }
+                    </div>
+                    </div>
                 </button>
                 </div>
                 
@@ -187,7 +187,7 @@ export const NavBar = () => {
             <style jsx>{`
             .active {
                 display: none;
-              }
+            }
             }`}</style>
         </>
     )

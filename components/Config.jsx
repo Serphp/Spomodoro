@@ -7,7 +7,7 @@ import { ConfigIcon } from "../src/assets/config";
 
 export const Config = () => {
     const { resetTimer, 
-        toggleTimer,
+        timer,
         showCode,
         ShowConfig,
         setShowCode,
@@ -22,6 +22,8 @@ export const Config = () => {
         setShowConfig(!ShowConfig);
     };
 
+    const [isRunning, setIsRunning] = useState(false);
+
     // console.log(showCode);
     // console.log(ShowConfig);
 
@@ -29,24 +31,31 @@ export const Config = () => {
         <>
             <aside className='config'>
 
-                
             <article className='box2'>
             <button onClick={resetTimer} className="btnfixed" title='reset'>
             <div className="iconop"> 
             <ResetIcon/>
             </div>
             </button>
-            <button className='btnfixed' onClick={handleShowCode} title='edit time'> 
-            <div className="iconop">
-            <EditIcon/>
-            </div>
-            </button>
 
-            <button className='btnfixed' onClick={handleShowConfig} title='increase font size'>
-            <div className="iconop">
-            <ConfigIcon/>
-            </div>
-            </button>
+            
+            {
+            timer.isRunning ? 
+            null : 
+            <>
+                <button className='btnfixed' onClick={handleShowCode} title='edit time'> 
+                <div className="iconop">
+                <EditIcon/>
+                </div>
+                </button>
+
+                <button className='btnfixed' onClick={handleShowConfig} title='increase font size'>
+                <div className="iconop">
+                <ConfigIcon/>
+                </div>
+                </button>
+            </>
+            }
 
 
             {/* <button className='btnfixed' onClick={resetTimer} title='Reset'>

@@ -3,6 +3,7 @@ import { TimerContext } from '../src/Context/TimerContex';
 import { TrashIcon } from '../src/assets/List/Trash';
 import { PendingIcon } from '../src/assets/List/Pending';
 import { CompletedIcon } from '../src/assets/List/Completed';
+import { Link } from 'react-router-dom';
 //import { AuthContext } from '../src/Context/AuthContext';
 
 export const Pending = () => {
@@ -18,7 +19,7 @@ export const Pending = () => {
     const [tasks, setTasks] = useState(() => {
         const storedTasks = JSON.parse(localStorage.getItem('tasks'));
         return storedTasks || [];
-      });
+});
 
 
     //elimina una task del array
@@ -34,20 +35,18 @@ export const Pending = () => {
     //handle para cambiar el estado de la task
     const handleTaskChange = (taskId) => {
         const updatedTasks = tasks.map(task => {
-            if (task.id === taskId) {
-              task.completed = !task.completed;
-              const audio = new Audio('https://www.soundjay.com/buttons/beep-23.mp3');
-              audio.play();
-            }
-            return task;
-          });
-          
-          setTasks(updatedTasks);
-          localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-      }
-      
-      
-      
+        if (task.id === taskId) {
+            task.completed = !task.completed;
+            const audio = new Audio('https://www.soundjay.com/buttons/beep-23.mp3');
+            audio.play();
+        }
+        return task;
+        });
+        
+        setTasks(updatedTasks);
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    }
+
 
     const handleSetTimer = (index) => {
     //const newTimer = [...tasks];
@@ -63,22 +62,20 @@ export const Pending = () => {
         <section className='taskcontenedor'>
         {// currentUser &&
         tasks.length === 0 ?
-        <div className="notask">No tasks</div> :
-        null
+        <div className="notask"><Link to="/taskpage">Create task </Link></div> : null
         }
 
         { //currentUser &&
-                 tasks.filter(task => !task.completed)
+                tasks.filter(task => !task.completed)
                 .slice(0, 1) // Solo se mostrará el primer elemento
                 .map((task, index) => {
                 
                 return (
                     <div className="task" key={index}>
-                        <div className="task-header">
+                        <Link to="/taskpage"><div className="task-header">
                             <div>{task.title}</div>
                             <div>{task.minutes}:{task.seconds}</div>
-                            
-                        </div>
+                        </div></Link>
 
 {
     !timer.isRunning && (

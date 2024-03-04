@@ -102,13 +102,19 @@ function TaskList() {
   const completedTasks = tasks.filter(task => task.completed);
 
   return (
-    <div>
+    <div className='mt-5'>
+      {/* {
+      completedTasks.length < 1 ? 
+      <h2 className="mt-5">Tareas pendientes</h2> : 
+      <h2 className="mt-5">No hay tareas pendientes</h2>
+      } */}
+      <h2> Tareas </h2>
 
       <section className="probootstrap-section probootstrap-cover probootstrap-scene-0">
       <div className="container">
         <div className="row mb-5 justify-content-center text-center">
           <div className="col-md-8">
-            <h2 className="probootstrap-heading mt-5">Agregar tarea</h2>
+            
             
             <button className='buttonplus' onClick={handleShowCode}> 
             <span className='buttonptext'>
@@ -119,6 +125,7 @@ function TaskList() {
             {showCode && (
               
             <form className='boxplus' onSubmit={handleAddTask}>
+              <h2 className="probootstrap-heading mt-5">Agregar tarea</h2>
             <div className='contenedorhora'>
             <input type="number" className="imputime" name="seconds" placeholder='Minutes' maxLength="2" />
             <input type="number" className="imputime" name="minutes" placeholder='seconds' maxLength="2" />
@@ -190,8 +197,7 @@ function TaskList() {
       <div className="container">
         <div className="row mb-5 justify-content-center text-center">
           <div className="col-md-8">
-          {completedTasks.length > 0 && <h2 className="probootstrap-heading">Tareas completadas</h2>}
-
+          {completedTasks.length > 0 && <h2 className="mt-5">Tareas completadas</h2>}
           </div>
         </div>
 

@@ -43,11 +43,11 @@ export default function Dashboard() {
           </div>
 
 
-          <section className="text-center">
+          <section className="text-center mt-5">
           <h2 className="probootstrap-heading">Music</h2>
               <Card.Header>
               <Card.Text>
-              You play music while you work.
+              play music while you work.
               </Card.Text>
             </Card.Header>
             <div className="w-100 text-center mt-3 mb-3">
