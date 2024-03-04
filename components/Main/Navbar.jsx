@@ -133,7 +133,7 @@ export const NavBar = () => {
 
                 {/* BUTTON MUTE / PLAY */}
 
-                <button className='navicon ml-2'>
+                <button className='navicon'>
                 <div className="nicon"> 
                 {videoPlayer.playing ? 
                 <span onClick={handlePause}>
@@ -167,7 +167,7 @@ export const NavBar = () => {
                     </div>
                 </div>
                 </button>
-                <button className='navicon ml-2' onClick={handleSignOut}>
+                <button className='navicon' onClick={handleSignOut}>
                 <div className="nicon"> 
                     <div className='conticon'>
                     {currentUser ? 

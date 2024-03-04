@@ -164,7 +164,7 @@ const StartPause = timer.isRunning ? 'Pause' : timer.minutes === 0 && timer.seco
           }));
     };
 
-    console.log(timer.TecStatus);
+    //console.log(timer.TecStatus);
 
     const handleTimerChange = (event) => {
         event.preventDefault();

@@ -73,7 +73,7 @@ export const Pending = () => {
                 return (
                     <div className="task" key={index}>
                         <Link to="/taskpage"><div className="task-header">
-                            <div>{task.title}</div>
+                            <div>{task.title ? (<>{task.title}</>) : ('No title')}</div>
                             <div>{task.minutes}:{task.seconds}</div>
                         </div></Link>
 

@@ -53,8 +53,8 @@ function Contador() {
                 {
                     currentUser && tasks.length > 0 ? 
                     <p>
-                        {/* {tasks.length} Tareas pendientes 
-                        <br/> */}
+                        {tasks.length} Tareas pendientes 
+                        <br/>
                         {tasks.filter(task => task.completed).length}
                         Tareas completadas
                     </p> 
@@ -130,7 +130,7 @@ function Contador() {
                             <input type="number" className="form-control" name="seconds" placeholder='0' maxLength="2" />
                             </div>
                             <div className="center">
-                            <button className='btn btn-primary btn-outline-white' type="submit"> New valor </button>
+                            <button className='buttonn' type="submit"> new time </button>
                             </div>
                         </div>
                     </form>
