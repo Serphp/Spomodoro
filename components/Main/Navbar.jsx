@@ -13,6 +13,7 @@ import { NavbarMIcon } from '../../src/assets/Mobile/Nhome';
 import { NavbarMProfile } from '../../src/assets/Mobile/NProfile';
 import { NavbarMList } from '../../src/assets/Mobile/NList';
 import { NavbarMVer } from '../../src/assets/Mobile/Nver';
+import { MusicIcon } from '../../src/assets/Music';
 //import { LogoIcon } from '../../src/assets/logo';
 
 export const NavBar = () => {
@@ -118,6 +119,13 @@ export const NavBar = () => {
     {
         ShowPip === false && (
         <>
+
+            <button className='navicon'>
+            <Link to='/Music'>
+            <div className="nicon"><MusicIcon/></div>
+            </Link>
+            </button>
+            
             <button className='navicon' onClick={handleMute}>
                 <div className="nicon"> 
                 {videoPlayer.muted ? 
@@ -146,26 +154,29 @@ export const NavBar = () => {
                 }
                 </div>
                 </button>
+
+                <h1> | </h1>
         </>
         )
     }
-                {/* Principal interface */}
-                <button className='navicon' onClick={toggleTimer}>
-                <div className={`nicon ${buttonMove ? 'active' : ''}`}> 
-                    <div className='conticon'>
-                    {timer.isRunning ? 
-                    <>
-                    <PauseIcon/>
-                    <p className='dep'>PAUSE</p>
-                    </>
-                    : 
-                    <>
-                    <PlayIcon/>
-                    <p className='dep'>START</p>
-                    </>
-                    }
-                    </div>
-                </div>
+
+        {/* Principal interface */}
+        <button className='navicon' onClick={toggleTimer}>
+        <div className={`nicon ${buttonMove ? 'active' : ''}`}> 
+            <div className='conticon'>
+            {timer.isRunning ? 
+            <>
+            <PauseIcon/>
+            <p className='dep'>PAUSE</p>
+            </>
+            : 
+            <>
+            <PlayIcon/>
+            <p className='dep'>START</p>
+            </>
+            }
+            </div>
+            </div>
                 </button>
                 <button className='navicon' onClick={handleSignOut}>
                 <div className="nicon"> 

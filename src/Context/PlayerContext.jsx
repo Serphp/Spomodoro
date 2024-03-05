@@ -24,6 +24,7 @@ export const PlayerProvider = ({ children }) => {
       volume: 0.5,
       muted: false,
       showVideo: false,
+      ShowPip: false,
     }
   });
 
@@ -170,6 +171,16 @@ export const PlayerProvider = ({ children }) => {
   //   setUrl(newUrl);
   // };
 
+  const handleInputChange = (event) => {
+    const newUrl = event.target.value;
+    handleSaveUrl(newUrl);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    handleSaveProgress();
+  };
+
 
   return (
     <PlayerContext.Provider
@@ -199,38 +210,54 @@ export const PlayerProvider = ({ children }) => {
         <>
         <section>
         <div className=''> 
-        <ReactPlayer
+          <ReactPlayer
 
-        url={videoPlayer.url}
-        playing={playing}
-        played={played}
-        playbackRate={1}
-        onPlay={true}
-        onPause={false}
-        onProgress={handleProgress}
-        onDuration={handleDuration}
-        volume={volume}
-        muted={muted}
-        //onMute={handleMute}
-        onSeek={handleSaveProgress}
-        onEnded={handleSaveProgress}
-        width="100%"
-        height="350px"
-        style={{ 
-        resize: 'both', 
-        overflow: 'hidden',
+          url={videoPlayer.url}
+          playing={playing}
+          played={played}
+          playbackRate={1}
+          onPlay={true}
+          onPause={false}
+          onProgress={handleProgress}
+          onDuration={handleDuration}
+          volume={volume}
+          muted={muted}
+          //onMute={handleMute}
+          onSeek={handleSaveProgress}
+          onEnded={handleSaveProgress}
+          width="100%"
+          height="350px"
+          style={{ 
+          resize: 'both', 
+          overflow: 'hidden',
 
-        minWidth: '100%',
-        maxWidth: '500px',
-        minHeight: '100px',
-        maxHeight: '400px',
-        }}
-          className="buttonpip-content contenedorplayer"
-        /> 
+          minWidth: '100%',
+          maxWidth: '500px',
+          minHeight: '100px',
+          maxHeight: '400px',
+          }}
+            className="buttonpip-content contenedorplayer"
+          /> 
         </div>
-        <div className='buttonpip-close'>
-        <button onClick={handleTogglePip}>X</button>
-        </div>
+
+        <article className='musiccontenedor'> 
+            <form onSubmit={handleFormSubmit}>
+            <div className='inputplayer'>
+            <input type="text" value={videoPlayer.url} onChange={handleInputChange} />
+            <button type="submit">Reproducir</button>
+            </div>
+            </form>
+        </article>
+
+        <div class="slider">
+                <input type="range" min={0} max={1} step="any" value={volume} onChange={handleVolumeChange} />
+                <p className='slider-title'> volume </p>
+        </div>   
+
+          <div className='buttonpip-close'>
+          <button onClick={handleTogglePip}>X</button>
+          </div>
+
         </section>
         
         </>

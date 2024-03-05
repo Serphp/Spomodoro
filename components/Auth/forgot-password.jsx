@@ -29,7 +29,7 @@ export default function ForgotPassword() {
   return (
     <>
 
-        <div className="boxcontainer2">
+        <div className="mt-5 container">
           <h2 className="text-center mb-4">Password Reset</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           {message && <Alert variant="success">{message}</Alert>}

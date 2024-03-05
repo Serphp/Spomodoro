@@ -40,26 +40,24 @@ export function Music() {
       handleSaveProgress();
     };
 
+    console.log(videoPlayer.ShowPip);
   
     return (
       <section className="probootstrap-cover probootstrap-scene-0">
         <div className="container">
         <div className="row probootstrap-vh-75 align-items-center text-sm-center text-center">
         <div className="col-md-5 order-md-2">
-
+        
+        {ShowPip ?  (<>
         <form onSubmit={handleFormSubmit}>
         <h1 className="display-4 lead mb-5">Music</h1>
-        <p className="">Reproduce tu musica favorita</p>
-
         <div className='inputplayer'>
         <input type="text" value={videoPlayer.url} onChange={handleInputChange} />
         <button type="submit">Reproducir</button>
-        <button onClick={handleMute}>Mute</button>
-        <button onClick={handleTogglePip}>
-            {ShowPip && "Desplegar" }
-        </button>
         </div>
         </form>
+        <button onClick={handleTogglePip}>Desplegar</button>
+        </>) : null }
         
         <br/>
           {/* {
@@ -73,16 +71,15 @@ export function Music() {
         <div className="col-md-7">
             <div className="mb-5 probootstrap-stagger ">
             <div className="probootstrap-animate">
-         
             <div className='box1' style={{ display: ReactPlayer ? 'none' : 'block' }}>
 
           </div>
 
           {
             Showvideo && 
-            <h1> Hide </h1>
+            <h1> Pop UP active </h1>
           }
-            {ShowPip && (
+            {videoPlayer.ShowPip && (
                 <>
                 <div >
                 <ReactPlayer
@@ -106,7 +103,12 @@ export function Music() {
               />
                 </div>
                 
+              <div class="slider">
                 <input type="range" min={0} max={1} step="any" value={volume} onChange={handleVolumeChange} />
+                <p id="rangeValue">100</p>   
+              </div>   
+
+                {/* <input className='volume' type="range" min={0} max={1} step="any" value={volume} onChange={handleVolumeChange} /> */}
   
                 </>
               )

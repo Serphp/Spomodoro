@@ -21,7 +21,7 @@ export default function Login() {
       await Signin(emailRef.current.value, passwordRef.current.value)
       return navigate("/dashboard");
     } catch {
-      setError("Failed to log in")
+      setError("Email or password does not exist.")
     }
     setLoading(false)
   }

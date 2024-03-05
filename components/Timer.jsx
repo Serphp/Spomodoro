@@ -27,7 +27,7 @@ function Contador() {
     const [tasks, setTasks] = useState(() => {
         const storedTasks = JSON.parse(localStorage.getItem('tasks'));
         return storedTasks || [];
-      });
+    });
 
     const titleStatus = timer.TecStatus ? 'Break time' : 'Inactive';
 
@@ -72,7 +72,6 @@ function Contador() {
                 </div>
                 </button> */}
                 </> : 
-          
                 <h2 className='titulo'>{titleStatus}</h2>
 
                 }
