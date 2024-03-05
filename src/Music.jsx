@@ -1,5 +1,5 @@
 
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 //import YouTube from 'react-youtube';
 //import ReactPlayer from 'react-player/lazy';
 import ReactPlayer from 'react-player';
@@ -40,7 +40,12 @@ export function Music() {
       handleSaveProgress();
     };
 
-    console.log(videoPlayer.ShowPip);
+    const [videoPlayerx, setVideoPlayerx] = useState(() => {
+      const storedPlayer = JSON.parse(localStorage.getItem('videoPlayer'));
+      return storedPlayer || [];
+  });
+
+    console.log(videoPlayerx.ShowPip);
   
     return (
       <section className="probootstrap-cover probootstrap-scene-0">
@@ -104,7 +109,7 @@ export function Music() {
                 </div>
                 
               <div class="slider">
-                <input type="range" min={0} max={1} step="any" value={volume} onChange={handleVolumeChange} />
+                <input type="range" min={0} max={1} step="any" value={videoPlayerx.volume} onChange={handleVolumeChange} />
                 <p id="rangeValue">100</p>   
               </div>   
 

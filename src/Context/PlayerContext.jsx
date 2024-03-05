@@ -28,20 +28,22 @@ export const PlayerProvider = ({ children }) => {
     }
   });
 
+  //LOAD
   useEffect(() => {
     const savedData = localStorage.getItem('videoPlayer');
+    const savedVolume = localStorage.getItem('volume');
     if (savedData) {
       setVideoPlayer(JSON.parse(savedData));
+      setVolume(parseFloat(savedVolume));
     }
   }, []);
   
+  //SAVE
   useEffect(() => {
     localStorage.setItem('videoPlayer', JSON.stringify(videoPlayer));
-    const savedUrl = localStorage.getItem('url');
-    if (savedUrl) {
-      setUrl(savedUrl);
-    }
-  }, [videoPlayer]);
+    localStorage.setItem('volume', JSON.stringify(volume));
+    localStorage.setItem('url', url);
+  }, [videoPlayer, volume, url]);
 
   // useEffect(() => {
   //   const savedData = localStorage.getItem('videoPlayer');
@@ -94,16 +96,13 @@ export const PlayerProvider = ({ children }) => {
     }));
   };
   
-  // const handleVolumeChange = (value) => {
-  //   setVideoPlayer((prevPlayer) => ({
-  //     ...prevPlayer,
-  //     volume: value,
-  //   }));
-  //   setVolume(value);
-  // };
-  
   const handleVolumeChange = (event) => {
-    setVolume(event.target.value);
+    const newVolume = parseFloat(event.target.value);
+    setVolume(newVolume);
+    setVideoPlayer((prevPlayer) => ({
+      ...prevPlayer,
+      volume: newVolume // Guardar el volumen en el objeto videoPlayer
+    }));
   };
 
   const handleMute = () => {
@@ -111,8 +110,8 @@ export const PlayerProvider = ({ children }) => {
       ...prevPlayer,
       muted: !prevPlayer.muted,
     })
-   );
-   setMuted(!muted);
+  );
+  setMuted(!muted);
   };
 
   const handleSaveProgress = () => {
@@ -144,32 +143,6 @@ export const PlayerProvider = ({ children }) => {
     setShowPip(!ShowPip);
   };
 
-
-  // const handleProgress = (progress) => {
-  //   setPlayed(progress.played);
-  // };
-
-  // const handleDuration = (duration) => {
-  //   setDuration(duration);
-  // };
-
-  // const handleVolumeChange = (value) => {
-  //   setVolume(value);
-  // };
-
-
-  // const handleSaveProgress = () => {
-  //   const currentTime = localStorage.getItem('time');
-
-  //   if (currentTime !== played.toString()) {
-  //     localStorage.setItem('time', played.toString());
-  //   }
-  // };
-
-  // const handleSaveUrl = (newUrl) => {
-  //   localStorage.setItem('url', newUrl);
-  //   setUrl(newUrl);
-  // };
 
   const handleInputChange = (event) => {
     const newUrl = event.target.value;
